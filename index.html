@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本製がいい！</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<!-- test update test-->
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">日本製がいい！</a>
+                <ul class="nav-menu">
+                    <li><a href="about.html">このサイトについて</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>🇯🇵 日本製がいい！</h1>
+                <p>Amazonで購入できる日本製を集めました。</p>
+                <p>下の検索バーで検索してください。</p>
+                <p>結果は全て日本製、国産です。</p>
+            </div>
+        </section>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="製品名やメーカーで検索..." class="search-input">
+                    <button id="searchButton" class="search-button">検索</button>
+                </div>
+            </div>
+        <section class="categories">
+            <div class="container">
+                <h2>カテゴリーから探す</h2>
+                <div class="category-grid">
+                    <button class="category-card" data-category="キッチン家電">
+                        <h3>🍳 キッチン家電</h3>
+                        <p>炊飯器、ポット、調理家電</p>
+                    </button>
+                    <button class="category-card" data-category="刃物・包丁">
+                        <h3>🔪 刃物・包丁</h3>
+                        <p>包丁、キッチンバサミ</p>
+                    </button>
+                    <button class="category-card" data-category="調理器具">
+                        <h3>🍲 調理器具</h3>
+                        <p>鍋、フライパン、保存容器</p>
+                    </button>
+                    <button class="category-card" data-category="文房具">
+                        <h3>✏️ 文房具</h3>
+                        <p>ボールペン、ノート、文具</p>
+                    </button>
+                    <button class="category-card" data-category="工具・DIY用品">
+                        <h3>🔧 工具・DIY用品</h3>
+                        <p>ドライバー、工具セット</p>
+                    </button>
+                    <button class="category-card" data-category="美容・化粧品">
+                        <h3>💄 美容・化粧品</h3>
+                        <p>化粧水、美容液、UVケア</p>
+                    </button>
+                    <button class="category-card" data-category="食器・陶器">
+                        <h3>🍽️ 食器・陶器</h3>
+                        <p>プレート、ボウル、マグカップ</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="container">
+                <h2>製品一覧</h2>
+                <p class="section-description">✨マークは編集部のコメントがある商品です。</p>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="category-filter">カテゴリー:</label>
+                        <select id="category-filter">
+                            <option value="all">すべて</option>
+                            <option value="キッチン家電">キッチン家電</option>
+                            <option value="刃物・包丁">刃物・包丁</option>
+                            <option value="調理器具">調理器具</option>
+                            <option value="文房具">文房具</option>
+                            <option value="工具・DIY用品">工具・DIY用品</option>
+                            <option value="美容・化粧品">美容・化粧品</option>
+                            <option value="食器・陶器">食器・陶器</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="manufacturer-filter">メーカー:</label>
+                        <select id="manufacturer-filter">
+                            <option value="all">すべて</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox" id="comment-filter">
+                            ✨ コメント付きのみ
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <button id="reset-filter" class="btn-secondary">フィルターをリセット</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="products-table" id="products-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-column="name">製品名 <span class="sort-icon">↕</span></th>
+                                <th class="sortable" data-column="manufacturer">メーカー <span class="sort-icon">↕</span></th>
+                                <th class="sortable" data-column="category">カテゴリー <span class="sort-icon">↕</span></th>
+                                <th>コメント</th>
+                                <th>Amazon</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-tbody">
+                            <!-- JavaScriptで動的に生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>日本製ナビ</h3>
+                    <p>日本製をもっと多くの人へ。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サイト</h4>
+                    <ul>
+                        <li><a href="index.html">トップ</a></li>
+                        <li><a href="about.html">このサイトについて</a></li>
+                        <li><a href="submit.html">製品を投稿</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 日本製ナビ. All rights reserved.</p>
+                <p class="disclaimer">当サイトは各企業とは一切関係なく、情報提供を目的として個人で運営しています。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

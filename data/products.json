@@ -1,0 +1,1135 @@
+[
+  {
+    "asin": "MXPN-3704",
+    "title": "HARIO ボウル 3個セット 耐熱ガラス 日本製 ミキシングボウル",
+    "maker": "HARIO",
+    "price": "1,174円",
+    "category": "キッチン用品",
+    "description": "日本製耐熱ガラスのミキシングボウルセット"
+  },
+  {
+    "asin": "KTC-WRENCH-SET",
+    "title": "KTC 工具セット スパナ・レンチセット 日本製",
+    "maker": "KTC",
+    "price": "15,800円",
+    "category": "工具・DIY",
+    "description": "プロ仕様の高品質工具セット"
+  },
+  {
+    "asin": "NGK-SPARK-PLUG",
+    "title": "NGK スパークプラグ 標準タイプ 日本製",
+    "maker": "NGK",
+    "price": "800円",
+    "category": "自動車用品",
+    "description": "信頼性の高い標準スパークプラグ"
+  },
+  {
+    "asin": "B012EXAMPLE",
+    "title": "SK-II フェイシャル トリートメント エッセンス 230ml",
+    "maker": "SK-II",
+    "price": "22,000円",
+    "category": "美容・コスメ",
+    "description": "日本発の高級美容液"
+  },
+  {
+    "asin": "TOP-PLIERS",
+    "title": "TOP工業 ペンチセット 日本製 電工用",
+    "maker": "TOP工業",
+    "price": "4,200円",
+    "category": "工具・DIY",
+    "description": "電気工事用高品質ペンチ"
+  },
+  {
+    "asin": "IRIS-PET-HOUSE",
+    "title": "アイリスオーヤマ ペットハウス 犬小屋 日本製",
+    "maker": "アイリスオーヤマ",
+    "price": "8,900円",
+    "category": "ペット用品",
+    "description": "室内外両用のペットハウス"
+  },
+  {
+    "asin": "ASICS-GEL-KAYANO",
+    "title": "アシックス ゲルカヤノ ランニングシューズ 日本製",
+    "maker": "アシックス",
+    "price": "16,500円",
+    "category": "スポーツ・アウトドア",
+    "description": "安定性重視のランニングシューズ"
+  },
+  {
+    "asin": "APRICA-CARSEAT001",
+    "title": "アップリカ チャイルドシート クルリラ ISOFIX 日本製",
+    "maker": "アップリカ",
+    "price": "49,800円",
+    "category": "ベビー・キッズ用品",
+    "description": "回転式ISOFIX対応チャイルドシート"
+  },
+  {
+    "asin": "OMRON-TEMP001",
+    "title": "オムロン 体温計 電子体温計 けんおんくん 日本製",
+    "maker": "オムロン",
+    "price": "1,800円",
+    "category": "健康器具",
+    "description": "正確測定の電子体温計"
+  },
+  {
+    "asin": "OMRON-BP001",
+    "title": "オムロン 血圧計 上腕式 デジタル自動血圧計 日本製",
+    "maker": "オムロン",
+    "price": "8,800円",
+    "category": "健康器具",
+    "description": "家庭用自動血圧計の定番モデル"
+  },
+  {
+    "asin": "OMRON-SENSOR001",
+    "title": "オムロン 近接センサー E2E-X5ME1 日本製",
+    "maker": "オムロン",
+    "price": "3,200円",
+    "category": "電子部品",
+    "description": "産業用近接センサー"
+  },
+  {
+    "asin": "OLYMPUS-EM10",
+    "title": "オリンパス ミラーレス一眼 OM-D E-M10 Mark IV ボディ",
+    "maker": "オリンパス",
+    "price": "62,000円",
+    "category": "カメラ・光学機器",
+    "description": "小型軽量ミラーレス一眼カメラ"
+  },
+  {
+    "asin": "OAKS-TONGS",
+    "title": "オークス レイエ 指先トング ステンレス 日本製",
+    "maker": "オークス",
+    "price": "1,264円",
+    "category": "キッチン用品",
+    "description": "繊細な動きができる日本製ステンレストング"
+  },
+  {
+    "asin": "GSHOCK-DW5600E",
+    "title": "カシオ G-SHOCK DW-5600E ブラック デジタル",
+    "maker": "カシオ",
+    "price": "9,900円",
+    "category": "時計・アクセサリー",
+    "description": "G-SHOCKの定番モデル"
+  },
+  {
+    "asin": "CASIO-PIANO001",
+    "title": "カシオ 電子ピアノ Privia PX-S1000 88鍵盤 コンパクト",
+    "maker": "カシオ",
+    "price": "45,000円",
+    "category": "楽器・ピアノ",
+    "description": "スリムボディの88鍵盤電子ピアノ"
+  },
+  {
+    "asin": "KIKKOMAN-SOY001",
+    "title": "キッコーマン 特選丸大豆しょうゆ 1L 日本製",
+    "maker": "キッコーマン",
+    "price": "480円",
+    "category": "食品・調味料",
+    "description": "特選丸大豆使用の本格醤油"
+  },
+  {
+    "asin": "COMBI-STROLLER001",
+    "title": "コンビ ベビーカー メチャカルハンディ オート4キャス 日本製",
+    "maker": "コンビ",
+    "price": "28,800円",
+    "category": "ベビー・キッズ用品",
+    "description": "軽量で取り回しの良いベビーカー"
+  },
+  {
+    "asin": "CITIZEN-ATTESA",
+    "title": "シチズン アテッサ エコドライブ電波時計 日本製",
+    "maker": "シチズン",
+    "price": "45,000円",
+    "category": "時計・アクセサリー",
+    "description": "ソーラー電波時計アテッサシリーズ"
+  },
+  {
+    "asin": "SHARP-MICROWAVE001",
+    "title": "シャープ 電子レンジ ヘルシオ ウォーターオーブン 日本製",
+    "maker": "シャープ",
+    "price": "78,000円",
+    "category": "キッチン家電",
+    "description": "過熱水蒸気調理のヘルシオ"
+  },
+  {
+    "asin": "EC-CT12-C",
+    "title": "シャープ 掃除機 サイクロン キャニスター コード式 パワフル 450W ベージュ",
+    "maker": "シャープ",
+    "price": "12,980円",
+    "category": "家電・掃除機",
+    "description": "日本製サイクロン式キャニスター掃除機。お手入れ簡単"
+  },
+  {
+    "asin": "SEIKO-PROSPEX001",
+    "title": "セイコー プロスペックス ダイバーズウォッチ 自動巻き 日本製",
+    "maker": "セイコー",
+    "price": "28,000円",
+    "category": "時計・アクセサリー",
+    "description": "日本製自動巻きダイバーズウォッチ"
+  },
+  {
+    "asin": "SEIKO-5-SPORTS",
+    "title": "セイコー5スポーツ 自動巻き腕時計 日本製ムーブメント",
+    "maker": "セイコー",
+    "price": "15,000円",
+    "category": "時計・アクセサリー",
+    "description": "セイコー5スポーツの自動巻き腕時計"
+  },
+  {
+    "asin": "B003EXAMPLE",
+    "title": "セーラー万年筆 プロフィット21 万年筆 21金ペン先 日本製",
+    "maker": "セーラー万年筆",
+    "price": "25,000円",
+    "category": "文房具",
+    "description": "21金ペン先の高級万年筆"
+  },
+  {
+    "asin": "SONY-HEADPHONE001",
+    "title": "ソニー ワイヤレスヘッドホン WH-1000XM5 日本製",
+    "maker": "ソニー",
+    "price": "39,800円",
+    "category": "オーディオ機器",
+    "description": "業界最高クラスのノイズキャンセリング"
+  },
+  {
+    "asin": "B08XAMPLE1",
+    "title": "タイガー魔法瓶 炊飯器 5.5合 圧力IH 土鍋コーティング",
+    "maker": "タイガー魔法瓶",
+    "category": "キッチン家電",
+    "description": "土鍋コーティングで美味しく炊き上げる日本製炊飯器"
+  },
+  {
+    "asin": "TANITA-SCALE001",
+    "title": "タニタ 体組成計 インナースキャン 体脂肪計 日本製",
+    "maker": "タニタ",
+    "price": "6,980円",
+    "category": "健康器具",
+    "description": "体脂肪・筋肉量測定可能な体組成計"
+  },
+  {
+    "asin": "DAIKIN-AC001",
+    "title": "ダイキン ルームエアコン うるさらX 6畳用 日本製",
+    "maker": "ダイキン",
+    "price": "89,800円",
+    "category": "家電・エアコン",
+    "description": "加湿・除湿機能付き高性能エアコン"
+  },
+  {
+    "asin": "DAIKIN-AIR001",
+    "title": "ダイキン 空気清浄機 ストリーマ技術 25畳 日本製",
+    "maker": "ダイキン",
+    "price": "32,800円",
+    "category": "生活家電",
+    "description": "ストリーマ技術の空気清浄機"
+  },
+  {
+    "asin": "DESCENTE-JACKET",
+    "title": "デサント トレーニングジャケット 日本製",
+    "maker": "デサント",
+    "price": "8,900円",
+    "category": "スポーツ・アウトドア",
+    "description": "高機能トレーニングウェア"
+  },
+  {
+    "asin": "DENSO-SPARK-PLUG",
+    "title": "デンソー イリジウムスパークプラグ 日本製",
+    "maker": "デンソー",
+    "price": "1,800円",
+    "category": "自動車用品",
+    "description": "高性能イリジウムスパークプラグ"
+  },
+  {
+    "asin": "B00EXAMPLE4",
+    "title": "パイロット フリクションボール 10本セット 日本製",
+    "maker": "パイロット",
+    "price": "1,200円",
+    "category": "文房具",
+    "description": "消せるボールペン。日本の技術革新"
+  },
+  {
+    "asin": "B001THP9Y8",
+    "title": "パイロット 万年筆 カスタム74 ブラック 14K金ペン先",
+    "maker": "パイロット",
+    "price": "10,000円",
+    "category": "文房具",
+    "description": "日本製高級万年筆。14金ペン先で滑らかな書き心地"
+  },
+  {
+    "asin": "B09EXAMPLE3",
+    "title": "パナソニック 炊飯器 5.5合 IH式 日本製 Wおどり炊き",
+    "maker": "パナソニック",
+    "category": "キッチン家電",
+    "description": "Wおどり炊き機能搭載の日本製IH炊飯器"
+  },
+  {
+    "asin": "MC-PJ23A-H",
+    "title": "パナソニック 掃除機 紙パック式 軽量コンパクト エアダストキャッチャー グレー",
+    "maker": "パナソニック",
+    "price": "15,800円",
+    "category": "家電・掃除機",
+    "description": "日本製紙パック式掃除機"
+  },
+  {
+    "asin": "PANASONIC-BEAUTY",
+    "title": "パナソニック ナノケア スチーマー 美顔器 日本製",
+    "maker": "パナソニック",
+    "price": "24,800円",
+    "category": "美容器具",
+    "description": "ナノサイズスチームで肌ケア"
+  },
+  {
+    "asin": "PIGEON-BOTTLE001",
+    "title": "ピジョン 哺乳瓶 母乳実感 耐熱ガラス製 日本製",
+    "maker": "ピジョン",
+    "price": "2,200円",
+    "category": "ベビー・キッズ用品",
+    "description": "母乳実感に近い哺乳瓶"
+  },
+  {
+    "asin": "B014EXAMPLE",
+    "title": "フェザー カミソリ 替刃10枚入り 日本製",
+    "maker": "フェザー",
+    "price": "800円",
+    "category": "生活用品",
+    "description": "世界最高品質の日本製カミソリ替刃"
+  },
+  {
+    "asin": "BROTHER-PRINTER001",
+    "title": "ブラザー プリンター 複合機 MFC-J6983CDW 日本製",
+    "maker": "ブラザー工業",
+    "price": "25,800円",
+    "category": "オフィス用品",
+    "description": "A3対応インクジェット複合機"
+  },
+  {
+    "asin": "B004EXAMPLE",
+    "title": "プラチナ万年筆 #3776 センチュリー 万年筆 14K金ペン先",
+    "maker": "プラチナ万年筆",
+    "price": "8,000円",
+    "category": "文房具",
+    "description": "富士山をモチーフにした日本製万年筆"
+  },
+  {
+    "asin": "PETIO-TOY001",
+    "title": "ペティオ 犬用おもちゃ 知育玩具 日本製",
+    "maker": "ペティオ",
+    "price": "1,800円",
+    "category": "ペット用品",
+    "description": "犬の知育に役立つ安全なおもちゃ"
+  },
+  {
+    "asin": "CL107FDSHW",
+    "title": "マキタ コードレス掃除機 紙パック式 10.8V 標準25分稼働",
+    "maker": "マキタ",
+    "price": "14,800円",
+    "category": "家電・掃除機",
+    "description": "軽量定番モデルのコードレス掃除機"
+  },
+  {
+    "asin": "CL116DWR",
+    "title": "マキタ 充電式クリーナ レッド 10.8V2Ah バッテリ内蔵式",
+    "maker": "マキタ",
+    "price": "11,631円",
+    "category": "家電・掃除機",
+    "description": "充電式クリーナー、バッテリー内蔵"
+  },
+  {
+    "asin": "MARUKOME-MISO001",
+    "title": "マルコメ 料亭の味 だし入り味噌 日本製",
+    "maker": "マルコメ",
+    "price": "280円",
+    "category": "食品・調味料",
+    "description": "だし入りで旨味豊かな味噌"
+  },
+  {
+    "asin": "MIZUNO-RUNNING",
+    "title": "ミズノ ランニングシューズ ウエーブライダー 日本製",
+    "maker": "ミズノ",
+    "price": "12,800円",
+    "category": "スポーツ・アウトドア",
+    "description": "日本人の足型に合わせたランニングシューズ"
+  },
+  {
+    "asin": "MONTBELL-JACKET",
+    "title": "モンベル ウインドブレーカー 日本製 超軽量",
+    "maker": "モンベル",
+    "price": "6,800円",
+    "category": "アウトドア・登山",
+    "description": "超軽量ウインドブレーカー"
+  },
+  {
+    "asin": "YAMAHA-FG800",
+    "title": "ヤマハ アコースティックギター FG800 ナチュラル",
+    "maker": "ヤマハ",
+    "price": "23,800円",
+    "category": "楽器・ギター",
+    "description": "入門者におすすめのアコースティックギター"
+  },
+  {
+    "asin": "PSR-E383",
+    "title": "ヤマハ キーボード PSR-E383 61鍵盤 650音色 自動伴奏 レッスン機能",
+    "maker": "ヤマハ",
+    "price": "24,800円",
+    "category": "楽器・ピアノ",
+    "description": "タッチレスポンス付きスタンダードモデル"
+  },
+  {
+    "asin": "CP88-YAMAHA",
+    "title": "ヤマハ ステージピアノ CP88 88鍵盤 グランドピアノタッチ再現",
+    "maker": "ヤマハ",
+    "price": "198,000円",
+    "category": "楽器・ピアノ",
+    "description": "プロ仕様のステージピアノ"
+  },
+  {
+    "asin": "PSR-E473",
+    "title": "ヤマハ 電子キーボード PSR-E473 61鍵 タッチレスポンス 820音色",
+    "maker": "ヤマハ",
+    "price": "32,000円",
+    "category": "楽器・ピアノ",
+    "description": "高機能電子キーボード"
+  },
+  {
+    "asin": "YAMAN-RF001",
+    "title": "ヤーマン フォトプラス 美顔器 RF・EMS搭載 日本製",
+    "maker": "ヤーマン",
+    "price": "38,500円",
+    "category": "美容器具",
+    "description": "RF・EMS機能搭載の高機能美顔器"
+  },
+  {
+    "asin": "JAPANPET-LITTER",
+    "title": "デオトイレ 猫砂 消臭・抗菌シート 日本製",
+    "maker": "ユニ・チャーム",
+    "price": "1,200円",
+    "category": "ペット用品",
+    "description": "1週間消臭・抗菌の猫用システムトイレ"
+  },
+  {
+    "asin": "PENTAX-K70",
+    "title": "リコー ペンタックス K-70 デジタル一眼レフカメラ ボディ",
+    "maker": "リコー",
+    "price": "58,000円",
+    "category": "カメラ・光学機器",
+    "description": "防塵防滴構造の一眼レフカメラ"
+  },
+  {
+    "asin": "C4101",
+    "title": "リバーライト 鉄 中華お玉 レギュラー 46cm 日本製",
+    "maker": "リバーライト",
+    "price": "2,754円",
+    "category": "キッチン用品",
+    "description": "日本製の鉄製中華お玉"
+  },
+  {
+    "asin": "FP-10-BK",
+    "title": "ローランド 電子ピアノ FP-10 ブラック ポータブルピアノ",
+    "maker": "ローランド",
+    "price": "59,800円",
+    "category": "楽器・ピアノ",
+    "description": "88鍵盤ポータブル電子ピアノ"
+  },
+  {
+    "asin": "B016EXAMPLE",
+    "title": "三条 玄能 金槌 300g 日本製 大工道具",
+    "maker": "三条玄能",
+    "price": "4,200円",
+    "category": "工具・DIY",
+    "description": "新潟県三条市の伝統的な日本製金槌"
+  },
+  {
+    "asin": "B005EXAMPLE",
+    "title": "三菱鉛筆 ユニボール シグノ 0.38mm 10本セット",
+    "maker": "三菱鉛筆",
+    "price": "1,000円",
+    "category": "文房具",
+    "description": "日本製ゲルインクペン"
+  },
+  {
+    "asin": "MITSUBISHI-AC001",
+    "title": "三菱電機 ルームエアコン 霧ヶ峰 6畳用 日本製",
+    "maker": "三菱電機",
+    "price": "78,000円",
+    "category": "家電・エアコン",
+    "description": "霧ヶ峰シリーズの高効率エアコン"
+  },
+  {
+    "asin": "MITSUBISHI-FAN001",
+    "title": "三菱電機 扇風機 SEASONS 5枚羽根 リモコン付 日本製",
+    "maker": "三菱電機",
+    "price": "18,800円",
+    "category": "生活家電",
+    "description": "静音設計の高品質扇風機"
+  },
+  {
+    "asin": "20083",
+    "title": "下村工業 こし器 日本製 食洗機対応 ハンドル付き",
+    "maker": "下村工業",
+    "price": "1,298円",
+    "category": "キッチン用品",
+    "description": "日本製のこし器・ストレーナー"
+  },
+  {
+    "asin": "21568",
+    "title": "下村工業 ゆで揚げざる 18cm 日本製 食洗機対応",
+    "maker": "下村工業",
+    "price": "1,333円",
+    "category": "キッチン用品",
+    "description": "日本製の湯切りざる"
+  },
+  {
+    "asin": "43881",
+    "title": "下村工業 スライサーセット 日本製 千切り おろし器 守るピーラー",
+    "maker": "下村工業",
+    "price": "1,432円",
+    "category": "キッチン用品",
+    "description": "日本製の多機能スライサーセット"
+  },
+  {
+    "asin": "42497",
+    "title": "下村工業 燕三条 ステンレス トング 日本製 焼肉用",
+    "maker": "下村工業",
+    "price": "1,207円",
+    "category": "キッチン用品",
+    "description": "燕三条製のステンレス製トング"
+  },
+  {
+    "asin": "43142",
+    "title": "下村工業 菜箸より使いやすい 大 日本製 食洗機対応",
+    "maker": "下村工業",
+    "price": "1,480円",
+    "category": "キッチン用品",
+    "description": "菜箸より使いやすい日本製調理器具"
+  },
+  {
+    "asin": "B008EXAMPLE",
+    "title": "九谷焼 色絵金彩 小皿5枚セット 日本製",
+    "maker": "九谷焼",
+    "price": "5,500円",
+    "category": "食器",
+    "description": "九谷五彩の美しい色絵小皿セット"
+  },
+  {
+    "asin": "CSN-182WHP",
+    "title": "京セラ セラミックスライサー 3段階厚み調整 日本製 ホワイト",
+    "maker": "京セラ",
+    "price": "1,555円",
+    "category": "キッチン用品",
+    "description": "セラミック製で錆びない日本製スライサー"
+  },
+  {
+    "asin": "B017EXAMPLE",
+    "title": "今治タオル バスタオル 2枚セット 日本製 オーガニックコットン",
+    "maker": "今治タオル",
+    "price": "4,500円",
+    "category": "日用品",
+    "description": "今治の伝統技術で作られた高品質タオル"
+  },
+  {
+    "asin": "NINTENDO-SWITCH001",
+    "title": "任天堂 Nintendo Switch 本体 日本製",
+    "maker": "任天堂",
+    "price": "32,978円",
+    "category": "ゲーム・ホビー",
+    "description": "世界で愛される日本製ゲーム機"
+  },
+  {
+    "asin": "SENKICHI-HOE001",
+    "title": "千吉 鍬 畑鍬 1050mm 日本製",
+    "maker": "千吉",
+    "price": "2,800円",
+    "category": "園芸・ガーデニング",
+    "description": "伝統的な日本製農具"
+  },
+  {
+    "asin": "WAKODO-FOOD001",
+    "title": "和光堂 手作り応援 ベビーフード 離乳食 日本製",
+    "maker": "和光堂",
+    "price": "1,500円",
+    "category": "ベビー・キッズ用品",
+    "description": "国産素材使用の離乳食"
+  },
+  {
+    "asin": "AME-7392",
+    "title": "和平フレイズ レンジでらくちん ゆで卵 2個用 日本製",
+    "maker": "和平フレイズ",
+    "price": "1,426円",
+    "category": "キッチン用品",
+    "description": "電子レンジで簡単ゆで卵調理器"
+  },
+  {
+    "asin": "FUJIFILM-CAMERA001",
+    "title": "富士フイルム ミラーレス一眼 X-T5 ボディ 日本製",
+    "maker": "富士フイルム",
+    "price": "218,000円",
+    "category": "カメラ・光学機器",
+    "description": "フイルムメーカーの色再現技術"
+  },
+  {
+    "asin": "GARDEN-SHEARS001",
+    "title": "岡恒 剪定鋏 200mm A型 日本製 職人仕様",
+    "maker": "岡恒",
+    "price": "4,500円",
+    "category": "園芸・ガーデニング",
+    "description": "プロも愛用する高品質剪定鋏"
+  },
+  {
+    "asin": "SHIMADZU-BALANCE001",
+    "title": "島津製作所 電子天びん AUW220D 日本製",
+    "maker": "島津製作所",
+    "price": "95,000円",
+    "category": "計測・測定機器",
+    "description": "高精度分析天秤"
+  },
+  {
+    "asin": "MIKI-NOMI001",
+    "title": "播州三木 のみ 追入のみセット 大工道具 日本製",
+    "maker": "播州三木",
+    "price": "12,800円",
+    "category": "工具・DIY",
+    "description": "伝統工芸播州三木の大工道具"
+  },
+  {
+    "asin": "HITACHI-WASHER001",
+    "title": "日立 全自動洗濯機 ビートウォッシュ 8kg 日本製",
+    "maker": "日立",
+    "price": "89,800円",
+    "category": "生活家電",
+    "description": "ビートウォッシュ機能搭載洗濯機"
+  },
+  {
+    "asin": "RE-278",
+    "title": "曙産業 ゆで卵調理器 3個用 日本製",
+    "maker": "曙産業",
+    "price": "1,173円",
+    "category": "キッチン用品",
+    "description": "3個用のゆで卵調理器"
+  },
+  {
+    "asin": "B006EXAMPLE",
+    "title": "有田焼 染付桜 飯茶碗 ペアセット 日本製",
+    "maker": "有田焼",
+    "price": "3,500円",
+    "category": "食器",
+    "description": "400年の伝統を持つ有田焼の美しい茶碗"
+  },
+  {
+    "asin": "B007EXAMPLE",
+    "title": "有田焼 青白磁 湯呑み ペアセット",
+    "maker": "有田焼",
+    "price": "2,800円",
+    "category": "食器",
+    "description": "伝統的な青白磁の湯呑みセット"
+  },
+  {
+    "asin": "VC-C7-R",
+    "title": "東芝 掃除機 サイクロン キャニスター トルネオミニ グランレッド",
+    "maker": "東芝",
+    "price": "16,821円",
+    "category": "家電・掃除機",
+    "description": "軽量コンパクトなサイクロン掃除機"
+  },
+  {
+    "asin": "B010EXAMPLE",
+    "title": "波佐見焼 白磁 パスタボウル 2個セット 日本製",
+    "maker": "波佐見焼",
+    "price": "4,000円",
+    "category": "食器",
+    "description": "シンプルで美しい白磁のパスタボウル"
+  },
+  {
+    "asin": "B013EXAMPLE",
+    "title": "熊野筆 メイクブラシセット 7本セット 日本製",
+    "maker": "熊野筆",
+    "price": "8,500円",
+    "category": "美容・コスメ",
+    "description": "伝統工芸の熊野筆メイクブラシ"
+  },
+  {
+    "asin": "RIKEN-DETECTOR001",
+    "title": "理研計器 ガス検知器 GP-1000 日本製",
+    "maker": "理研計器",
+    "price": "48,000円",
+    "category": "産業・研究開発用品",
+    "description": "産業用高精度ガス検知器"
+  },
+  {
+    "asin": "B018EXAMPLE",
+    "title": "福助 足袋 綿キャラコ 4枚コハゼ 日本製",
+    "maker": "福助",
+    "price": "2,800円",
+    "category": "衣類・アクセサリー",
+    "description": "伝統的な日本製足袋"
+  },
+  {
+    "asin": "B009EXAMPLE",
+    "title": "美濃焼 黒マット カップ&ソーサー ペアセット",
+    "maker": "美濃焼",
+    "price": "2,200円",
+    "category": "食器",
+    "description": "モダンな黒マットのカップセット"
+  },
+  {
+    "asin": "B015EXAMPLE",
+    "title": "角利産業 のこぎり 竹引鋸 240mm 日本製",
+    "maker": "角利産業",
+    "price": "2,500円",
+    "category": "工具・DIY",
+    "description": "職人仕様の日本製竹挽鋸"
+  },
+  {
+    "asin": "TANIGUCHI-BAT",
+    "title": "谷口金属 バットトレー 縁付き 4号 日本製 軽量",
+    "maker": "谷口金属",
+    "price": "827円",
+    "category": "キッチン用品",
+    "description": "軽量で使いやすい日本製バットトレー"
+  },
+  {
+    "asin": "B0C9T5Z889",
+    "title": "象印 NW-PV10-BZ 圧力IH炊飯器 5.5合 炎舞炊き",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "炎舞炊き機能搭載の高級圧力IH炊飯器"
+  },
+  {
+    "asin": "B0D5TLXZCL",
+    "title": "象印 NW-QA10-BA IH炊飯器 5.5合 極め炊き ブラック",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "象印の定番IH炊飯器。確かな品質の日本製"
+  },
+  {
+    "asin": "B0CPT8VKJX",
+    "title": "象印 NW-UT07-BZ 炎舞炊き 圧力IH炊飯器 4合 コンパクト",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "コンパクトサイズの4合炊き炎舞炊き炊飯器"
+  },
+  {
+    "asin": "B0C9T4Z4WC",
+    "title": "象印 NW-VE10-BA IH炊飯器 5.5合 極め炊き ブラック",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "日本製の高品質IH炊飯器。象印の代表的な極め炊きシリーズ"
+  },
+  {
+    "asin": "B0D5TRKSN8",
+    "title": "象印 NW-YB10AM-BZ 炊飯器 5.5合 圧力IH 日本製",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "圧力IH方式で美味しく炊き上げる日本製炊飯器"
+  },
+  {
+    "asin": "B0F73JLR46",
+    "title": "象印マホービン NP-RP05-BZ 炊飯器 3合 極め炊き 圧力IH 日本製",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "一人暮らし向け小容量3合炊き。圧力IH方式で30時間保温"
+  },
+  {
+    "asin": "B0F92GWSRZ",
+    "title": "象印マホービン NX-AA10-BZ 炊飯器 5.5合 炎舞炊き 最高級モデル 日本製",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "象印最高級の炎舞炊きフラッグシップモデル"
+  },
+  {
+    "asin": "B0FH6BLJTP",
+    "title": "象印マホービン 炊飯器 5.5合 STAN ブラック NW-SB10-BA",
+    "maker": "象印マホービン",
+    "category": "キッチン家電",
+    "description": "デザイン性に優れたSTANシリーズの炊飯器"
+  },
+  {
+    "asin": "DH3107",
+    "title": "貝印 KAI ステンレス ワイド ピーラー T型 SELECT100 日本製",
+    "maker": "貝印",
+    "price": "936円",
+    "category": "キッチン用品",
+    "description": "日本製の高品質ステンレス製ワイドピーラー"
+  },
+  {
+    "asin": "DH5700",
+    "title": "貝印 KAI スライサー SELECT100 厚み調整機能 日本製",
+    "maker": "貝印",
+    "price": "1,036円",
+    "category": "キッチン用品",
+    "description": "厚み調整機能付きの日本製スライサー"
+  },
+  {
+    "asin": "DH3330",
+    "title": "貝印 KAI 千切り器 関孫六 細 レギュラー 日本製 ブラック",
+    "maker": "貝印",
+    "price": "1,100円",
+    "category": "キッチン用品",
+    "description": "関孫六シリーズの日本製千切り器"
+  },
+  {
+    "asin": "B07EXAMPLE2",
+    "title": "貝印 関孫六 三徳包丁 165mm 日本製",
+    "maker": "貝印",
+    "category": "キッチン用品",
+    "description": "伝統的な日本の刃物技術で作られた高品質包丁"
+  },
+  {
+    "asin": "B011EXAMPLE",
+    "title": "資生堂 エリクシール アドバンスドローション 170ml 日本製",
+    "maker": "資生堂",
+    "price": "3,300円",
+    "category": "美容・コスメ",
+    "description": "日本製高品質化粧水"
+  },
+  {
+    "asin": "ECHIGOSEIKA-RICE",
+    "title": "越後製菓 切り餅 個包装 1kg 日本製",
+    "maker": "越後製菓",
+    "price": "1,200円",
+    "category": "食品・米・穀物",
+    "description": "新潟産もち米100%使用"
+  },
+  {
+    "asin": "NAGAO-RUBBER",
+    "title": "長尾燕三条 シリコン耐熱ゴムベラ 大 ブラック 日本製",
+    "maker": "長尾燕三条",
+    "price": "979円",
+    "category": "キッチン用品",
+    "description": "一体成型の日本製シリコンゴムベラ"
+  },
+  {
+    "asin": "SHUN-HINOKI-CB",
+    "title": "Shun Hinoki まな板 溝付き 日本製桧材",
+    "maker": "Shun",
+    "category": "キッチン用品",
+    "description": "日本製の桧材を使用した高品質まな板。溝付きで汁気をキャッチ。"
+  },
+  {
+    "asin": "SHUN-KAGEROU-ST",
+    "title": "Shun Kagerou 三徳包丁 7インチ 日本製ステンレス",
+    "maker": "Shun",
+    "category": "キッチン用品",
+    "description": "日本製の高級ステンレス三徳包丁。切れ味と持続性に優れた逸品。"
+  },
+  {
+    "asin": "HASEGAWA-PE-BK",
+    "title": "Hasegawa Pro-PE 黒色まな板 日本製",
+    "maker": "Hasegawa",
+    "category": "キッチン用品",
+    "description": "プロ仕様の抗菌まな板。日本製の高品質ポリエチレン使用。"
+  },
+  {
+    "asin": "YOSHIKAWA-YH6751",
+    "title": "Yoshikawa 雪平鍋 ステンレス 1.2L 日本製",
+    "maker": "Yoshikawa",
+    "category": "キッチン用品",
+    "description": "伝統的な雪平鍋。日本製ステンレス製で熱伝導性に優れる。"
+  },
+  {
+    "asin": "SORI-YANAGI-MB",
+    "title": "Sori Yanagi ステンレス ミキシングボウル",
+    "maker": "柳宗理",
+    "category": "キッチン用品",
+    "description": "デザイナー柳宗理による機能美を追求したミキシングボウル。"
+  },
+  {
+    "asin": "MIYABI-ARTISAN-CF",
+    "title": "Miyabi Artisan シェフナイフ 日本製",
+    "maker": "Miyabi",
+    "category": "キッチン用品",
+    "description": "伝統的な日本の刀鍛冶技術を活かした高級シェフナイフ。"
+  },
+  {
+    "asin": "ASAHI-RUBBER-CB",
+    "title": "Asahi 抗菌ゴムまな板 プロ仕様 日本製",
+    "maker": "Asahi",
+    "category": "キッチン用品",
+    "description": "プロの料理人が愛用する抗菌性に優れたゴムまな板。"
+  },
+  {
+    "asin": "BENRINER-MS",
+    "title": "Benriner マンドリンスライサー 日本製",
+    "maker": "Benriner",
+    "category": "キッチン用品",
+    "description": "プロの料理人に愛用される精密なマンドリンスライサー。"
+  },
+  {
+    "asin": "IWACHU-SUKIYAKI",
+    "title": "岩鋳 すき焼き鍋 南部鉄器 日本製",
+    "maker": "岩鋳",
+    "category": "キッチン用品",
+    "description": "伝統的な南部鉄器のすき焼き鍋。蓄熱性と保温性に優れる。"
+  },
+  {
+    "asin": "VERMICULAR-FP",
+    "title": "Vermicular フライパン 日本製鋳物",
+    "maker": "Vermicular",
+    "category": "キッチン用品",
+    "description": "愛知県の鋳物技術で作られた高性能無水調理フライパン。"
+  },
+  {
+    "asin": "TOMBOW-FUDENOSUKE",
+    "title": "Tombow 筆之助 筆ペン 日本製",
+    "maker": "トンボ鉛筆",
+    "category": "文房具",
+    "description": "書道の美しさを手軽に楽しめる本格筆ペン。"
+  },
+  {
+    "asin": "UNI-JETSTREAM-STD",
+    "title": "三菱鉛筆 ジェットストリーム ボールペン 0.38mm",
+    "maker": "三菱鉛筆",
+    "category": "文房具",
+    "description": "なめらかな書き心地で人気の超低粘度インクボールペン。"
+  },
+  {
+    "asin": "SAKURA-PIGMA-SET",
+    "title": "サクラクレパス ピグマ マイクロンペンセット",
+    "maker": "サクラクレパス",
+    "category": "文房具",
+    "description": "耐水性・耐光性に優れたピグメントインクペン。"
+  },
+  {
+    "asin": "MUJI-GEL-PEN-SET",
+    "title": "無印良品 なめらかゲルインクボールペン 10色セット",
+    "maker": "無印良品",
+    "category": "文房具",
+    "description": "シンプルで機能的なデザインのゲルインクペン。"
+  },
+  {
+    "asin": "KURETAKE-FUDEGOKOCHI",
+    "title": "呉竹 筆ごこち筆ペン 日本製",
+    "maker": "呉竹",
+    "category": "文房具",
+    "description": "伝統の筆職人技術による本格的な筆ペン。"
+  },
+  {
+    "asin": "PILOT-FRIXION-FL",
+    "title": "パイロット フリクション ファインライナー",
+    "maker": "パイロット",
+    "category": "文房具",
+    "description": "消せるボールペン技術を応用したファインライナー。"
+  },
+  {
+    "asin": "SAILOR-FOUNTAIN-PEN",
+    "title": "セーラー万年筆 日本製",
+    "maker": "セーラー万年筆",
+    "category": "文房具",
+    "description": "広島の伝統技術で作られた高品質万年筆。"
+  },
+  {
+    "asin": "PLATINUM-IZUMO-FP",
+    "title": "プラチナ万年筆 出雲シリーズ",
+    "maker": "プラチナ万年筆",
+    "category": "文房具",
+    "description": "島根県の伝統工芸技術を活かした高級万年筆。"
+  },
+  {
+    "asin": "VESSEL-220-BG",
+    "title": "Vessel ボールグリップドライバー 220シリーズ",
+    "maker": "ベッセル",
+    "category": "工具・DIY",
+    "description": "握りやすいボール型グリップの精密ドライバー。"
+  },
+  {
+    "asin": "ANEX-397D-RATCHET",
+    "title": "ANEX ラチェットドライバー 72ビット付",
+    "maker": "兼古製作所",
+    "category": "工具・DIY",
+    "description": "72個のビット付き多機能ラチェットドライバーセット。"
+  },
+  {
+    "asin": "HOZAN-D840-HEX",
+    "title": "HOZAN 六角ナットドライバー 4-10mm",
+    "maker": "ホーザン",
+    "category": "工具・DIY",
+    "description": "精密作業に最適な六角ナットドライバーセット。"
+  },
+  {
+    "asin": "VESSEL-330-WOOD",
+    "title": "Vessel Wood-Compo 貫通ドライバー No.330",
+    "maker": "ベッセル",
+    "category": "工具・DIY",
+    "description": "木製グリップの貫通タイプドライバー。強い衝撃にも対応。"
+  },
+  {
+    "asin": "KTC-DBR16-RATCHET",
+    "title": "KTC ラチェットドライバー DBR16",
+    "maker": "KTC",
+    "category": "工具・DIY",
+    "description": "京都機械工具の高品質ラチェットドライバー。"
+  },
+  {
+    "asin": "ENGINEER-DR51-TORX",
+    "title": "エンジニア マスターグリップ トルクスドライバーセット",
+    "maker": "エンジニア",
+    "category": "工具・DIY",
+    "description": "プロ仕様の精密トルクスドライバー6本セット。"
+  },
+  {
+    "asin": "SHISEIDO-ULTIMUNE",
+    "title": "資生堂 アルティミューン パワライジングコンセントレート",
+    "maker": "資生堂",
+    "category": "化粧品・スキンケア",
+    "description": "肌の免疫力を高める革新的な美容液。日本の最先端技術。"
+  },
+  {
+    "asin": "KIKUMASAMUNE-SAKE",
+    "title": "菊正宗 日本酒の化粧水 高保湿",
+    "maker": "菊正宗",
+    "category": "化粧品・スキンケア",
+    "description": "日本酒由来のアミノ酸とセラミド配合の高保湿化粧水。"
+  },
+  {
+    "asin": "NATURIE-HATOMUGI",
+    "title": "ナチュリエ ハトムギ化粧水 スキンコンディショナー",
+    "maker": "イミュ",
+    "category": "化粧品・スキンケア",
+    "description": "天然ハトムギエキス配合の大容量化粧水。"
+  },
+  {
+    "asin": "SKII-FACIAL-ESSENCE",
+    "title": "SK-II フェイシャルトリートメントエッセンス",
+    "maker": "SK-II",
+    "category": "化粧品・スキンケア",
+    "description": "独自の天然成分ピテラ配合の伝説的な化粧水。"
+  },
+  {
+    "asin": "HADALABO-GOKUJYUN",
+    "title": "肌ラボ 極潤 ヒアルロン酸化粧水",
+    "maker": "ロート製薬",
+    "category": "化粧品・スキンケア",
+    "description": "3種のヒアルロン酸配合の高保湿化粧水。"
+  },
+  {
+    "asin": "TATCHA-DEWY-SERUM",
+    "title": "Tatcha デューイセラム 日本製植物由来",
+    "maker": "Tatcha",
+    "category": "化粧品・スキンケア",
+    "description": "日本の伝統的な美容成分を使用した高級セラム。"
+  },
+  {
+    "asin": "DHC-4STEP-SET",
+    "title": "DHC クラシック4ステップセット",
+    "maker": "DHC",
+    "category": "化粧品・スキンケア",
+    "description": "オリーブオイルベースのスキンケア4点セット。"
+  },
+  {
+    "asin": "HASAMI-PORCELAIN-PLATE",
+    "title": "波佐見焼 プレート 日本製磁器",
+    "maker": "波佐見焼",
+    "category": "食器・キッチン",
+    "description": "長崎県波佐見町の伝統的な磁器プレート。"
+  },
+  {
+    "asin": "MINO-WARE-BOWL",
+    "title": "美濃焼 茶碗 日本製陶器",
+    "maker": "美濃焼",
+    "category": "食器・キッチン",
+    "description": "岐阜県の伝統工芸美濃焼の茶碗。"
+  },
+  {
+    "asin": "KUTANI-YAKI-MUG",
+    "title": "九谷焼 コーヒーマグ Sunny Place",
+    "maker": "九谷焼",
+    "category": "食器・キッチン",
+    "description": "石川県の伝統工芸九谷焼の色絵マグカップ。"
+  },
+  {
+    "asin": "NORITAKE-COLORWAVE",
+    "title": "Noritake カラーウェーブ 16ピース食器セット",
+    "maker": "ノリタケ",
+    "category": "食器・キッチン",
+    "description": "名古屋の老舗陶磁器メーカーの食器セット。"
+  },
+  {
+    "asin": "TOKONAME-TEAPOT",
+    "title": "常滑焼 急須セット 日本製",
+    "maker": "常滑焼",
+    "category": "食器・キッチン",
+    "description": "愛知県常滑市の伝統的な急須。お茶の味を最大限に引き出す。"
+  },
+  {
+    "asin": "KINTO-LAB-MUG",
+    "title": "KINTO セラミックラボ マグ 300ml",
+    "maker": "KINTO",
+    "category": "食器・キッチン",
+    "description": "滋賀県発のモダンデザイン食器ブランド。"
+  },
+  {
+    "asin": "KYOTO-CERAMIC-PLATE",
+    "title": "京焼 セラミック プレート 日本製",
+    "maker": "京焼",
+    "category": "食器・キッチン",
+    "description": "京都の伝統的な陶磁器技術で作られたプレート。"
+  },
+  {
+    "asin": "B0BQ48M573",
+    "title": "Distress Made In Japan Japanese Characters 日本製 Nipponsei T-Shirt",
+    "maker": "不明",
+    "category": "アパレル",
+    "description": "日本製を表現したTシャツ",
+    "price": "$16.99",
+    "rating": 0,
+    "reviews": 0
+  },
+  {
+    "asin": "B0BQM7LX63",
+    "title": "プロフリーク V2 凹型 フリーク Mid Night パープル PS4 PS5 switch pro対応",
+    "maker": "プロフリーク",
+    "category": "ゲーム・ホビー",
+    "description": "日本製ゲームコントローラー用フリーク",
+    "price": "$17.99",
+    "rating": 4.2,
+    "reviews": 549
+  },
+  {
+    "asin": "B08BK5Q44B",
+    "title": "山加商店 MOOMIN kuppi ガラス タンブラー ムーミン 日本製",
+    "maker": "山加商店",
+    "category": "食器・キッチン",
+    "description": "日本製ムーミンガラスタンブラー 260ml",
+    "price": "$32.37",
+    "rating": 4.4,
+    "reviews": 132
+  },
+  {
+    "asin": "B0BQM45DCH",
+    "title": "プロフリーク V2 凸型 フリーク Daily Green PS4 PS5 switch pro対応",
+    "maker": "プロフリーク",
+    "category": "ゲーム・ホビー",
+    "description": "日本製ゲームコントローラー用凸型フリーク",
+    "price": "$17.99",
+    "rating": 4.2,
+    "reviews": 549
+  },
+  {
+    "asin": "B077GPC9PF",
+    "title": "日本けん玉協会認定 New 競技用けん玉「大空」単色 黒 国産品",
+    "maker": "日本けん玉協会",
+    "category": "おもちゃ・ゲーム",
+    "description": "国産競技用けん玉 大空 黒色",
+    "price": "$53.87",
+    "rating": 4.4,
+    "reviews": 206
+  },
+  {
+    "asin": "B077GPCZB7",
+    "title": "日本けん玉協会認定 New 競技用けん玉「大空」単色 緑 国産品",
+    "maker": "日本けん玉協会",
+    "category": "おもちゃ・ゲーム",
+    "description": "国産競技用けん玉 大空 緑色",
+    "price": "$55.16",
+    "rating": 4.5,
+    "reviews": 129
+  },
+  {
+    "asin": "B07GSVQFDC",
+    "title": "日本けん玉協会認定 New 競技用けん玉「大空」単色 黄 国産品",
+    "maker": "日本けん玉協会",
+    "category": "おもちゃ・ゲーム",
+    "description": "国産競技用けん玉 大空 黄色",
+    "price": "$47.00",
+    "rating": 4.4,
+    "reviews": 139
+  }
+]
