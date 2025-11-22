@@ -94,7 +94,6 @@ function initHomePage() {
     // フィルター変更時
     document.getElementById('category-filter').addEventListener('change', filterProducts);
     document.getElementById('manufacturer-filter').addEventListener('change', filterProducts);
-    document.getElementById('comment-filter').addEventListener('change', filterProducts);
     document.getElementById('reset-filter').addEventListener('click', resetFilters);
 
     // 検索機能
@@ -132,8 +131,6 @@ function filterProducts() {
     const searchTerm = document.getElementById('searchInput') ? document.getElementById('searchInput').value.toLowerCase() : '';
     const categoryFilter = document.getElementById('category-filter').value;
     const manufacturerFilter = document.getElementById('manufacturer-filter').value;
-    const commentFilter = document.getElementById('comment-filter').checked;
-
     let filtered = productsData;
 
     // 検索条件
@@ -159,19 +156,18 @@ function filterProducts() {
         filtered = filtered.filter(p => p.manufacturer === manufacturerFilter);
     }
 
-    // コメント条件
-    if (commentFilter) {
-        filtered = filtered.filter(p => p.comment && p.comment.trim() !== '');
-    }
-
     displayProducts(filtered);
+
+    // 検索時に商品テーブルまでスクロール
+    if (searchTerm) {
+        document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // フィルターリセット
 function resetFilters() {
     document.getElementById('category-filter').value = 'all';
     document.getElementById('manufacturer-filter').value = 'all';
-    document.getElementById('comment-filter').checked = false;
     currentSort = { column: null, ascending: true };
     
     // ソートアイコンをリセット
@@ -265,7 +261,6 @@ function displayProducts(products) {
         
         const manufacturer = product.manufacturer || 'Unknown';
         const category = product.category || 'Unknown';
-        const hasComment = product.comment && product.comment.trim() !== '';
         const amazonUrl = product.url || product.amazonUrl || `https://www.amazon.co.jp/dp/${product.asin}`;
         
         return `
@@ -274,7 +269,7 @@ function displayProducts(products) {
             <td>${manufacturer}</td>
             <td>${category}</td>
             <td class="comment-cell">
-                ${hasComment ? `<span class="comment-badge">✨</span>${product.comment}` : '-'}
+                ${product.comment || '-'}
             </td>
             <td>
                 <a href="${amazonUrl}" class="amazon-link" target="_blank" rel="noopener">
