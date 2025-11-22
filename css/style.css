@@ -85,6 +85,14 @@ body {
     background-color: #5b21b6;
 }
 
+#product-count {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+}
+
 /* ナビゲーション */
 .navbar {
     background: var(--white);

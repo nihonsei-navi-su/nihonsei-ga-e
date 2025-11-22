@@ -2,6 +2,15 @@
 let productsData = [];
 let currentSort = { column: null, ascending: true };
 
+function scrollToProducts() {
+    const section = document.querySelector('.products-section');
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+}
+
 // JSONのフィールド名をサイト内部用にそろえる
 function normalizeProduct(raw) {
     // JSON側の name / title をまとめて扱う
@@ -69,6 +78,13 @@ function initHomePage() {
         totalElement.textContent = `掲載製品数：${productsData.length}件`;
     }
     
+        // 検索要素の存在チェック（任意）
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    if (!searchInput || !searchButton) {
+        return; // 念のため早期リターン
+    }
+
     // メーカーフィルターのオプションを追加
     const manufacturerFilter = document.getElementById('manufacturer-filter');
     const manufacturers = [...new Set(productsData.map(p => p.manufacturer || 'Unknown'))].filter(m => m).sort();
@@ -96,20 +112,21 @@ function initHomePage() {
     document.getElementById('manufacturer-filter').addEventListener('change', filterProducts);
     document.getElementById('reset-filter').addEventListener('click', resetFilters);
 
-    // 検索機能
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-
-    // リアルタイム検索（入力中）
+    // リアルタイム検索（入力中）→ 画面は動かさない
     searchInput.addEventListener('input', filterProducts);
 
-    // ボタンクリック時
-    searchButton.addEventListener('click', filterProducts);
+    // ボタンクリック時 → 検索 + テーブルへスクロール
+    searchButton.addEventListener('click', () => {
+        filterProducts();
+        scrollToProducts();
+    });
 
-    // Enterキー対応
-    searchInput.addEventListener('keypress', function(e) {
+    // Enterキー対応 → 検索 + テーブルへスクロール
+    searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
+            e.preventDefault();  // フォーム送信などを防ぐ
             filterProducts();
+            scrollToProducts();
         }
 });
 
@@ -157,11 +174,6 @@ function filterProducts() {
     }
 
     displayProducts(filtered);
-
-    // 検索時に商品テーブルまでスクロール
-    if (searchTerm) {
-        document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
-    }
 }
 
 // フィルターリセット
