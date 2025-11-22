@@ -63,6 +63,12 @@ function initPage() {
 
 // ホームページ
 function initHomePage() {
+        // ★ ここを追加：総商品数を表示
+    const totalElement = document.getElementById('product-total');
+    if (totalElement) {
+        totalElement.textContent = `掲載製品数：${productsData.length}件`;
+    }
+    
     // メーカーフィルターのオプションを追加
     const manufacturerFilter = document.getElementById('manufacturer-filter');
     const manufacturers = [...new Set(productsData.map(p => p.manufacturer || 'Unknown'))].filter(m => m).sort();
