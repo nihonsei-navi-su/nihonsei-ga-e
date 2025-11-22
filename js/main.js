@@ -11,10 +11,36 @@ function scrollToProducts() {
     }
 }
 
+// カテゴリ統一マップ（A案）
+const CATEGORY_MAP = {
+    'ホーム＆キッチン': '調理器具',
+    'キッチン用品': '調理器具',
+    '食器・キッチン': '食器・陶器',
+    '文房具': '文房具',
+    'DIY・工具・ガーデン': '工具・DIY用品',
+    'ビューティー': '美容・化粧品',
+    'キッチン家電': 'キッチン家電',
+    'ホーム用品': '調理器具',
+    'パソコン・周辺機器': '工具・DIY用品'
+    // それ以外（おもちゃ・ゲーム、ゲーム・ホビー、アパレル）は変換しない
+};
+
 // JSONのフィールド名をサイト内部用にそろえる
 function normalizeProduct(raw) {
     // JSON側の name / title をまとめて扱う
     const title = raw.title || raw.name || '';
+
+        // 元カテゴリ名を取得
+        let categoryRaw = '';
+        if (raw.category && raw.category.name) {
+            categoryRaw = raw.category.name;
+        } else if (raw.category) {
+            categoryRaw = raw.category;
+        }
+        categoryRaw = (categoryRaw || '').trim();
+
+        // 統一カテゴリの適用
+        const unifiedCategory = CATEGORY_MAP[categoryRaw] || categoryRaw;
 
     return {
         // 元のフィールドはそのまま残す
@@ -31,7 +57,7 @@ function normalizeProduct(raw) {
         manufacturer: raw.manufacturer || raw.maker || raw.brand || 'Unknown',
 
         // カテゴリ：文字列をそのまま使う
-        category: (raw.category && raw.category.name) ? raw.category.name : (raw.category || ''),
+        category: unifiedCategory,
 
         // Amazon URL：JSONにあればそれを優先、なければ asin から生成
         url: raw.url || raw.amazonUrl || (raw.asin ? `https://www.amazon.co.jp/dp/${raw.asin}` : ''),
@@ -163,8 +189,11 @@ function filterProducts() {
     // カテゴリー条件
     if (categoryFilter !== 'all') {
         filtered = filtered.filter(p => {
-            const cat = p.category?.name || p.category;
-            return cat === categoryFilter;
+            const cat = (p.category?.name || p.category || '').trim();
+            const selected = categoryFilter.trim();
+
+            // 完全一致 or 部分一致 どちらか満たせば OK
+            return cat === selected || cat.includes(selected);
         });
     }
 
