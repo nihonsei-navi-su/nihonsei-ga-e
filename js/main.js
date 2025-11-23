@@ -34,7 +34,8 @@ const CATEGORY_MAP = {
 
 function normalizeProduct(raw) {
     const asin = raw.asin || '';
-    const manufacturer = raw.manufacturer || '';  // 空欄のままにする
+    productsData = data.map(normalizeProduct).filter(product => product !== null);
+
     const category = raw.category || '';
     const url = raw.url || '';
 
