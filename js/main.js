@@ -34,7 +34,7 @@ const CATEGORY_MAP = {
 
 function normalizeProduct(raw) {
     const asin = raw.asin || '';
-    const manufacturer = raw.manufacturer || '';
+    const manufacturer = raw.manufacturer || '';  // 空欄のままにする
     const category = raw.category || '';
     const url = raw.url || '';
 
@@ -70,14 +70,13 @@ function normalizeProduct(raw) {
     return {
         asin,
         title,
-        manufacturer,
+        manufacturer,  // 空欄のまま
         category,
         url,
         madeInJapan: !!raw.madeInJapan,
         available: raw.available !== false
     };
 }
-
 
 
 // データ読み込み
