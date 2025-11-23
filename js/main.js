@@ -1,38 +1,23 @@
-// フィルター処理
-function filterProducts() {
-    const searchInputEl = document.getElementById('searchInput');
-    const searchTerm = searchInputEl ? searchInputEl.value.toLowerCase() : '';
-    const categoryFilter = document.getElementById('category-filter').value.trim().toLowerCase();
-    const manufacturerFilter = document.getElementById('manufacturer-filter').value.trim().toLowerCase();
+let productsData = [];  // 製品データを格納する配列
+
+// データ読み込み
+fetch('data/products.json')
+    .then(response => response.json())
+    .then(data => {
+        productsData = data;
+        displayProducts(productsData);  // 初期表示（すべての製品を表示）
+    })
+    .catch(error => console.error('Error loading products:', error));
+
+// カテゴリフィルタリング（カテゴリを絞り込む）
+function filterProducts(category) {
     let filtered = productsData;
-
-    console.log("Filtering with category:", categoryFilter);  // カテゴリーフィルタが正しく動作しているか
-
-    // 検索条件（タイトルとメーカーのみ）
-    if (searchTerm) {
-        filtered = filtered.filter(p => {
-            const name = (p.title || '').toLowerCase();
-            const manufacturer = (p.manufacturer || '').toLowerCase();
-            return name.includes(searchTerm) || manufacturer.includes(searchTerm);
-        });
+    
+    // カテゴリに基づいて製品を絞り込む
+    if (category !== 'all') {
+        filtered = filtered.filter(p => p.category.toLowerCase() === category.toLowerCase());
     }
-
-    // カテゴリー条件
-    if (categoryFilter !== 'all') {
-        filtered = filtered.filter(p => {
-            // カテゴリー名と一致しているか確認
-            console.log(`Product Category: ${p.category.toLowerCase()} matches filter: ${categoryFilter}`);
-            return p.category.toLowerCase() === categoryFilter; // 小文字で比較
-        });
-    }
-
-    // メーカー条件
-    if (manufacturerFilter !== 'all') {
-        filtered = filtered.filter(p => p.manufacturer.toLowerCase() === manufacturerFilter);
-    }
-
-    console.log("Filtered products:", filtered);  // フィルタリング後の製品リストを確認
-    displayProducts(filtered);
+    displayProducts(filtered);  // 絞り込んだ製品を表示
 }
 
 // 製品を表示
@@ -46,27 +31,31 @@ function displayProducts(products) {
     }
 
     const html = products.map(product => {
-        const name = product.title || 'Unknown';
-        const manufacturer = product.manufacturer || 'Unknown';
-        const category = product.category || 'Unknown';
-        const amazonUrl = product.url || `https://www.amazon.co.jp/dp/${product.asin}`;
-        
         return `
-        <tr>
-            <td>${name}</td>
-            <td>${manufacturer}</td>
-            <td>${category}</td>
-            <td><a href="${amazonUrl}" target="_blank">Amazonで見る</a></td>
-        </tr>
+            <tr>
+                <td>${product.title}</td>
+                <td>${product.manufacturer}</td>
+                <td>${product.category}</td>
+                <td><a href="${product.url}" target="_blank">Amazonで見る</a></td>
+            </tr>
         `;
     }).join('');
 
     tbody.innerHTML = html;
 }
 
-// すべてのデータが空の場合、フィルターが無効
-function resetFilters() {
-    document.getElementById('category-filter').value = 'all';
-    document.getElementById('manufacturer-filter').value = 'all';
-    displayProducts(productsData);
+// ソート機能（クリックした列でソート）
+function sortProducts(column) {
+    const tbody = document.getElementById('products-tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    const sortedRows = rows.sort((rowA, rowB) => {
+        const cellA = rowA.querySelector(`td:nth-child(${column})`).textContent.trim();
+        const cellB = rowB.querySelector(`td:nth-child(${column})`).textContent.trim();
+
+        if (cellA < cellB) return 1;
+        if (cellA > cellB) return -1;
+        return 0;
+    });
+    tbody.innerHTML = '';  // ソートされた行をテーブルに反映
+    sortedRows.forEach(row => tbody.appendChild(row));
 }
