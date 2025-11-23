@@ -186,11 +186,10 @@ body {
     background-size: cover; /* 画面に合わせて画像をカバー */
     background-position: center center; /* 画像を中央に配置 */
     height: 600px; /* 高さはデザインに合わせて調整 */
-    color: #ffffff; /* テキストが背景に対して見やすくなるように色を設定 */
+    color: #000; /* テキストが背景に対して見やすくなるように色を設定 */
 }
 .hero-content {
     position: relative;
-    color: #000;
     z-index: 1; /* テキストが画像の上に表示されるように */
     padding: 20px; /* テキストの余白を設定 */
     text-align: center; /* テキストを中央に配置 */
