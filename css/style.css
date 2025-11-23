@@ -182,7 +182,7 @@ body {
 
 /* ヒーローセクション */
 .hero-section {
-    background-image: url('mt-fuji.jpg');
+    background-image: url('../mt-fuji.jpg');
     background-size: cover; /* 画面に合わせて画像をカバー */
     background-position: center center; /* 画像を中央に配置 */
     height: 600px; /* 高さはデザインに合わせて調整 */
