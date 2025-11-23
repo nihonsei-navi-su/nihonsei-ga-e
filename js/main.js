@@ -59,7 +59,6 @@ function normalizeProduct(raw) {
 fetch('data/products.json')
     .then(response => response.json())
     .then(data => {
-        // データを正しく取得してから、normalizeProductを実行
         productsData = data.map(normalizeProduct).filter(product => product !== null);
 
         const footerCount = document.getElementById('footer-product-count');
@@ -90,6 +89,7 @@ function initHomePage() {
     categoryCards.forEach(card => {
         card.addEventListener('click', () => {
             const category = card.dataset.category;
+            console.log("Selected Category:", category);  // クリックしたカテゴリが正しく取得されるか確認
             document.getElementById('category-filter').value = category;  // カテゴリーフィルターを更新
             filterProducts();  // フィルタリングを実行
             document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
@@ -123,6 +123,8 @@ function filterProducts() {
     const categoryFilter = document.getElementById('category-filter').value;
     const manufacturerFilter = document.getElementById('manufacturer-filter').value;
     let filtered = productsData;
+
+    console.log("Filtering with category:", categoryFilter);  // フィルタリングの進行状況を確認
 
     // 検索条件（タイトルとメーカーのみ）
     if (searchTerm) {
