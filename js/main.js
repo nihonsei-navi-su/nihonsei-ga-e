@@ -36,12 +36,17 @@ function normalizeProduct(raw) {
     if (!raw) return null;  // rawがnullまたはundefinedの場合は無視
 
     const asin = raw.asin || '';
-    const manufacturer = raw.manufacturer || '';  // 空欄のまま
+    let manufacturer = raw.manufacturer || '';  // 空欄のまま
     const category = raw.category || '';
     const url = raw.url || '';
 
     const rawTitle = (raw.title || raw.name || '').trim();
     let title = rawTitle;
+
+    // "ハリオ" を "HARIO" に変更
+    if (manufacturer === 'ハリオ') {
+        manufacturer = 'HARIO';
+    }
 
     // タイトルに「日本製」や「国産」が含まれているか確認
     if (!title.includes('日本製') && !title.includes('国産')) {
