@@ -145,6 +145,7 @@ function filterProducts() {
         filtered = filtered.filter(p => p.manufacturer === manufacturerFilter);
     }
 
+    console.log("Filtered products:", filtered);  // フィルタリング後の製品リストを確認
     displayProducts(filtered);
 }
 
@@ -152,6 +153,7 @@ function filterProducts() {
 function displayProducts(products) {
     const tbody = document.getElementById('products-tbody');
     
+    // フィルタリング後に製品がない場合、メッセージを表示
     if (!products || products.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">製品が見つかりません</td></tr>';
         return;
