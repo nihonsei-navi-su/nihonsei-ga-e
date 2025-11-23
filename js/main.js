@@ -8,7 +8,6 @@ function hasJapanese(str) {
     return /[\u3040-\u30FF\u4E00-\u9FFF]/.test(str);
 }
 
-
 function scrollToProducts() {
     const section = document.querySelector('.products-section');
     if (section) {
@@ -32,28 +31,29 @@ const CATEGORY_MAP = {
     // それ以外（おもちゃ・ゲーム、ゲーム・ホビー、アパレル）は変換しない
 };
 
+// 正規化された製品データを返す
 function normalizeProduct(raw) {
-    const asin = raw.asin || '';
-    productsData = data.map(normalizeProduct).filter(product => product !== null);
+    if (!raw) return null;  // rawがnullまたはundefinedの場合は無視
 
+    const asin = raw.asin || '';
+    const manufacturer = raw.manufacturer || '';  // 空欄のまま
     const category = raw.category || '';
     const url = raw.url || '';
 
-    // 商品タイトル（nameやtitle）
     const rawTitle = (raw.title || raw.name || '').trim();
     let title = rawTitle;
 
-    // ★タイトルに「日本製」または「国産」が含まれているか確認
+    // タイトルに「日本製」や「国産」が含まれているか確認
     if (!title.includes('日本製') && !title.includes('国産')) {
         return null;  // 「日本製」や「国産」じゃない場合は除外
     }
 
-    // ★「日本製素材使用」や「国産素材使用」をタイトルに含んでいる場合は除外
+    // タイトルに日本製素材使用や国産素材使用を含む場合は除外
     if (title.includes('日本製素材使用') || title.includes('国産素材使用')) {
-        return null;  // 「日本製素材使用」や「国産素材使用」の場合は除外
+        return null;
     }
 
-    // ★タイトルに日本語が1文字も無い場合 → 日本語情報に差し替え
+    // 日本語が含まれていない場合は、他の情報でタイトルを補完
     if (!hasJapanese(title)) {
         if (manufacturer && category) {
             title = `${manufacturer}（${category}）`;
@@ -71,7 +71,7 @@ function normalizeProduct(raw) {
     return {
         asin,
         title,
-        manufacturer,  // 空欄のまま
+        manufacturer,
         category,
         url,
         madeInJapan: !!raw.madeInJapan,
@@ -79,15 +79,14 @@ function normalizeProduct(raw) {
     };
 }
 
-
 // データ読み込み
 fetch('data/products.json')
     .then(response => response.json())
     .then(data => {
-        // data が正しく読み込まれてから処理
+        // データを正しく取得してから、normalizeProductを実行
         productsData = data.map(normalizeProduct).filter(product => product !== null);
 
-        // フッターの製品数カウンターを更新
+        // 製品数を表示する処理
         const footerCount = document.getElementById('footer-product-count');
         if (footerCount) {
             footerCount.textContent = `掲載製品数: ${productsData.length}件`;
@@ -96,7 +95,6 @@ fetch('data/products.json')
         initPage();
     })
     .catch(error => console.error('Error loading products:', error));
-
 
 // ページ初期化
 function initPage() {
@@ -112,13 +110,13 @@ function initPage() {
 
 // ホームページ
 function initHomePage() {
-        // ★ ここを追加：総商品数を表示
+    // ★ ここを追加：総商品数を表示
     const totalElement = document.getElementById('product-total');
     if (totalElement) {
         totalElement.textContent = `掲載製品数：${productsData.length}件`;
     }
     
-        // 検索要素の存在チェック（任意）
+    // 検索要素の存在チェック（任意）
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     if (!searchInput || !searchButton) {
@@ -168,7 +166,7 @@ function initHomePage() {
             filterProducts();
             scrollToProducts();
         }
-});
+    });
 
     // ソート機能
     const sortableHeaders = document.querySelectorAll('.sortable');
@@ -285,7 +283,6 @@ function sortProducts(column) {
     displayProducts(currentProducts);
 }
 
-
 // 製品を表示
 function displayProducts(products) {
     const tbody = document.getElementById('products-tbody');
@@ -326,7 +323,6 @@ function displayProducts(products) {
 
     tbody.innerHTML = html;
 }
-
 
 // 投稿フォームページ
 function initSubmitPage() {
