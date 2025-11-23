@@ -194,12 +194,8 @@ body {
     padding: 20px; /* テキストの余白を設定 */
     text-align: center; /* テキストを中央に配置 */
 }
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
 
-.hero .subtitle {
+.hero-section .subtitle {
     font-size: 1.3rem;
     margin-bottom: 1rem;
 }
