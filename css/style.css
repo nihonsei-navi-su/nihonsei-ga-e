@@ -188,7 +188,12 @@ body {
     height: 600px; /* 高さはデザインに合わせて調整 */
     color: #ffffff; /* テキストが背景に対して見やすくなるように色を設定 */
 }
-
+.hero-content {
+    position: relative;
+    z-index: 1; /* テキストが画像の上に表示されるように */
+    padding: 20px; /* テキストの余白を設定 */
+    text-align: center; /* テキストを中央に配置 */
+}
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
