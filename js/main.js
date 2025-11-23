@@ -383,3 +383,27 @@ function initSubmitPage() {
         }
     });
 }
+
+// すべてのリンク（<a>タグ）を対象にクリックイベントを設定
+document.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        var linkURL = event.target.href;  // クリックされたリンクのURLを取得
+
+        // Google Analytics 4 イベント送信
+        gtag('event', 'link_click', {
+            'link_url': linkURL
+        });
+    });
+});
+
+// アマゾンリンクのクリックをトラッキング
+document.querySelectorAll('a[href*="amazon.co.jp"]').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        var linkURL = event.target.href;  // クリックされたリンクのURLを取得
+
+        // Google Analytics 4 イベント送信
+        gtag('event', 'amazon_link_click', {
+            'link_url': linkURL
+        });
+    });
+});
