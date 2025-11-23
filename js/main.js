@@ -142,9 +142,9 @@ function initHomePage() {
     const categoryCards = document.querySelectorAll('.category-card');
     categoryCards.forEach(card => {
         card.addEventListener('click', () => {
-            const category = card.dataset.category;
-            document.getElementById('category-filter').value = category;
-            filterProducts();
+            const category = card.dataset.category;  // クリックしたカードのカテゴリーを取得
+            document.getElementById('category-filter').value = category;  // カテゴリーフィルターを更新
+            filterProducts();  // フィルタリングを実行
             // 製品一覧までスクロール
             document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
         });
@@ -190,7 +190,7 @@ function initHomePage() {
 function filterProducts() {
     const searchInputEl = document.getElementById('searchInput');
     const searchTerm = searchInputEl ? searchInputEl.value.toLowerCase() : '';
-    const categoryFilter = document.getElementById('category-filter').value;
+    const categoryFilter = document.getElementById('category-filter').value;  // カテゴリーフィルターの値
     const manufacturerFilter = document.getElementById('manufacturer-filter').value;
     let filtered = productsData;
 
@@ -203,12 +203,12 @@ function filterProducts() {
         });
     }
 
-    // カテゴリー条件
+    // カテゴリー条件（'all' ではない場合）
     if (categoryFilter !== 'all') {
         filtered = filtered.filter(p => {
             const cat = (p.category || '').trim();
             const selected = categoryFilter.trim();
-            return cat === selected || cat.includes(selected);
+            return cat === selected || cat.includes(selected);  // 一致するカテゴリーがあれば
         });
     }
 
