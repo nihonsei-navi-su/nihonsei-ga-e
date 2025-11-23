@@ -32,28 +32,36 @@ const CATEGORY_MAP = {
     // それ以外（おもちゃ・ゲーム、ゲーム・ホビー、アパレル）は変換しない
 };
 
-// JSONのフィールド名をサイト内部用にそろえる
 function normalizeProduct(raw) {
     const asin = raw.asin || '';
     const manufacturer = raw.manufacturer || '';
     const category = raw.category || '';
     const url = raw.url || '';
 
-    // 元データのタイトル（なければ name）を取得
+    // 商品タイトル（nameやtitle）
     const rawTitle = (raw.title || raw.name || '').trim();
     let title = rawTitle;
+
+    // ★タイトルに「日本製」または「国産」が含まれているか確認
+    if (!title.includes('日本製') && !title.includes('国産')) {
+        return null;  // 「日本製」や「国産」じゃない場合は除外
+    }
+
+    // ★「日本製素材使用」や「国産素材使用」をタイトルに含んでいる場合は除外
+    if (title.includes('日本製素材使用') || title.includes('国産素材使用')) {
+        return null;  // 「日本製素材使用」や「国産素材使用」の場合は除外
+    }
 
     // ★タイトルに日本語が1文字も無い場合 → 日本語情報に差し替え
     if (!hasJapanese(title)) {
         if (manufacturer && category) {
-            // 例：パール金属株式会社（ホーム＆キッチン）
             title = `${manufacturer}（${category}）`;
         } else if (manufacturer) {
             title = manufacturer;
         } else if (category) {
             title = category;
         } else if (asin) {
-            title = asin; // 最終手段として ASIN を表示
+            title = asin;
         } else {
             title = '日本製の製品';
         }
@@ -69,6 +77,7 @@ function normalizeProduct(raw) {
         available: raw.available !== false
     };
 }
+
 
 
 // データ読み込み
