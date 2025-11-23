@@ -84,7 +84,7 @@ function normalizeProduct(raw) {
 fetch('data/products.json')
     .then(response => response.json())
     .then(data => {
-        // dataが正常に読み込まれた後に、`normalizeProduct` を呼び出します。
+        // data が正しく読み込まれてから処理
         productsData = data.map(normalizeProduct).filter(product => product !== null);
 
         // フッターの製品数カウンターを更新
@@ -96,6 +96,7 @@ fetch('data/products.json')
         initPage();
     })
     .catch(error => console.error('Error loading products:', error));
+
 
 // ページ初期化
 function initPage() {
