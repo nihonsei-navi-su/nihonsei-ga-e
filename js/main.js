@@ -328,6 +328,35 @@ function displayProducts(products) {
     }).join('');
 
     tbody.innerHTML = html;
+
+    trackAmazonLinkClicks();
+}
+
+// AmazonリンクのクリックをGA4に送信
+function trackAmazonLinkClicks() {
+    const links = document.querySelectorAll('.amazon-link');
+
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            const row = link.closest('tr');
+            const asin = row?.dataset.asin || '';
+            const name = row?.querySelector('td:nth-child(1)')?.textContent?.trim() || '';
+            const manufacturer = row?.querySelector('td:nth-child(2)')?.textContent?.trim() || '';
+            const category = row?.querySelector('td:nth-child(3)')?.textContent?.trim() || '';
+
+            // GA4（gtag.js）が読み込まれている場合のみ送信
+            if (typeof gtag === 'function') {
+                gtag('event', 'amazon_click', {
+                    product_asin: asin,
+                    product_name: name,
+                    product_manufacturer: manufacturer,
+                    product_category: category,
+                    link_url: link.href,
+                    page_path: location.pathname
+                });
+            }
+        });
+    });
 }
 
 // 投稿フォームページ
