@@ -2,6 +2,13 @@
 let productsData = [];
 let currentSort = { column: null, ascending: true };
 
+// タイトルに日本語（ひらがな・カタカナ・漢字）が含まれているかどうか判定
+function hasJapanese(str) {
+    if (!str) return false;
+    return /[\u3040-\u30FF\u4E00-\u9FFF]/.test(str);
+}
+
+
 function scrollToProducts() {
     const section = document.querySelector('.products-section');
     if (section) {
@@ -27,43 +34,39 @@ const CATEGORY_MAP = {
 
 // JSONのフィールド名をサイト内部用にそろえる
 function normalizeProduct(raw) {
-    // JSON側の name / title をまとめて扱う
-    const title = raw.title || raw.name || '';
+    const asin = raw.asin || '';
+    const manufacturer = raw.manufacturer || '';
+    const category = raw.category || '';
+    const url = raw.url || '';
 
-        // 元カテゴリ名を取得
-        let categoryRaw = '';
-        if (raw.category && raw.category.name) {
-            categoryRaw = raw.category.name;
-        } else if (raw.category) {
-            categoryRaw = raw.category;
+    // 元データのタイトル（なければ name）を取得
+    const rawTitle = (raw.title || raw.name || '').trim();
+    let title = rawTitle;
+
+    // ★タイトルに日本語が1文字も無い場合 → 日本語情報に差し替え
+    if (!hasJapanese(title)) {
+        if (manufacturer && category) {
+            // 例：パール金属株式会社（ホーム＆キッチン）
+            title = `${manufacturer}（${category}）`;
+        } else if (manufacturer) {
+            title = manufacturer;
+        } else if (category) {
+            title = category;
+        } else if (asin) {
+            title = asin; // 最終手段として ASIN を表示
+        } else {
+            title = '日本製の製品';
         }
-        categoryRaw = (categoryRaw || '').trim();
-
-        // 統一カテゴリの適用
-        const unifiedCategory = CATEGORY_MAP[categoryRaw] || categoryRaw;
+    }
 
     return {
-        // 元のフィールドはそのまま残す
-        ...raw,
-
-        // 一覧表示や検索が参照するタイトル系
-        name: raw.name || title,                  // 念のため name もそろえる
-        title: title,
-        title_ja: raw.title_ja || title,
-        title_en: raw.title_en || '',
-        original_english_title: raw.original_english_title || '',
-
-        // メーカー名：brand / maker / manufacturer をまとめて manufacturer に統一
-        manufacturer: raw.manufacturer || raw.maker || raw.brand || 'Unknown',
-
-        // カテゴリ：文字列をそのまま使う
-        category: unifiedCategory,
-
-        // Amazon URL：JSONにあればそれを優先、なければ asin から生成
-        url: raw.url || raw.amazonUrl || (raw.asin ? `https://www.amazon.co.jp/dp/${raw.asin}` : ''),
-
-        // コメント：今は無いので空文字
-        comment: raw.comment || ''
+        asin,
+        title,
+        manufacturer,
+        category,
+        url,
+        madeInJapan: !!raw.madeInJapan,
+        available: raw.available !== false
     };
 }
 
@@ -171,28 +174,26 @@ function initHomePage() {
 
 // フィルター処理
 function filterProducts() {
-    const searchTerm = document.getElementById('searchInput') ? document.getElementById('searchInput').value.toLowerCase() : '';
+    const searchInputEl = document.getElementById('searchInput');
+    const searchTerm = searchInputEl ? searchInputEl.value.toLowerCase() : '';
     const categoryFilter = document.getElementById('category-filter').value;
     const manufacturerFilter = document.getElementById('manufacturer-filter').value;
     let filtered = productsData;
 
-    // 検索条件
+    // 検索条件（タイトルとメーカーのみ）
     if (searchTerm) {
         filtered = filtered.filter(p => {
-            const name = p.title_ja || p.name || '';
-            const manufacturer = p.manufacturer || '';
-            return name.toLowerCase().includes(searchTerm) || 
-                   manufacturer.toLowerCase().includes(searchTerm);
+            const name = (p.title || '').toLowerCase();
+            const manufacturer = (p.manufacturer || '').toLowerCase();
+            return name.includes(searchTerm) || manufacturer.includes(searchTerm);
         });
     }
 
     // カテゴリー条件
     if (categoryFilter !== 'all') {
         filtered = filtered.filter(p => {
-            const cat = (p.category?.name || p.category || '').trim();
+            const cat = (p.category || '').trim();
             const selected = categoryFilter.trim();
-
-            // 完全一致 or 部分一致 どちらか満たせば OK
             return cat === selected || cat.includes(selected);
         });
     }
@@ -246,10 +247,19 @@ function sortProducts(column) {
 
     // ソート実行
     currentProducts.sort((a, b) => {
-        let aValue = column === 'name' ? (a.title_ja || a.name) : 
-                     column === 'category' ? (a.category?.name || a.category) : a[column];
-        let bValue = column === 'name' ? (b.title_ja || b.name) : 
-                     column === 'category' ? (b.category?.name || b.category) : b[column];
+        let aValue;
+        let bValue;
+
+        if (column === 'name') {
+            aValue = a.title || '';
+            bValue = b.title || '';
+        } else if (column === 'category') {
+            aValue = a.category || '';
+            bValue = b.category || '';
+        } else {
+            aValue = a[column] ?? '';
+            bValue = b[column] ?? '';
+        }
 
         if (typeof aValue === 'string') {
             aValue = aValue.toLowerCase();
@@ -264,6 +274,7 @@ function sortProducts(column) {
     displayProducts(currentProducts);
 }
 
+
 // 製品を表示
 function displayProducts(products) {
     const tbody = document.getElementById('products-tbody');
@@ -274,32 +285,13 @@ function displayProducts(products) {
         countElement.textContent = `${products.length}件の製品`;
     }
     
-    if (products.length === 0) {
+    if (!products || products.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">製品が見つかりません</td></tr>';
         return;
     }
 
     const html = products.map(product => {
-        // 日本語が含まれているかチェック
-        const hasJapanese = (str) => str && /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(str);
-        
-        // title_jaが日本語なら優先、英語ならoriginal_english_titleを使う
-        let name = 'Unknown';
-        if (hasJapanese(product.title_ja)) {
-            name = product.title_ja;
-        } else if (hasJapanese(product.original_english_title)) {
-            name = product.original_english_title;
-        } else if (product.title && product.title !== 'エラーです。' && hasJapanese(product.title)) {
-            // titleフィールドからAmazon.co.jpを除外して日本語部分を抽出
-            const titleMatch = product.title.match(/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF][^:]*/);
-            name = titleMatch ? titleMatch[0].trim() : product.title_en || product.title_ja || 'Unknown';
-        } else if (product.title === 'エラーです。') {
-            // 「エラーです。」の場合は英語タイトルを使用
-            name = product.title_en || product.title_ja || 'Unknown';
-        } else {
-            name = product.title_en || product.title_ja || product.title || 'Unknown';
-        }
-        
+        const name = product.title || 'Unknown';
         const manufacturer = product.manufacturer || 'Unknown';
         const category = product.category || 'Unknown';
         const amazonUrl = product.url || product.amazonUrl || `https://www.amazon.co.jp/dp/${product.asin}`;
@@ -323,6 +315,7 @@ function displayProducts(products) {
 
     tbody.innerHTML = html;
 }
+
 
 // 投稿フォームページ
 function initSubmitPage() {
