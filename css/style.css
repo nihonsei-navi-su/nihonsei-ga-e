@@ -172,12 +172,21 @@ body {
     font-size: 1.1rem;
 }
 
-/* ヒーローセクション */
+/* ヒーローセクション
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: var(--white);
     padding: 4rem 0;
     text-align: center;
+} */
+
+/* ヒーローセクション */
+.hero-section {
+    background-image: url('mt-fuji.jpg');
+    background-size: cover; /* 画面に合わせて画像をカバー */
+    background-position: center center; /* 画像を中央に配置 */
+    height: 600px; /* 高さはデザインに合わせて調整 */
+    color: #ffffff; /* テキストが背景に対して見やすくなるように色を設定 */
 }
 
 .hero h1 {
