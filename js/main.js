@@ -84,14 +84,15 @@ function normalizeProduct(raw) {
 fetch('data/products.json')
     .then(response => response.json())
     .then(data => {
-        // ★ここを変更：生データを正規化してから保存
-        productsData = data.map(normalizeProduct);
+        // dataが正常に読み込まれた後に、`normalizeProduct` を呼び出します。
+        productsData = data.map(normalizeProduct).filter(product => product !== null);
 
         // フッターの製品数カウンターを更新
         const footerCount = document.getElementById('footer-product-count');
         if (footerCount) {
-            footerCount.textContent = `掲載製品数: ${data.length}件`;
+            footerCount.textContent = `掲載製品数: ${productsData.length}件`;
         }
+
         initPage();
     })
     .catch(error => console.error('Error loading products:', error));
