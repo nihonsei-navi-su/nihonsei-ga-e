@@ -26,7 +26,7 @@ function normalizeProduct(raw) {
 
     // タイトルに「日本製」や「国産」が含まれているか確認
     if (!title.includes('日本製') && !title.includes('国産')) {
-        return null;
+        return null;  // 「日本製」や「国産」じゃない場合は除外
     }
 
     // 日本語が含まれていない場合は、他の情報でタイトルを補完
@@ -59,6 +59,7 @@ function normalizeProduct(raw) {
 fetch('data/products.json')
     .then(response => response.json())
     .then(data => {
+        // データを正しく取得してから、normalizeProductを実行
         productsData = data.map(normalizeProduct).filter(product => product !== null);
 
         const footerCount = document.getElementById('footer-product-count');
@@ -84,12 +85,13 @@ function initPage() {
 
 // ホームページ
 function initHomePage() {
+    // カテゴリーカードのクリックイベント
     const categoryCards = document.querySelectorAll('.category-card');
     categoryCards.forEach(card => {
         card.addEventListener('click', () => {
             const category = card.dataset.category;
-            document.getElementById('category-filter').value = category;
-            filterProducts();
+            document.getElementById('category-filter').value = category;  // カテゴリーフィルターを更新
+            filterProducts();  // フィルタリングを実行
             document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
         });
     });
@@ -122,6 +124,7 @@ function filterProducts() {
     const manufacturerFilter = document.getElementById('manufacturer-filter').value;
     let filtered = productsData;
 
+    // 検索条件（タイトルとメーカーのみ）
     if (searchTerm) {
         filtered = filtered.filter(p => {
             const name = (p.title || '').toLowerCase();
@@ -130,10 +133,12 @@ function filterProducts() {
         });
     }
 
+    // カテゴリー条件
     if (categoryFilter !== 'all') {
         filtered = filtered.filter(p => p.category === categoryFilter);
     }
 
+    // メーカー条件
     if (manufacturerFilter !== 'all') {
         filtered = filtered.filter(p => p.manufacturer === manufacturerFilter);
     }
