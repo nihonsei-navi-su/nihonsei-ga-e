@@ -1,4 +1,3 @@
-// 製品データを取得
 let productsData = [];
 let currentSort = { column: null, ascending: true };
 
@@ -15,73 +14,6 @@ function scrollToProducts() {
             behavior: 'smooth'
         });
     }
-}
-
-// カテゴリ統一マップ（A案）
-const CATEGORY_MAP = {
-    'ホーム＆キッチン': '調理器具',
-    'キッチン用品': '調理器具',
-    '食器・キッチン': '食器・陶器',
-    '文房具': '文房具',
-    'DIY・工具・ガーデン': '工具・DIY用品',
-    'ビューティー': '美容・化粧品',
-    'キッチン家電': 'キッチン家電',
-    'ホーム用品': '調理器具',
-    'パソコン・周辺機器': '工具・DIY用品'
-    // それ以外（おもちゃ・ゲーム、ゲーム・ホビー、アパレル）は変換しない
-};
-
-// 正規化された製品データを返す
-function normalizeProduct(raw) {
-    if (!raw) return null;  // rawがnullまたはundefinedの場合は無視
-
-    const asin = raw.asin || '';
-    let manufacturer = raw.manufacturer || '';  // 空欄のまま
-    const category = raw.category || '';
-    const url = raw.url || '';
-
-    const rawTitle = (raw.title || raw.name || '').trim();
-    let title = rawTitle;
-
-    // "ハリオ" を "HARIO" に変更
-    if (manufacturer === 'ハリオ') {
-        manufacturer = 'HARIO';
-    }
-
-    // タイトルに「日本製」や「国産」が含まれているか確認
-    if (!title.includes('日本製') && !title.includes('国産')) {
-        return null;  // 「日本製」や「国産」じゃない場合は除外
-    }
-
-    // タイトルに日本製素材使用や国産素材使用を含む場合は除外
-    if (title.includes('日本製素材使用') || title.includes('国産素材使用')) {
-        return null;
-    }
-
-    // 日本語が含まれていない場合は、他の情報でタイトルを補完
-    if (!hasJapanese(title)) {
-        if (manufacturer && category) {
-            title = `${manufacturer}（${category}）`;
-        } else if (manufacturer) {
-            title = manufacturer;
-        } else if (category) {
-            title = category;
-        } else if (asin) {
-            title = asin;
-        } else {
-            title = '日本製の製品';
-        }
-    }
-
-    return {
-        asin,
-        title,
-        manufacturer,
-        category,
-        url,
-        madeInJapan: !!raw.madeInJapan,
-        available: raw.available !== false
-    };
 }
 
 // データ読み込み
@@ -115,47 +47,29 @@ function initPage() {
 
 // ホームページ
 function initHomePage() {
-    // ★ ここを追加：総商品数を表示
-    const totalElement = document.getElementById('product-total');
-    if (totalElement) {
-        totalElement.textContent = `掲載製品数：${productsData.length}件`;
-    }
-    
-    // 検索要素の存在チェック（任意）
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-    if (!searchInput || !searchButton) {
-        return; // 念のため早期リターン
-    }
-
-    // メーカーフィルターのオプションを追加
-    const manufacturerFilter = document.getElementById('manufacturer-filter');
-    const manufacturers = [...new Set(productsData.map(p => p.manufacturer || 'Unknown'))].filter(m => m).sort();
-    manufacturers.forEach(m => {
-        const option = document.createElement('option');
-        option.value = m;
-        option.textContent = m;
-        manufacturerFilter.appendChild(option);
-    });
-
     // カテゴリーカードのクリックイベント
     const categoryCards = document.querySelectorAll('.category-card');
     categoryCards.forEach(card => {
         card.addEventListener('click', () => {
-            const category = card.dataset.category;  // クリックしたカードのカテゴリーを取得
-            document.getElementById('category-filter').value = category;  // カテゴリーフィルターを更新
-            filterProducts();  // フィルタリングを実行
-            // 製品一覧までスクロール
+            const category = card.dataset.category;
+            document.getElementById('category-filter').value = category;
+            filterProducts();
             document.querySelector('.products-section').scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    if (!searchInput || !searchButton) {
+        return;
+    }
 
     // フィルター変更時
     document.getElementById('category-filter').addEventListener('change', filterProducts);
     document.getElementById('manufacturer-filter').addEventListener('change', filterProducts);
     document.getElementById('reset-filter').addEventListener('click', resetFilters);
 
-    // リアルタイム検索（入力中）→ 画面は動かさない
+    // リアルタイム検索（入力中）
     searchInput.addEventListener('input', filterProducts);
 
     // ボタンクリック時 → 検索 + テーブルへスクロール
@@ -164,25 +78,6 @@ function initHomePage() {
         scrollToProducts();
     });
 
-    // Enterキー対応 → 検索 + テーブルへスクロール
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();  // フォーム送信などを防ぐ
-            filterProducts();
-            scrollToProducts();
-        }
-    });
-
-    // ソート機能
-    const sortableHeaders = document.querySelectorAll('.sortable');
-    sortableHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const column = header.dataset.column;
-            sortProducts(column);
-        });
-    });
-
-    // 初期表示
     displayProducts(productsData);
 }
 
@@ -190,7 +85,7 @@ function initHomePage() {
 function filterProducts() {
     const searchInputEl = document.getElementById('searchInput');
     const searchTerm = searchInputEl ? searchInputEl.value.toLowerCase() : '';
-    const categoryFilter = document.getElementById('category-filter').value;  // カテゴリーフィルターの値
+    const categoryFilter = document.getElementById('category-filter').value;
     const manufacturerFilter = document.getElementById('manufacturer-filter').value;
     let filtered = productsData;
 
@@ -203,13 +98,9 @@ function filterProducts() {
         });
     }
 
-    // カテゴリー条件（'all' ではない場合）
+    // カテゴリー条件
     if (categoryFilter !== 'all') {
-        filtered = filtered.filter(p => {
-            const cat = (p.category || '').trim();
-            const selected = categoryFilter.trim();
-            return cat === selected || cat.includes(selected);  // 一致するカテゴリーがあれば
-        });
+        filtered = filtered.filter(p => p.category === categoryFilter);
     }
 
     // メーカー条件
@@ -220,83 +111,9 @@ function filterProducts() {
     displayProducts(filtered);
 }
 
-// フィルターリセット
-function resetFilters() {
-    document.getElementById('category-filter').value = 'all';
-    document.getElementById('manufacturer-filter').value = 'all';
-    currentSort = { column: null, ascending: true };
-    
-    // ソートアイコンをリセット
-    document.querySelectorAll('.sortable').forEach(header => {
-        header.classList.remove('sorted-asc', 'sorted-desc');
-    });
-    
-    displayProducts(productsData);
-}
-
-// ソート処理
-function sortProducts(column) {
-    const header = document.querySelector(`[data-column="${column}"]`);
-    
-    // 同じ列をクリックした場合は昇順/降順を切り替え
-    if (currentSort.column === column) {
-        currentSort.ascending = !currentSort.ascending;
-    } else {
-        currentSort.column = column;
-        currentSort.ascending = true;
-    }
-
-    // ソートアイコンを更新
-    document.querySelectorAll('.sortable').forEach(h => {
-        h.classList.remove('sorted-asc', 'sorted-desc');
-    });
-    header.classList.add(currentSort.ascending ? 'sorted-asc' : 'sorted-desc');
-
-    // 現在表示されている製品を取得
-    const tbody = document.getElementById('products-tbody');
-    const currentProducts = Array.from(tbody.querySelectorAll('tr')).map(row => {
-        const asin = row.dataset.asin;
-        return productsData.find(p => p.asin === asin);
-    });
-
-    // ソート実行
-    currentProducts.sort((a, b) => {
-        let aValue;
-        let bValue;
-
-        if (column === 'name') {
-            aValue = a.title || '';
-            bValue = b.title || '';
-        } else if (column === 'category') {
-            aValue = a.category || '';
-            bValue = b.category || '';
-        } else {
-            aValue = a[column] ?? '';
-            bValue = b[column] ?? '';
-        }
-
-        if (typeof aValue === 'string') {
-            aValue = aValue.toLowerCase();
-            bValue = bValue.toLowerCase();
-        }
-
-        if (aValue < bValue) return currentSort.ascending ? -1 : 1;
-        if (aValue > bValue) return currentSort.ascending ? 1 : -1;
-        return 0;
-    });
-
-    displayProducts(currentProducts);
-}
-
 // 製品を表示
 function displayProducts(products) {
     const tbody = document.getElementById('products-tbody');
-    
-    // 製品数カウンターを更新
-    const countElement = document.getElementById('product-count');
-    if (countElement) {
-        countElement.textContent = `${products.length}件の製品`;
-    }
     
     if (!products || products.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">製品が見つかりません</td></tr>';
@@ -307,21 +124,14 @@ function displayProducts(products) {
         const name = product.title || 'Unknown';
         const manufacturer = product.manufacturer || 'Unknown';
         const category = product.category || 'Unknown';
-        const amazonUrl = product.url || product.amazonUrl || `https://www.amazon.co.jp/dp/${product.asin}`;
+        const amazonUrl = product.url || `https://www.amazon.co.jp/dp/${product.asin}`;
         
         return `
-        <tr data-asin="${product.asin}">
+        <tr>
             <td>${name}</td>
             <td>${manufacturer}</td>
             <td>${category}</td>
-            <td class="comment-cell">
-                ${product.comment || '-'}
-            </td>
-            <td>
-                <a href="${amazonUrl}" class="amazon-link" target="_blank" rel="noopener">
-                    Amazonで見る
-                </a>
-            </td>
+            <td><a href="${amazonUrl}" target="_blank">Amazonで見る</a></td>
         </tr>
         `;
     }).join('');
@@ -329,21 +139,9 @@ function displayProducts(products) {
     tbody.innerHTML = html;
 }
 
-// 投稿フォームページ
-function initSubmitPage() {
-    const form = document.getElementById('submit-form');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const formMessage = document.getElementById('form-message');
-        formMessage.style.display = 'block';
-        formMessage.className = 'form-message success';
-        formMessage.textContent = 'ご投稿ありがとうございます！';
-        
-        form.reset();
-        
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    });
+// フィルターリセット
+function resetFilters() {
+    document.getElementById('category-filter').value = 'all';
+    document.getElementById('manufacturer-filter').value = 'all';
+    displayProducts(productsData);
 }
