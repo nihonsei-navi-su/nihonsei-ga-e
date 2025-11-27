@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>お問い合わせ | 日本製がいい！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="contact-page">
+>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="site-logo">
+        <a href="index.html">
+          <span class="site-title">日本製がいい！</span>
+          <span class="site-subtitle">日本製だけを集めたAmazonカタログ</span>
+        </a>
+      </div>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="about.html">サイトについて</a></li>
+          <li><a href="contact.html" class="active">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1 class="section-title">お問い合わせ</h1>
+        <p class="section-lead">
+          日本製品の新規掲載申請、商品リンク切れのご報告、その他のお問い合わせは、こちらのフォームからお送りください。
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <!-- Formspree 等で発行されるエンドポイントに変更 -->
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/mjkqybyo"
+          method="POST"
+    </section>    
+
+          <!-- honeypot（スパム対策用の隠しフィールド） -->
+          <div style="display:none;">
+            <label>Leave this field empty
+              <input type="text" name="_gotcha">
+            </label>
+          </div>
+
+  <!-- ① お問い合わせ種別：ラジオボタン -->
+  <div class="form-row">
+    <span class="form-label">
+      お問い合わせ種別<span class="form-required">必須</span>
+    </span>
+    <div class="form-radio-group">
+      <label class="form-radio">
+        <input type="radio" name="type" value="new_product" required>
+        日本製品の新規掲載申請
+      </label>
+      <label class="form-radio">
+        <input type="radio" name="type" value="broken_link">
+        商品リンク切れの報告
+      </label>
+      <label class="form-radio">
+        <input type="radio" name="type" value="other">
+        その他のお問い合わせ
+      </label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label for="name" class="form-label">お名前</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      class="form-input"
+      placeholder="任意">
+  </div>
+
+  <div class="form-row">
+    <label for="email" class="form-label">メールアドレス<span class="form-required">必須</span></label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      class="form-input"
+      required
+      placeholder="example@example.com">
+  </div>
+
+  <!-- ② ASIN欄は削除。URLと本文だけで運用 -->
+  <div class="form-row">
+    <label for="url" class="form-label">
+      Amazon.co.jp 商品ページURL 
+    </label>
+    <textarea
+      id="url"
+      name="url"
+      class="form-textarea"
+      rows="2"
+      placeholder="例）https://www.amazon.co.jp/dp/XXXXXXXX&#10;複数ある場合は1行ずつご記入ください。"></textarea>
+  </div>
+
+  <div class="form-row">
+    <label for="message" class="form-label">お問い合わせ内容<span class="form-required">必須</span></label>
+    <textarea
+      id="message"
+      name="message"
+      class="form-textarea"
+      rows="6"
+      required
+      placeholder="日本製である根拠（パッケージ記載・メーカー公式サイトなど）や、リンク切れの状況など、分かる範囲でご記入ください。"></textarea>
+  </div>
+
+  <div class="form-row form-row-inline">
+    <label class="form-checkbox">
+      <input type="checkbox" name="agree" required>
+      <span>個人情報の取り扱いに同意します。</span>
+    </label>
+  </div>
+
+  <div class="form-row form-actions">
+    <button type="submit" class="btn btn-primary">送信する</button>
+  </div>
+</form>
+</main>
+
+  <!-- 共通フッター（index.html と同じ構造に揃える） -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">日本製がいい！</p>
+        <p class="footer-text">
+          日本製の良さを、もっと多くの人へ。<br>
+          当サイトは Amazon の非公式検索サイトです。
+        </p>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-links">
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+        <p class="footer-copy">&copy; 2025 日本製がいい！ All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本製がいい！</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TV7R46GF');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-STK49WK2E0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-STK49WK2E0');
+    </script>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.jpeg" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TV7R46GF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">🇯🇵 日本製がいい！</a>
+                <ul class="nav-menu">
+                    <li><a href="about.html">このサイトについて</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content">
+                <p>Amazonで購入できる日本製を集めました。</p>
+                <p>下の検索バーで検索してください。</p>
+                <p>全て日本製、国産です。</p>
+            </div>
+        </section>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="製品名やメーカーで検索..." class="search-input">
+                <button id="searchButton" class="search-button">検索</button>
+            </div>
+        </div>
+
+        <p id="product-total" class="product-total"></p>
+
+        <!-- カテゴリーセクション（カードは main.js で12カテゴリを自動生成） -->
+        <section class="categories">
+            <div class="container">
+                <h2>カテゴリーから探す</h2>
+                <div id="category-cards-container" class="category-grid"></div>
+            </div>
+        </section>
+
+        <section class="products-section">
+            <div class="container">
+                <h2>製品一覧</h2>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="category-filter">カテゴリー:</label>
+                        <select id="category-filter">
+                            <option value="all">すべて</option>
+                            <!-- 残りのカテゴリオプションは main.js の renderCategoryFilterOptions() で自動生成 -->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="manufacturer-filter">メーカー:</label>
+                        <select id="manufacturer-filter">
+                            <option value="all">すべて</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button id="reset-filter" class="btn-secondary">フィルターをリセット</button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="products-table" id="products-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-column="name">製品名 <span class="sort-icon">↕</span></th>
+                                <th class="sortable" data-column="manufacturer">メーカー <span class="sort-icon">↕</span></th>
+                                <th class="sortable" data-column="category">カテゴリー <span class="sort-icon">↕</span></th>
+                                <th>Amazon</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-tbody">
+                            <!-- JavaScriptで動的に生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>日本製ナビ</h3>
+                    <p>日本製をもっと多くの人へ。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サイト</h4>
+                    <ul>
+                        <li><a href="index.html">トップ</a></li>
+                        <li><a href="about.html">このサイトについて</a></li>
+                        <li><a href="submit.html">製品を投稿</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 日本製ナビ. All rights reserved.</p>
+                <p class="disclaimer">当サイトは各企業とは一切関係なく、情報提供を目的として運営しております。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
