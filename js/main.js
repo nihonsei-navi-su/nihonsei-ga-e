@@ -400,35 +400,6 @@ function displayProducts(products) {
     }).join('');
 
     tbody.innerHTML = html;
-
-    trackAmazonLinkClicks();
-}
-
-// AmazonリンクのクリックをGA4に送信
-function trackAmazonLinkClicks() {
-    const links = document.querySelectorAll('.amazon-link');
-
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            const row = link.closest('tr');
-            const asin = row?.dataset.asin || '';
-            const name = row?.querySelector('td:nth-child(1)')?.textContent?.trim() || '';
-            const manufacturer = row?.querySelector('td:nth-child(2)')?.textContent?.trim() || '';
-            const category = row?.querySelector('td:nth-child(3)')?.textContent?.trim() || '';
-
-            // GA4（gtag.js）が読み込まれている場合のみ送信
-            if (typeof gtag === 'function') {
-                gtag('event', 'amazon_click', {
-                    product_asin: asin,
-                    product_name: name,
-                    product_manufacturer: manufacturer,
-                    product_category: category,
-                    link_url: link.href,
-                    page_path: location.pathname
-                });
-            }
-        });
-    });
 }
 
 // 投稿フォームページ
@@ -456,14 +427,28 @@ function initSubmitPage() {
     });
 }
 
-// アマゾンリンクのクリックをトラッキング
-document.querySelectorAll('a[href*="amazon.co.jp"]').forEach(function(link) {
-    link.addEventListener('click', function(event) {
-        var linkURL = event.target.href;  // クリックされたリンクのURLを取得
+// Amazon リンク クリック計測（GA4：1本に統一）
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link) return;
 
-        // Google Analytics 4 イベント送信
-        gtag('event', 'amazon_link_click', {
-            'link_url': linkURL
+    // Amazonリンクのみ計測
+    if (!link.href || !link.href.includes('amazon.co.jp')) return;
+
+    const row = link.closest('tr');
+    const asin = row?.dataset.asin || '';
+    const name = row?.querySelector('td:nth-child(1)')?.textContent?.trim() || '';
+    const manufacturer = row?.querySelector('td:nth-child(2)')?.textContent?.trim() || '';
+    const category = row?.querySelector('td:nth-child(3)')?.textContent?.trim() || '';
+
+    if (typeof gtag === 'function') {
+        gtag('event', 'amazon_click', {
+            product_asin: asin,
+            product_name: name,
+            product_manufacturer: manufacturer,
+            product_category: category,
+            link_url: link.href,
+            page_path: location.pathname
         });
-    });
+    }
 });
