@@ -452,3 +452,5 @@ document.addEventListener('click', function(e) {
         });
     }
 });
+
+console.log('amazon_click fired', { asin, name, manufacturer, category, href: link.href });
