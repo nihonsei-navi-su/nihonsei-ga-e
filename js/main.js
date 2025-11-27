@@ -443,6 +443,9 @@ document.addEventListener('click', function(e) {
     const manufacturer = row?.querySelector('td:nth-child(2)')?.textContent?.trim() || '';
     const category = row?.querySelector('td:nth-child(3)')?.textContent?.trim() || '';
 
+    // ここでクリック時のログを出す（デバッグ用）
+    console.log('amazon_click fired', { asin, name, manufacturer, category, href: link.href });
+
     if (typeof gtag === 'function') {
         gtag('event', 'amazon_click', {
             product_asin: asin,
@@ -454,5 +457,3 @@ document.addEventListener('click', function(e) {
         });
     }
 });
-
-console.log('amazon_click fired', { asin, name, manufacturer, category, href: link.href });
