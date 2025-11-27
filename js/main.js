@@ -1,3 +1,5 @@
+console.log('main.js loaded');
+
 // 製品データを取得
 let productsData = [];
 let currentSort = { column: null, ascending: true };
