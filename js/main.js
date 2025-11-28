@@ -190,27 +190,9 @@ function normalizeProduct(raw) {
         manufacturer = 'HARIO';
     }
 
-    // まず「日本製」「国産」が含まれていなければ除外
-    if (!title.includes('日本製') && !title.includes('国産')) {
-        return null;
-    }
-
     // 明示的NGフレーズが含まれていれば除外
     if (EXCLUDE_MATERIAL_PHRASES.some(phrase => title.includes(phrase))) {
         return null;
-    }
-
-    // 「日本製(の)?○○」「国産(の)?○○」で ○○ が部品・素材ワードなら除外
-    if (COMPONENT_WORDS.length > 0) {
-        const escaped = COMPONENT_WORDS.map(w =>
-            w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-        );
-        const compPattern = new RegExp(
-            '(日本製|国産)の?(?:' + escaped.join('|') + ')'
-        );
-        if (compPattern.test(title)) {
-            return null;
-        }
     }
 
     // サイト内カテゴリ（12カテゴリ）のラベルを決定
