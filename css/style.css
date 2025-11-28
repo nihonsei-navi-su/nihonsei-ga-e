@@ -23,35 +23,11 @@ body {
   margin: 0 auto;
 }
 
-
-/* リセット & ベース */
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.header-logo {
+  height: 50px;   /* ヘッダー高さ64pxに最適 */
+  width: auto;
+  display: block;
 }
-
-:root {
-    --primary-color: #e60012;
-    --secondary-color: #333;
-    --text-color: #333;
-    --light-bg: #f8f9fa;
-    --border-color: #dee2e6;
-    --hover-color: #c50010;
-    --white: #ffffff;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-} */
 
 .site-header {
   position: sticky;
@@ -313,8 +289,9 @@ body {
 .hero-visual {
   flex: 0 1 260px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;  /* 画像の下にバッジを縦並び */
   align-items: center;
+  gap: 12px;               /* 画像とバッジの間に少し余白 */
 }
 
 .hero-badge {
@@ -336,6 +313,13 @@ body {
   display: block;
   font-size: 0.75rem;
   color: #555;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 380px;   /* PC幅での表示サイズの上限 */
+  border-radius: 12px;
+  display: block;
 }
 
 .btn {
