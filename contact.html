@@ -17,7 +17,6 @@
 
 </head>
 <body class="contact-page">
->
   <header class="site-header">
     <div class="container header-inner">
       <div class="site-logo">
@@ -41,7 +40,7 @@
       <div class="container">
         <h1 class="section-title">お問い合わせ</h1>
         <p class="section-lead">
-          日本製品の新規掲載申請、商品リンク切れのご報告、その他のお問い合わせは、こちらのフォームからお送りください。
+          日本製品の追加掲載、商品リンク切れのご連絡、その他のお問い合わせにつきましては、こちらのフォームからお送りください。
         </p>
       </div>
     </section>
@@ -52,8 +51,8 @@
         <form
           class="contact-form"
           action="https://formspree.io/f/mjkqybyo"
-          method="POST"
-    </section>    
+          method="POST"></form>
+    </section> 
 
           <!-- honeypot（スパム対策用の隠しフィールド） -->
           <div style="display:none;">
@@ -70,11 +69,11 @@
     <div class="form-radio-group">
       <label class="form-radio">
         <input type="radio" name="type" value="new_product" required>
-        日本製品の新規掲載申請
+        日本製品の追加掲載
       </label>
       <label class="form-radio">
         <input type="radio" name="type" value="broken_link">
-        商品リンク切れの報告
+        商品リンク切れのご連絡
       </label>
       <label class="form-radio">
         <input type="radio" name="type" value="other">
@@ -114,7 +113,7 @@
       name="url"
       class="form-textarea"
       rows="2"
-      placeholder="例）https://www.amazon.co.jp/dp/XXXXXXXX&#10;複数ある場合は1行ずつご記入ください。"></textarea>
+      placeholder="例）https://www.amazon.co.jp/dp/XXXXXXXX&#10;複数ある場合は1行ずつご記入をおねがいいたします。"></textarea>
   </div>
 
   <div class="form-row">
@@ -125,7 +124,8 @@
       class="form-textarea"
       rows="6"
       required
-      placeholder="日本製である根拠（パッケージ記載・メーカー公式サイトなど）や、リンク切れの状況など、分かる範囲でご記入ください。"></textarea>
+      placeholder="新規掲載のご連絡の場合、日本製、国産と分かる箇所（タイトル、パッケージ記載・メーカー公式サイトなど）など、分かる範囲でご記入ください。
+      リンク切れの場合は、「リンク切れ」とお知らせください。"></textarea>
   </div>
 
   <div class="form-row form-row-inline">
@@ -139,6 +139,7 @@
     <button type="submit" class="btn btn-primary">送信する</button>
   </div>
 </form>
+</section>
 </main>
 
   <!-- 共通フッター（index.html と同じ構造に揃える） -->
