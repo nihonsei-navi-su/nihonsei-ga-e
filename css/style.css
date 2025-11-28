@@ -711,6 +711,19 @@ body {
 .form-actions {
   text-align: right;
 }
+
+/* 免責 */
+.footer-disclaimer {
+  font-size: 0.75rem;
+  color: #777;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.footer-right p {
+  margin-bottom: 8px;
+}
+
 /* aboutページ専用の見出し調整 */
 .about-page h2 {
   margin-top: 48px;   /* 上に余白を増やす */
