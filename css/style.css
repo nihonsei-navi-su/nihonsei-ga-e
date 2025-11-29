@@ -756,3 +756,7 @@ body {
   flex-direction: column;
   align-items: flex-end;  /* 中身を右端に寄せる */
 }
+/* 日本製・国産バッジを非表示 */
+.tag-japan {
+  display: none !important;
+}
