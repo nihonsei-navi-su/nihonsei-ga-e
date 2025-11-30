@@ -421,3 +421,29 @@ document.addEventListener('click', function(e) {
         });
     }
 });
+/* ------------------------------
+   トップへ戻るボタン
+------------------------------ */
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    // スクロールしたら表示
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            btn.style.display = 'flex';
+        } else {
+            btn.style.display = 'none';
+        }
+    });
+
+    // クリックでスムーズスクロール
+    btn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
+
