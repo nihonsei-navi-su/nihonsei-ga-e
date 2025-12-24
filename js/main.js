@@ -19,8 +19,9 @@ function scrollToProducts() {
 
 /* ==============================
    カテゴリ最適化（自動付与）
-   - ボタンは大分類10固定
-   - determineSiteCategoryLabel() も大分類10を返す
+   - 大分類10（サイト用）
+   - サブカテゴリは Amazon 仕様（raw.category の階層から自動抽出）
+   - サブカテゴリはHTML埋め込み不要（JSが動的に生成して差し込む）
 ============================== */
 
 // サイト全体のカテゴリ一覧（大分類 10 固定）
@@ -38,96 +39,143 @@ const SITE_CATEGORIES = [
 ];
 
 // 食品カテゴリから除外したいキーワード（調理器具・サプリなど）
-// ※ 食品判定の誤爆を防ぐために使用
 const NON_FOOD_KEYWORDS = /(ボウル|ボール|ざる|ザル|colander|ストレーナー|水切りボウル|計量カップ|フライパン|鍋|ケトル|やかん|ドリップケトル|コーヒーミル|コーヒードリッパー|コーヒーサーバー|ドリッパー|コーヒーポット|ティーポット|急須|スプーン|フォーク|箸|包丁|ナイフ|まな板|キッチンツール|サプリ|サプリメント|健康補助食品|栄養補助食品|プロテイン)/;
 
-// サイト内カテゴリのラベルを決める（大分類10）
-function determineSiteCategoryLabel(raw) {
-    const title = (raw.title || raw.originalTitle || '').trim();
-    const category = (raw.category || '').trim();
-    const text = `${title} ${category}`;
+/* ------------------------------
+   Amazonカテゴリパス解析
+   - raw.category が "ホーム&キッチン > キッチン用品 > ..." のような文字列で入っている前提に対応
+   - 区切りが ">" "＞" "›" "/" "|" などでも吸収
+------------------------------ */
+function extractAmazonCategoryPath(raw) {
+    const src =
+        (raw.amazonCategoryPath && Array.isArray(raw.amazonCategoryPath) && raw.amazonCategoryPath.join(' > ')) ||
+        raw.categoryPath ||
+        raw.category ||
+        '';
 
-    // 1) 食品・飲料（最優先）
-    if (
-        !NON_FOOD_KEYWORDS.test(text) &&
-        (
-            /(食品|食材|調味料|だし|出汁|味噌|みそ|醤油|しょうゆ|お茶|緑茶|日本茶|コーヒー|紅茶|ほうじ茶|玄米茶|米|お菓子|スナック|乾物|漬物|海苔|のり|昆布|だしパック|だしの素)/.test(text) ||
-            /(食品|飲料|お茶|コーヒー|紅茶|調味料)/.test(category)
-        )
-    ) {
+    const s = String(src).trim();
+    if (!s) return [];
+
+    // 代表的な区切り文字を統一して分割
+    const parts = s
+        .replace(/›/g, '>')
+        .replace(/＞/g, '>')
+        .replace(/\//g, '>')
+        .replace(/\|/g, '>')
+        .split('>')
+        .map(x => x.trim())
+        .filter(Boolean);
+
+    return parts;
+}
+
+// Amazon root / sub を抽出（Amazon仕様：root=1階層、sub=2階層）
+function extractAmazonRootSub(raw) {
+    const path = extractAmazonCategoryPath(raw);
+    const root = path[0] || '';
+    const sub = path[1] || '';
+    return { amazonRoot: root, amazonSub: sub, amazonPath: path };
+}
+
+/* ------------------------------
+   サイト大分類（10）を決める
+   - 1) Amazon root を優先的に参照してマッピング
+   - 2) 足りない場合はタイトル/カテゴリ文字列からフォールバック判定
+------------------------------ */
+function mapAmazonRootToSiteMain(amazonRoot, rawText) {
+    const root = (amazonRoot || '').trim();
+    const text = (rawText || '').trim();
+
+    // 食品・飲料（Amazon: "食品・飲料・お酒" など）
+    if (/(食品|飲料|お酒)/.test(root) || /(食品|飲料|お茶|コーヒー|紅茶|調味料)/.test(text)) {
         return '食品・飲料';
     }
 
-    // 2) 美容・健康（サプリはここに固定）
-    if (
-        /(石鹸|ソープ|シャンプー|リンス|コンディショナー|トリートメント|ローション|クリーム|乳液|マスク|フェイスマスク|入浴剤|バスソルト|爪切り|ネイルクリッパー|歯ブラシ|マウスウォッシュ)/.test(text) ||
-        /(サプリ|サプリメント|ビタミン|ミネラル|プロテイン|アミノ酸|コラーゲン|グルコサミン|健康補助食品|栄養補助食品)/.test(text) ||
-        /(ビューティー|ドラッグストア|ヘルスケア|布マスク|害獣・害虫対策用品)/.test(category)
-    ) {
+    // ビューティー / ドラッグストア（Amazon: "ビューティー", "ドラッグストア"）
+    if (/(ビューティー|ドラッグストア|ヘルスケア)/.test(root) || /(ビューティー|ドラッグストア|ヘルスケア)/.test(text)) {
         return '美容・健康';
     }
 
-    // 3) キッチン・調理用品（包丁/鍋/ボウル/食器など全部統合）
-    if (
-        /(包丁|ナイフ|ペティ|牛刀|三徳|菜切|柳刃|パン切り|中華包丁|フライパン|いため鍋|炒め鍋|ソテーパン|卵焼き|玉子焼|天ぷら鍋|土鍋|鍋|ケトル|やかん|ドリップケトル|コーヒーミル|コーヒーグラインダー|コーヒードリッパー|コーヒーサーバー|ドリッパー|コーヒーポット|ティーポット|急須|マグ|マグカップ|めん棒|麺棒|まな板|カッティングボード|おろし器|ピーラー|キッチンバサミ|キッチンはさみ|キッチンスケール|はかり|計量スプーン|しゃもじ|菜箸|トング|泡立て器|キッチンタイマー|保存容器|キッチンツール|ボウル|ボール|ざる|ザル|colander|ストレーナー|水切りボウル|計量カップ|食器|プレート|皿|大皿|小皿|ランチプレート|茶碗|ちゃわん|飯碗|汁椀|お椀|カップ|湯のみ|グラス|コップ|カトラリー|箸|お箸|スプーン|フォーク)/.test(text) ||
-        /(キッチン用品|キッチンツール|キッチン|調理|食器|コーヒー|ティーウェア)/.test(category)
-    ) {
-        return 'キッチン・調理用品';
-    }
-
-    // 4) ファッション・身につけるもの
-    if (
-        /(指輪|ネックレス|ブレスレット|バングル|ピアス|イヤリング|アクセサリー|帽子|ベルト|財布|ウォレット|ポーチ|ハンカチ|靴|シューズ|パンプス|サンダル|ブーツ|ローファー|衣類|服|インナーシャツ|ストッキング|ショーツ|クルーソックス|靴下)/.test(text) ||
-        /(服＆ファッション小物|ジュエリー|シューズ＆バッグ)/.test(category)
-    ) {
+    // ファッション
+    if (/(ファッション)/.test(root) || /(服＆ファッション小物|ジュエリー|シューズ＆バッグ)/.test(text)) {
         return 'ファッション・身につけるもの';
     }
 
-    // 5) 生活用品・日用品
-    if (
-        /(掃除|洗濯|バス|トイレ|収納|ボックス|収納ケース|ティッシュケース|タオルハンガー|日用品|消耗品|カレンダー|卓上カレンダー|壁掛けカレンダー)/.test(text) ||
-        /(日用品|収納用品)/.test(category)
-    ) {
+    // ペット用品
+    if (/(ペット)/.test(root) || /(ペット用品|犬用品|猫用品)/.test(text)) {
         return '生活用品・日用品';
     }
 
-    // 6) 家電・電子機器
-    if (
-        /(家電|電気|照明|ライト|シーリングライト|スタンドライト|デスクライト|ペンダントライト|間接照明|ケーブル|USB|充電|イヤホン|スピーカー|PC|周辺機器|プロジェクター)/.test(text) ||
-        /(家電|TV|オーディオ|パソコン)/.test(category)
-    ) {
+    // ベビー
+    if (/(ベビー|マタニティ)/.test(root) || /(ベビー|キッズ)/.test(text)) {
+        return '生活用品・日用品';
+    }
+
+    // 家電＆カメラ
+    if (/(家電|カメラ|PC|パソコン|周辺機器|オーディオ)/.test(root) || /(家電|TV|オーディオ|パソコン)/.test(text)) {
         return '家電・電子機器';
     }
 
-    // 7) インテリア・家具
-    if (
-        /(家具|寝具|ベッド|枕|布団|カーテン|のれん|インテリア|ラグ|マット|玄関マット|クッション|スリッパ|収納ボックス)/.test(text) ||
-        /(家具|インテリア)/.test(category)
-    ) {
-        return 'インテリア・家具';
+    // ホーム＆キッチン
+    if (/(ホーム|キッチン)/.test(root) || /(ホーム&キッチン|ホーム＆キッチン)/.test(text)) {
+        // キッチン寄り語彙が強ければキッチンへ、それ以外は生活/インテリアへ
+        if (/(包丁|鍋|フライパン|食器|調理|キッチン|カトラリー|まな板|ボウル|ざる|計量)/.test(text)) {
+            return 'キッチン・調理用品';
+        }
+        if (/(家具|寝具|カーテン|インテリア|ラグ|クッション)/.test(text)) {
+            return 'インテリア・家具';
+        }
+        return '生活用品・日用品';
     }
 
-    // 8) 工具・DIY・作業用品
-    if (
-        /(工具|DIY|作業|計測|ドライバー|レンチ|ニッパー|ハンマー)/.test(text) ||
-        /(工具|産業)/.test(category)
-    ) {
+    // 産業・研究開発用品
+    if (/(産業|研究|開発|工具)/.test(root) || /(工具|DIY|作業|計測)/.test(text)) {
         return '工具・DIY・作業用品';
     }
 
-    // 9) アウトドア・スポーツ
-    if (
-        /(キャンプ|登山|アウトドア|ゴルフ|釣り|ルアー|PEライン|トレーニング|フィットネス)/.test(text) ||
-        /(スポーツ|アウトドア)/.test(category)
-    ) {
+    // スポーツ＆アウトドア
+    if (/(スポーツ|アウトドア)/.test(root) || /(キャンプ|登山|アウトドア|ゴルフ|釣り|トレーニング)/.test(text)) {
         return 'アウトドア・スポーツ';
     }
 
-    // 10) 文具・趣味・その他（受け皿）
+    // 文房具・オフィス用品 / 本 / ホビー 等
+    if (/(文房具|オフィス|本|ホビー|楽器)/.test(root) || /(文房具|楽器|ホビー|クラフト)/.test(text)) {
+        return '文具・趣味・その他';
+    }
+
     return '文具・趣味・その他';
 }
 
-// 正規化された製品データを返す
+// サイト内カテゴリ（大分類10）を決める（フォールバック含む）
+function determineSiteCategoryMain(raw) {
+    const title = (raw.title || raw.originalTitle || raw.name || '').trim();
+    const category = (raw.category || '').trim();
+    const text = `${title} ${category}`;
+
+    const { amazonRoot } = extractAmazonRootSub(raw);
+    return mapAmazonRootToSiteMain(amazonRoot, text);
+}
+
+/* ------------------------------
+   UI：サブカテゴリコンテナを必ず用意（HTML埋め込み不要）
+------------------------------ */
+function ensureSubCategoryContainer() {
+    const cat = document.getElementById('category-buttons');
+    if (!cat) return null;
+
+    let container = document.getElementById('subcategory-buttons');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'subcategory-buttons';
+        container.className = 'subcategory-buttons';
+        cat.insertAdjacentElement('afterend', container);
+    }
+    return container;
+}
+
+/* ------------------------------
+   正規化された製品データを返す
+------------------------------ */
 function normalizeProduct(raw) {
     if (!raw) return null;
 
@@ -143,21 +191,20 @@ function normalizeProduct(raw) {
         manufacturer = 'HARIO';
     }
 
-    // ★ 日本製かどうか・素材だけ日本かどうかの判定は
-    //    すべて Python 側で完了している前提。
-    //    ここでは一切除外処理を行わない。
+    // Amazon仕様のサブカテゴリ抽出
+    const { amazonRoot, amazonSub, amazonPath } = extractAmazonRootSub(raw);
 
-    // サイト内カテゴリ（大分類10）のラベルを決定
-    const siteCategoryLabel = determineSiteCategoryLabel(raw);
+    // サイト用の大分類（10）
+    const siteMain = determineSiteCategoryMain(raw);
 
     // タイトルに日本語が無い場合のフォールバック
     if (!hasJapanese(title)) {
-        if (manufacturer && siteCategoryLabel) {
-            title = `${manufacturer}（${siteCategoryLabel}）`;
+        if (manufacturer && siteMain) {
+            title = `${manufacturer}（${siteMain}）`;
         } else if (manufacturer) {
             title = manufacturer;
-        } else if (siteCategoryLabel) {
-            title = siteCategoryLabel;
+        } else if (siteMain) {
+            title = siteMain;
         } else if (asin) {
             title = asin;
         } else {
@@ -169,7 +216,12 @@ function normalizeProduct(raw) {
         asin,
         title,
         manufacturer,
-        category: siteCategoryLabel, // 大分類10カテゴリのラベル
+        // サイト用（大分類10）
+        category_main: siteMain,
+        // Amazon仕様（root/sub）
+        category_amazon_root: amazonRoot,
+        category_amazon_sub: amazonSub,
+        category_amazon_path: amazonPath,
         url,
         madeInJapan: !!raw.madeInJapan,
         available: raw.available !== false
@@ -177,7 +229,7 @@ function normalizeProduct(raw) {
 }
 
 /* ------------------------------
-   カテゴリボタン生成
+   UI：カテゴリボタン（大分類）
 ------------------------------ */
 function renderCategoryButtons() {
     const container = document.getElementById('category-buttons');
@@ -191,17 +243,81 @@ function renderCategoryButtons() {
 
     container.innerHTML = html;
 
+    // サブカテゴリ領域を（なければ）自動生成：HTMLに埋め込み不要
+    ensureSubCategoryContainer();
+
     container.querySelectorAll('.category-button').forEach(btn => {
         btn.addEventListener('click', () => {
             const currentActive = container.querySelector('.category-button.active');
 
             if (currentActive === btn) {
-                // もう一度押したら解除（すべて表示）
-                btn.classList.remove('active');
+                btn.classList.remove('active'); // 解除
             } else {
                 if (currentActive) currentActive.classList.remove('active');
                 btn.classList.add('active');
             }
+
+            renderSubCategoryControls(); // ★ 大分類に応じてサブカテゴリ更新
+            filterProducts();
+            scrollToProducts();
+        });
+    });
+}
+
+/* ------------------------------
+   UI：サブカテゴリ（Amazon仕様：自動生成）
+   - HTML埋め込み不要（JSが category-buttons の直後に作る）
+------------------------------ */
+function getActiveMainCategory() {
+    const activeCategoryBtn = document.querySelector('#category-buttons .category-button.active');
+    return activeCategoryBtn ? activeCategoryBtn.dataset.category : 'all';
+}
+
+function getActiveSubCategory() {
+    const container = document.getElementById('subcategory-buttons');
+    if (!container) return 'all';
+    const activeSubBtn = container.querySelector('.subcategory-button.active');
+    return activeSubBtn ? activeSubBtn.dataset.subcategory : 'all';
+}
+
+function renderSubCategoryControls() {
+    const container = ensureSubCategoryContainer();
+    if (!container) return;
+
+    const main = getActiveMainCategory();
+    if (main === 'all') {
+        container.innerHTML = '';
+        return;
+    }
+
+    // main に属する商品の Amazon sub を収集（空は除外）
+    const subs = Array.from(new Set(
+        productsData
+            .filter(p => (p.category_main || '') === main)
+            .map(p => (p.category_amazon_sub || '').trim())
+            .filter(Boolean)
+    )).sort((a, b) => a.localeCompare(b, 'ja'));
+
+    // サブカテゴリが取れない場合は出さない
+    if (subs.length === 0) {
+        container.innerHTML = '';
+        return;
+    }
+
+    const html = [
+        `<div class="subcategory-header">サブカテゴリ（Amazon）</div>`,
+        `<div class="subcategory-row">`,
+        `<button class="subcategory-button active" data-subcategory="all">すべて</button>`,
+        ...subs.map(sc => `<button class="subcategory-button" data-subcategory="${sc}">${sc}</button>`),
+        `</div>`
+    ].join('');
+
+    container.innerHTML = html;
+
+    container.querySelectorAll('.subcategory-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            container.querySelectorAll('.subcategory-button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
             filterProducts();
             scrollToProducts();
@@ -246,6 +362,7 @@ function initPage() {
 ------------------------------ */
 function initHomePage() {
     renderCategoryButtons();
+    renderSubCategoryControls(); // 初期は非表示（all）
 
     // 総商品数を表示
     const totalElement = document.getElementById('product-total');
@@ -280,8 +397,8 @@ function filterProducts() {
     const searchInputEl = document.getElementById('search-input');
     const searchTerm = searchInputEl ? searchInputEl.value.toLowerCase().trim() : '';
 
-    const activeCategoryBtn = document.querySelector('#category-buttons .category-button.active');
-    const categoryFilter = activeCategoryBtn ? activeCategoryBtn.dataset.category : 'all';
+    const categoryFilter = getActiveMainCategory(); // 大分類
+    const subFilter = getActiveSubCategory();       // Amazon sub（大分類選択時のみ）
 
     let filtered = productsData.slice();
 
@@ -294,9 +411,14 @@ function filterProducts() {
         });
     }
 
-    // カテゴリー条件（大分類10カテゴリラベル）
+    // 大分類
     if (categoryFilter !== 'all') {
-        filtered = filtered.filter(p => (p.category || '').trim() === categoryFilter);
+        filtered = filtered.filter(p => (p.category_main || '').trim() === categoryFilter);
+    }
+
+    // サブカテゴリ（Amazon仕様）
+    if (categoryFilter !== 'all' && subFilter !== 'all') {
+        filtered = filtered.filter(p => (p.category_amazon_sub || '').trim() === subFilter);
     }
 
     displayProducts(filtered);
@@ -317,8 +439,13 @@ function displayProducts(products) {
     const html = products.map(product => {
         const name = product.title || '不明な商品';
         const manufacturer = product.manufacturer || '';
-        const category = product.category || '';
+        const main = product.category_main || '';
+        const aRoot = product.category_amazon_root || '';
+        const aSub = product.category_amazon_sub || '';
         const amazonUrl = product.url || `https://www.amazon.co.jp/dp/${product.asin}`;
+
+        // 表示ラベル：サイト大分類 + Amazon sub（ある場合）
+        const label = aSub ? `${main}（${aSub}）` : main;
 
         return `
         <article class="product-card" data-asin="${product.asin}">
@@ -327,7 +454,8 @@ function displayProducts(products) {
             ${manufacturer ? `<p class="product-brand">${manufacturer}</p>` : ''}
             <div class="product-tags">
               <span class="tag tag-japan">日本製・国産</span>
-              ${category ? `<span class="tag">${category}</span>` : ''}
+              ${label ? `<span class="tag">${label}</span>` : ''}
+              ${aRoot && aSub ? `<span class="tag tag-muted">${aRoot}</span>` : ''}
             </div>
           </div>
           <div class="product-actions">
