@@ -7,3 +7,12 @@ data/products_*backup*.json
 _archive_nihonsei-ga-e/
 index_backup.html
 
+
+# keepaAPI generated backups / work files (never commit)
+data/backup_products/
+data/products_backup*.json
+data/products*backup*.json
+data/products2025*.json
+data/products_*.json
+_archive_nihonsei-ga-e/
+index_backup.html
