@@ -1,2 +1,9 @@
 .DS_Store
 node_modules/
+data/backup_products/
+data/products_backup*.json
+data/products*.json
+data/products_*backup*.json
+_archive_nihonsei-ga-e/
+index_backup.html
+
