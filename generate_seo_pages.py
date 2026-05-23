@@ -80,6 +80,28 @@ def detect_category(item):
 
     return "文具・趣味・その他", "hobby"
 
+def slugify_maker(name):
+    text = str(name or "").strip().lower()
+
+    replacements = {
+        "株式会社": "",
+        "(株)": "",
+        " ": "-",
+        "　": "-",
+        "/": "-",
+        "_": "-",
+    }
+
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+
+    text = re.sub(r"[^a-z0-9ぁ-んァ-ヶ一-龯\-]", "", text)
+    text = re.sub(r"-+", "-", text).strip("-")
+
+    if not text:
+        text = "unknown"
+
+    return text
 
 def build_product_html(item):
     asin = esc(item.get("asin", ""))
@@ -318,6 +340,82 @@ def build_category_html(category_name, slug, items):
 </html>
 """
 
+def build_maker_html(maker_name, slug, items):
+    cards = []
+
+    for item in items[:300]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item) or "日本製・国産の商品")
+        category_name, category_slug = detect_category(item)
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">{title}</a>
+            </h2>
+            <div class="product-tags">
+              <span class="tag tag-japan">日本製・国産</span>
+              <a class="tag" href="../category/{category_slug}.html">{esc(category_name)}</a>
+            </div>
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+    page_url = f"{SITE_URL}/maker/{slug}.html"
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>【日本製】{esc(maker_name)}の商品一覧 | 日本製がいい！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{esc(maker_name)}の日本製・国産商品一覧です。Amazonで購入できる日本製商品を掲載しています。">
+  <link rel="canonical" href="{page_url}">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="site-logo">
+        <a href="../index.html">
+          <img src="../img/pic-header220-48pix.png" alt="日本製がいい！" class="header-logo">
+        </a>
+      </div>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="../index.html">トップ</a></li>
+          <li><a href="../about.html">サイトについて</a></li>
+          <li><a href="../contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="products-section">
+      <div class="container">
+        <h1>{esc(maker_name)} の日本製・国産商品</h1>
+        <p>
+          {esc(maker_name)} の日本製・国産商品を掲載しています。
+          Amazonで販売されている日本製商品をカテゴリ横断で探せます。
+        </p>
+        <p>掲載件数：{len(items)}件</p>
+
+        <div class="products-grid">
+          {cards_html}
+        </div>
+
+        <p style="margin-top:24px;">
+          <a href="../index.html">トップへ戻る</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+"""
 
 def write_product_pages(products):
     PRODUCTS_DIR.mkdir(exist_ok=True)
@@ -351,6 +449,31 @@ def write_category_pages(products):
 
     return count
 
+def write_maker_pages(products):
+    maker_dir = ROOT / "maker"
+    maker_dir.mkdir(exist_ok=True)
+
+    grouped = {}
+
+    for item in products:
+        maker = str(item.get("manufacturer", "")).strip()
+        if not maker:
+            continue
+
+        grouped.setdefault(maker, []).append(item)
+
+    count = 0
+
+    for maker_name, items in grouped.items():
+        if len(items) < 5:
+            continue
+
+        slug = slugify_maker(maker_name)
+        out = maker_dir / f"{slug}.html"
+        out.write_text(build_maker_html(maker_name, slug, items), encoding="utf-8")
+        count += 1
+
+    return count
 
 def write_sitemap(products):
     today = date.today().isoformat()
@@ -377,6 +500,7 @@ def write_sitemap(products):
     ]
 
     used_categories = set()
+    
     for item in products:
         category_name, slug = detect_category(item)
         used_categories.add(slug)
@@ -388,6 +512,29 @@ def write_sitemap(products):
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>""")
+    
+    used_makers = {}
+
+    for item in products:
+        maker = str(item.get("manufacturer", "")).strip()
+        if not maker:
+            continue
+
+        used_makers.setdefault(maker, 0)
+        used_makers[maker] += 1
+
+    for maker_name, count in used_makers.items():
+        if count < 5:
+            continue
+
+        slug = slugify_maker(maker_name)
+
+        urls.append(f"""  <url>
+    <loc>{SITE_URL}/maker/{esc(slug)}.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>""")
 
     for item in products:
@@ -430,6 +577,7 @@ def main():
 
     page_count = write_product_pages(products)
     category_count = write_category_pages(products)
+    maker_count = write_maker_pages(products)
 
     write_sitemap(products)
     write_robots()
@@ -437,6 +585,7 @@ def main():
     print(f"products loaded: {len(products)}")
     print(f"product pages written: {page_count}")
     print(f"category pages written: {category_count}")
+    print(f"maker pages written: {maker_count}")
     print(f"sitemap written: {SITEMAP_XML}")
     print(f"robots written: {ROBOTS_TXT}")
 
