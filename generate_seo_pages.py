@@ -79,6 +79,54 @@ def build_product_html(item):
 
     page_url = f"{SITE_URL}/products/{asin}.html"
 
+    schema_json = f"""
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{title}",
+  "brand": {{
+    "@type": "Brand",
+    "name": "{manufacturer}"
+  }},
+  "category": "{esc(category_name)}",
+  "url": "{page_url}",
+  "isRelatedTo": {{
+    "@type": "WebSite",
+    "name": "日本製がいい！",
+    "url": "{SITE_URL}"
+  }}
+}}
+</script>
+
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "{SITE_URL}/"
+    }},
+    {{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{esc(category_name)}",
+      "item": "{SITE_URL}/category/{category_slug}.html"
+    }},
+    {{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{title}",
+      "item": "{page_url}"
+    }}
+  ]
+}}
+</script>
+"""
+
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -88,6 +136,7 @@ def build_product_html(item):
   <meta name="description" content="{title}。日本製・国産の商品を探せるAmazon非公式検索サイト「日本製がいい！」の掲載商品ページです。">
   <link rel="canonical" href="{page_url}">
   <link rel="stylesheet" href="../css/style.css">
+  {schema_json}
 </head>
 <body>
   <header class="site-header">
