@@ -475,6 +475,127 @@ def write_maker_pages(products):
 
     return count
 
+def write_feature_pages(products):
+    feature_dir = ROOT / "feature"
+    feature_dir.mkdir(exist_ok=True)
+
+    out = feature_dir / "tsubame-sanjo.html"
+
+    out.write_text(
+        build_feature_tsubame_sanjo(products),
+        encoding="utf-8"
+    )
+
+    return 1
+
+def build_feature_tsubame_sanjo(products):
+    cards = []
+
+    matched = []
+
+    for item in products:
+        title = get_title(item)
+
+        if "燕三条" not in title:
+            continue
+
+        matched.append(item)
+
+    for item in matched[:200]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item))
+        manufacturer = esc(item.get("manufacturer", ""))
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">
+                {title}
+              </a>
+            </h2>
+
+            {"<p class='product-brand'>" + manufacturer + "</p>" if manufacturer else ""}
+
+            <div class="product-tags">
+              <span class="tag tag-japan">燕三条</span>
+              <span class="tag tag-japan">日本製・国産</span>
+            </div>
+
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <title>燕三条の日本製商品一覧 | 日本製がいい！</title>
+
+  <meta name="description"
+        content="燕三条の日本製包丁、フライパン、キッチン用品などを掲載しています。Amazonで購入できる日本製商品を探せます。">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+  <link rel="canonical"
+        href="{SITE_URL}/feature/tsubame-sanjo.html">
+
+  <link rel="stylesheet"
+        href="../css/style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png"
+             alt="日本製がいい！"
+             class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+
+    <div class="container">
+
+      <h1>燕三条の日本製商品</h1>
+
+      <p>
+        燕三条は、新潟県の金属加工産地として知られ、
+        包丁、鍋、フライパン、キッチン用品など
+        日本製のものづくりで高い評価を受けています。
+      </p>
+
+      <p>
+        このページでは、Amazonで販売されている
+        燕三条関連の日本製商品を掲載しています。
+      </p>
+
+      <p>掲載件数：{len(matched)}件</p>
+
+      <div class="products-grid">
+        {cards_html}
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+</body>
+</html>
+"""
+
 def write_sitemap(products):
     today = date.today().isoformat()
 
@@ -499,8 +620,15 @@ def write_sitemap(products):
   </url>""",
     ]
 
-    used_categories = set()
+    urls.append(f"""  <url>
+    <loc>{SITE_URL}/feature/tsubame-sanjo.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>""")
     
+    used_categories = set()
+
     for item in products:
         category_name, slug = detect_category(item)
         used_categories.add(slug)
@@ -578,6 +706,7 @@ def main():
     page_count = write_product_pages(products)
     category_count = write_category_pages(products)
     maker_count = write_maker_pages(products)
+    feature_count = write_feature_pages(products)
 
     write_sitemap(products)
     write_robots()
@@ -586,6 +715,7 @@ def main():
     print(f"product pages written: {page_count}")
     print(f"category pages written: {category_count}")
     print(f"maker pages written: {maker_count}")
+    print(f"feature pages written: {feature_count}")
     print(f"sitemap written: {SITEMAP_XML}")
     print(f"robots written: {ROBOTS_TXT}")
 
