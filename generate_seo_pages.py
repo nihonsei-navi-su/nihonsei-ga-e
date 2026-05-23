@@ -29,7 +29,18 @@ CATEGORY_RULES = [
     ("文具・趣味・その他", "hobby", r"文具|文房具|ペン|ノート|紙|印鑑|ホビー|楽器|本|クラフト|趣味"),
 ]
 
-
+CATEGORY_DESCRIPTIONS = {
+    "食品・飲料": "日本製・国産の食品・飲料を探している方向けに、Amazonで購入できる商品をまとめています。調味料、お茶、コーヒー、菓子類など、日常的に使いやすい国産品を確認できます。",
+    "キッチン・調理用品": "日本製の包丁、鍋、フライパン、まな板、食器など、キッチンで使う国産調理用品を掲載しています。燕三条をはじめ、日本のものづくりと相性のよいカテゴリです。",
+    "生活用品・日用品": "タオル、掃除用品、収納用品、スリッパ、バス用品など、日本製・国産の日用品をまとめています。毎日使うものだからこそ、日本製を選びたい方向けのカテゴリです。",
+    "家電・電子機器": "日本製・国産表記のある家電・電子機器を掲載しています。照明、加湿器、生活家電、周辺機器など、Amazonで探しにくい日本製品を確認できます。",
+    "インテリア・家具": "日本製・国産の家具、寝具、ラグ、クッション、インテリア用品をまとめています。暮らしの質を高める国内製造品を探す方向けのカテゴリです。",
+    "ファッション・身につけるもの": "日本製の衣類、靴下、バッグ、財布、帽子、肌着など、身につける国産品を掲載しています。素材や縫製にこだわりたい方向けです。",
+    "美容・健康": "日本製・国産の美容用品、健康用品、石鹸、シャンプー、スキンケア用品などをまとめています。肌に触れるものを日本製で探したい方向けのカテゴリです。",
+    "工具・DIY・作業用品": "日本製の工具、DIY用品、作業用品、計測用品などを掲載しています。精度や耐久性を重視して国産品を探す方向けです。",
+    "アウトドア・スポーツ": "日本製・国産のアウトドア用品、キャンプ用品、スポーツ用品、水筒、保冷用品などをまとめています。屋外で使う道具を日本製で探したい方向けです。",
+    "文具・趣味・その他": "日本製の文具、ノート、ペン、印鑑、クラフト用品、趣味用品などを掲載しています。細部の品質にこだわる国産品を探せます。",
+}
 def esc(value):
     return html.escape(str(value or ""), quote=True)
 
@@ -76,6 +87,35 @@ def build_product_html(item):
     manufacturer = esc(item.get("manufacturer", ""))
     category_name, category_slug = detect_category(item)
     amazon_url = esc(item.get("url") or f"https://www.amazon.co.jp/dp/{asin}")
+    related_items = []
+
+    for other in ALL_PRODUCTS:
+        other_asin = str(other.get("asin", "")).strip()
+
+        if not other_asin or other_asin == asin:
+            continue
+
+        other_category_name, other_category_slug = detect_category(other)
+
+        if other_category_slug != category_slug:
+            continue
+
+        related_items.append(other)
+
+        if len(related_items) >= 12:
+            break
+
+    related_html = []
+
+    for related in related_items:
+        r_asin = esc(related.get("asin", ""))
+        r_title = esc(get_title(related))
+
+        related_html.append(
+            f'<li><a href="../products/{r_asin}.html">{r_title}</a></li>'
+        )
+
+    related_html = "\n".join(related_html)
 
     page_url = f"{SITE_URL}/products/{asin}.html"
 
@@ -181,6 +221,12 @@ def build_product_html(item):
         <p style="margin-top:24px;">
           <a href="../category/{category_slug}.html">{esc(category_name)}の日本製商品を見る</a>
         </p>
+        <section style="margin-top:40px;">
+            <h2>関連する日本製商品</h2>
+                <ul>
+                    {related_html}
+                </ul>
+        </section>
         <p>
           <a href="../index.html">日本製・国産の商品一覧へ戻る</a>
         </p>
@@ -216,6 +262,7 @@ def build_category_html(category_name, slug, items):
 
     cards_html = "\n".join(cards)
     page_url = f"{SITE_URL}/category/{slug}.html"
+    description_text = CATEGORY_DESCRIPTIONS.get(category_name, "")
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -244,14 +291,16 @@ def build_category_html(category_name, slug, items):
       </nav>
     </div>
   </header>
-
+    ALL_PRODUCTS = []
   <main>
     <section class="products-section">
       <div class="container">
         <h1>日本製・国産の{esc(category_name)}</h1>
         <p>
-          Amazonで販売されている日本製・国産の{esc(category_name)}を掲載しています。
-          商品名や掲載情報を確認し、詳細はAmazonの商品ページでご確認ください。
+        {esc(description_text)}
+        </p>
+        <p>
+        商品名や掲載情報を確認し、詳細はAmazonの商品ページでご確認ください。
         </p>
         <p>掲載件数：{len(items)}件</p>
 
@@ -374,7 +423,10 @@ Sitemap: {SITE_URL}/sitemap.xml
 
 
 def main():
+    global ALL_PRODUCTS
+
     products = load_products()
+    ALL_PRODUCTS = products
 
     page_count = write_product_pages(products)
     category_count = write_category_pages(products)
