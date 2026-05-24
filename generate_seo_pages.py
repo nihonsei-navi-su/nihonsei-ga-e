@@ -529,6 +529,41 @@ def build_feature_tsubame_sanjo(products):
 
     cards_html = "\n".join(cards)
 
+    faq_schema = f"""
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{
+      "@type": "Question",
+      "name": "燕三条とは？",
+      "acceptedAnswer": {{
+        "@type": "Answer",
+        "text": "燕三条は新潟県の金属加工産地で、包丁やキッチン用品など日本製のものづくりで知られています。"
+      }}
+    }},
+    {{
+      "@type": "Question",
+      "name": "燕三条製品の特徴は？",
+      "acceptedAnswer": {{
+        "@type": "Answer",
+        "text": "金属加工技術や耐久性、使いやすさなどが評価され、日本製キッチン用品として人気があります。"
+      }}
+    }},
+    {{
+      "@type": "Question",
+      "name": "このページでは何が見られますか？",
+      "acceptedAnswer": {{
+        "@type": "Answer",
+        "text": "Amazonで販売されている燕三条関連の日本製商品を一覧で確認できます。"
+      }}
+    }}
+  ]
+}}
+</script>
+"""
+    
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -547,6 +582,7 @@ def build_feature_tsubame_sanjo(products):
 
   <link rel="stylesheet"
         href="../css/style.css">
+    {faq_schema}
 </head>
 
 <body>
