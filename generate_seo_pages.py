@@ -500,7 +500,14 @@ def write_feature_pages(products):
         encoding="utf-8"
     )
 
-    return 3
+    towel_out = feature_dir / "japanese-towels.html"
+
+    towel_out.write_text(
+        build_feature_japanese_towels(products),
+        encoding="utf-8"
+    )
+
+    return 4
 
 def build_feature_tsubame_sanjo(products):
     cards = []
@@ -911,6 +918,139 @@ def build_feature_japanese_frying_pan(products):
 </html>
 """
 
+def build_feature_japanese_towels(products):
+    cards = []
+
+    matched = []
+
+    for item in products:
+        title = get_title(item)
+
+        if not re.search(r"タオル|バスタオル|フェイスタオル", title):
+            continue
+
+        matched.append(item)
+
+    for item in matched[:200]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item))
+        manufacturer = esc(item.get("manufacturer", ""))
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">
+                {title}
+              </a>
+            </h2>
+
+            {"<p class='product-brand'>" + manufacturer + "</p>" if manufacturer else ""}
+
+            <div class="product-tags">
+              <span class="tag tag-japan">日本製タオル</span>
+              <span class="tag tag-japan">日本製・国産</span>
+            </div>
+
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+
+    faq_schema = f"""
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{
+      "@type": "Question",
+      "name": "日本製タオルの特徴は？",
+      "acceptedAnswer": {{
+        "@type": "Answer",
+        "text": "吸水性や肌触り、耐久性などが評価され、日本製タオルは日常使いとして人気があります。"
+      }}
+    }},
+    {{
+      "@type": "Question",
+      "name": "どんな種類がありますか？",
+      "acceptedAnswer": {{
+        "@type": "Answer",
+        "text": "バスタオル、フェイスタオル、ハンドタオルなどさまざまな種類があります。"
+      }}
+    }}
+  ]
+}}
+</script>
+"""
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <title>日本製タオル一覧 | 日本製がいい！</title>
+
+  <meta name="description"
+        content="Amazonで購入できる日本製タオルを掲載しています。バスタオル、フェイスタオルなど日本製タオルを探せます。">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+  <link rel="canonical"
+        href="{SITE_URL}/feature/japanese-towels.html">
+
+  <link rel="stylesheet"
+        href="../css/style.css">
+
+  {faq_schema}
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png"
+             alt="日本製がいい！"
+             class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+
+    <div class="container">
+
+      <h1>日本製タオル一覧</h1>
+
+      <p>
+        日本製タオルは、吸水性や肌触り、耐久性などで高く評価されています。
+        バスタオル、フェイスタオルなど、
+        Amazonで販売されている日本製タオルを掲載しています。
+      </p>
+
+      <p>掲載件数：{len(matched)}件</p>
+
+      <div class="products-grid">
+        {cards_html}
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+</body>
+</html>
+"""
+
 def write_sitemap(products):
     today = date.today().isoformat()
 
@@ -951,6 +1091,13 @@ def write_sitemap(products):
     
     urls.append(f"""  <url>
     <loc>{SITE_URL}/feature/japanese-frying-pan.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>""")
+    
+    urls.append(f"""  <url>
+    <loc>{SITE_URL}/feature/japanese-towels.html</loc>
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
