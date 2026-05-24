@@ -80,6 +80,19 @@ def detect_category(item):
 
     return "文具・趣味・その他", "hobby"
 
+def build_feature_common_links():
+    return """
+<section style="margin-top:40px;">
+  <h2>関連カテゴリ</h2>
+  <ul>
+    <li><a href="../category/kitchen.html">日本製・国産のキッチン・調理用品</a></li>
+    <li><a href="../category/daily.html">日本製・国産の生活用品・日用品</a></li>
+    <li><a href="../category/food.html">日本製・国産の食品・飲料</a></li>
+    <li><a href="../category/hobby.html">日本製・国産の文具・趣味・その他</a></li>
+  </ul>
+</section>
+"""
+
 def slugify_maker(name):
     text = str(name or "").strip().lower()
 
@@ -283,6 +296,9 @@ def build_category_html(category_name, slug, items):
         """)
 
     cards_html = "\n".join(cards)
+
+    common_links = build_feature_common_links()
+
     page_url = f"{SITE_URL}/category/{slug}.html"
     description_text = CATEGORY_DESCRIPTIONS.get(category_name, "")
 
@@ -313,7 +329,7 @@ def build_category_html(category_name, slug, items):
       </nav>
     </div>
   </header>
-    ALL_PRODUCTS = []
+
   <main>
     <section class="products-section">
       <div class="container">
@@ -329,7 +345,7 @@ def build_category_html(category_name, slug, items):
         <div class="products-grid">
           {cards_html}
         </div>
-
+        {common_links}
         <p style="margin-top:24px;">
           <a href="../index.html">トップへ戻る</a>
         </p>
@@ -363,6 +379,9 @@ def build_maker_html(maker_name, slug, items):
         """)
 
     cards_html = "\n".join(cards)
+
+    common_links = build_feature_common_links()
+
     page_url = f"{SITE_URL}/maker/{slug}.html"
 
     return f"""<!DOCTYPE html>
@@ -406,7 +425,7 @@ def build_maker_html(maker_name, slug, items):
         <div class="products-grid">
           {cards_html}
         </div>
-
+        {common_links}
         <p style="margin-top:24px;">
           <a href="../index.html">トップへ戻る</a>
         </p>
@@ -592,6 +611,8 @@ def build_feature_tsubame_sanjo(products):
 
     cards_html = "\n".join(cards)
 
+    common_links = build_feature_common_links()
+
     faq_schema = f"""
 <script type="application/ld+json">
 {{
@@ -685,6 +706,7 @@ def build_feature_tsubame_sanjo(products):
       <div class="products-grid">
         {cards_html}
       </div>
+      {common_links}
 
     </div>
 
@@ -734,6 +756,8 @@ def build_feature_japanese_knives(products):
         """)
 
     cards_html = "\n".join(cards)
+
+    common_links = build_feature_common_links()
 
     faq_schema = f"""
 <script type="application/ld+json">
@@ -817,7 +841,7 @@ def build_feature_japanese_knives(products):
       <div class="products-grid">
         {cards_html}
       </div>
-
+        {common_links}
     </div>
 
   </section>
@@ -867,6 +891,8 @@ def build_feature_japanese_frying_pan(products):
         """)
 
     cards_html = "\n".join(cards)
+
+    common_links = build_feature_common_links()
 
     faq_schema = f"""
 <script type="application/ld+json">
@@ -950,7 +976,7 @@ def build_feature_japanese_frying_pan(products):
       <div class="products-grid">
         {cards_html}
       </div>
-
+        {common_links}
     </div>
 
   </section>
@@ -1000,6 +1026,8 @@ def build_feature_japanese_towels(products):
         """)
 
     cards_html = "\n".join(cards)
+
+    common_links = build_feature_common_links()
 
     faq_schema = f"""
 <script type="application/ld+json">
@@ -1083,7 +1111,7 @@ def build_feature_japanese_towels(products):
       <div class="products-grid">
         {cards_html}
       </div>
-
+        {common_links}
     </div>
 
   </section>
@@ -1133,6 +1161,8 @@ def build_feature_japanese_water_bottle(products):
         """)
 
     cards_html = "\n".join(cards)
+
+    common_links = build_feature_common_links()
 
     faq_schema = f"""
 <script type="application/ld+json">
@@ -1216,7 +1246,7 @@ def build_feature_japanese_water_bottle(products):
       <div class="products-grid">
         {cards_html}
       </div>
-
+        {common_links}
     </div>
 
   </section>
@@ -1266,6 +1296,8 @@ def build_feature_japanese_bento_box(products):
         """)
 
     cards_html = "\n".join(cards)
+
+    common_links = build_feature_common_links()
 
     faq_schema = f"""
 <script type="application/ld+json">
@@ -1349,7 +1381,7 @@ def build_feature_japanese_bento_box(products):
       <div class="products-grid">
         {cards_html}
       </div>
-
+        {common_links}
     </div>
 
   </section>
@@ -1391,6 +1423,8 @@ def build_feature_japanese_storage_container(products):
 
     cards_html = "\n".join(cards)
 
+    common_links = build_feature_common_links()
+
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -1424,6 +1458,7 @@ def build_feature_japanese_storage_container(products):
       <div class="products-grid">
         {cards_html}
       </div>
+      {common_links}
     </div>
   </section>
 </main>
@@ -1463,6 +1498,8 @@ def build_feature_japanese_cutting_board(products):
 
     cards_html = "\n".join(cards)
 
+    common_links = build_feature_common_links()
+
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -1496,6 +1533,7 @@ def build_feature_japanese_cutting_board(products):
       <div class="products-grid">
         {cards_html}
       </div>
+      {common_links}
     </div>
   </section>
 </main>
@@ -1535,6 +1573,8 @@ def build_feature_japanese_pot(products):
 
     cards_html = "\n".join(cards)
 
+    common_links = build_feature_common_links()
+
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -1568,6 +1608,7 @@ def build_feature_japanese_pot(products):
       <div class="products-grid">
         {cards_html}
       </div>
+      {common_links}
     </div>
   </section>
 </main>
@@ -1607,6 +1648,8 @@ def build_feature_japanese_chopsticks(products):
 
     cards_html = "\n".join(cards)
 
+    common_links = build_feature_common_links()
+
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -1640,6 +1683,7 @@ def build_feature_japanese_chopsticks(products):
       <div class="products-grid">
         {cards_html}
       </div>
+      {common_links}
     </div>
   </section>
 </main>
