@@ -133,17 +133,258 @@ def build_feature_maker_links(products, keywords):
 </section>
 """
 FEATURE_LINK_RULES = [
+    ("燕三条", "../feature/tsubame-sanjo.html", "燕三条特集"),
     ("包丁", "../feature/japanese-knives.html", "日本製包丁特集"),
     ("ナイフ", "../feature/japanese-knives.html", "日本製包丁特集"),
     ("フライパン", "../feature/japanese-frying-pan.html", "日本製フライパン特集"),
+    ("玉子焼", "../feature/japanese-frying-pan.html", "日本製フライパン特集"),
+    ("卵焼", "../feature/japanese-frying-pan.html", "日本製フライパン特集"),
+    ("タオル", "../feature/japanese-towels.html", "日本製タオル特集"),
     ("水筒", "../feature/japanese-water-bottle.html", "日本製水筒特集"),
     ("ボトル", "../feature/japanese-water-bottle.html", "日本製水筒特集"),
     ("タンブラー", "../feature/japanese-water-bottle.html", "日本製水筒特集"),
     ("弁当箱", "../feature/japanese-bento-box.html", "日本製弁当箱特集"),
+    ("ランチボックス", "../feature/japanese-bento-box.html", "日本製弁当箱特集"),
     ("保存容器", "../feature/japanese-storage-container.html", "日本製保存容器特集"),
+    ("密閉容器", "../feature/japanese-storage-container.html", "日本製保存容器特集"),
     ("まな板", "../feature/japanese-cutting-board.html", "日本製まな板特集"),
     ("鍋", "../feature/japanese-pot.html", "日本製鍋特集"),
     ("箸", "../feature/japanese-chopsticks.html", "日本製箸特集"),
+    ("ケトル", "../feature/japanese-kettle.html", "日本製ケトル特集"),
+    ("やかん", "../feature/japanese-kettle.html", "日本製ケトル特集"),
+    ("急須", "../feature/japanese-teapot.html", "日本製急須特集"),
+    ("スプーン", "../feature/japanese-spoons.html", "日本製スプーン特集"),
+    ("フォーク", "../feature/japanese-forks.html", "日本製フォーク特集"),
+    ("食器", "../feature/japanese-tableware.html", "日本製食器特集"),
+    ("皿", "../feature/japanese-tableware.html", "日本製食器特集"),
+    ("タンブラー", "../feature/japanese-tumbler.html", "日本製タンブラー特集"),
+    ("マグカップ", "../feature/japanese-mug-cup.html", "日本製マグカップ特集"),
+    ("爪切り", "../feature/japanese-nail-clipper.html", "日本製爪切り特集"),
+    ("ハンガー", "../feature/japanese-laundry-hanger.html", "日本製洗濯ハンガー特集"),
+    ("はさみ", "../feature/japanese-scissors.html", "日本製ハサミ特集"),
+    ("ハサミ", "../feature/japanese-scissors.html", "日本製ハサミ特集"),
+]
+
+
+FEATURE_DEFINITIONS = [
+    {
+        "slug": "tsubame-sanjo",
+        "title": "燕三条の日本製商品一覧",
+        "h1": "燕三条の日本製商品",
+        "keywords": ["燕三条"],
+        "tag": "燕三条",
+        "description": "燕三条の日本製包丁、フライパン、キッチン用品などを掲載しています。Amazonで購入できる日本製商品を探せます。",
+        "body": "燕三条は、新潟県の金属加工産地として知られ、包丁、鍋、フライパン、キッチン用品など日本製のものづくりで高い評価を受けています。このページでは、Amazonで販売されている燕三条関連の日本製商品を掲載しています。",
+        "faq": [
+            ("燕三条とは？", "燕三条は新潟県の金属加工産地で、包丁やキッチン用品など日本製のものづくりで知られています。"),
+            ("燕三条製品の特徴は？", "金属加工技術や耐久性、使いやすさなどが評価され、日本製キッチン用品として人気があります。"),
+        ],
+    },
+    {
+        "slug": "japanese-knives",
+        "title": "日本製包丁一覧",
+        "h1": "日本製包丁一覧",
+        "keywords": ["包丁", "ナイフ"],
+        "tag": "日本製包丁",
+        "description": "Amazonで購入できる日本製包丁を掲載しています。三徳包丁、牛刀、ペティナイフなど日本製の包丁を探せます。",
+        "body": "日本製包丁は、切れ味や刃付け技術、耐久性などで高く評価されています。三徳包丁、牛刀、ペティナイフなど、Amazonで販売されている日本製包丁を掲載しています。",
+        "faq": [
+            ("日本製包丁の特徴は？", "切れ味や耐久性、刃付け技術などが評価され、日本製包丁は世界的にも人気があります。"),
+            ("どんな包丁がありますか？", "三徳包丁、牛刀、ペティナイフ、菜切り包丁など、さまざまな種類があります。"),
+        ],
+    },
+    {
+        "slug": "japanese-frying-pan",
+        "title": "日本製フライパン一覧",
+        "h1": "日本製フライパン一覧",
+        "keywords": ["フライパン", "玉子焼", "卵焼"],
+        "tag": "日本製フライパン",
+        "description": "Amazonで購入できる日本製フライパンを掲載しています。鉄フライパン、IH対応、玉子焼き器など日本製調理器具を探せます。",
+        "body": "日本製フライパンは、耐久性や加工品質などで高く評価されています。鉄フライパン、IH対応、玉子焼き器など、Amazonで販売されている日本製調理器具を掲載しています。",
+        "faq": [
+            ("日本製フライパンの特徴は？", "耐久性や熱伝導、加工品質などが評価され、日本製フライパンは長く使いやすい製品として人気があります。"),
+            ("どんな種類がありますか？", "鉄フライパン、玉子焼き器、IH対応フライパンなどさまざまな種類があります。"),
+        ],
+    },
+    {
+        "slug": "japanese-towels",
+        "title": "日本製タオル一覧",
+        "h1": "日本製タオル一覧",
+        "keywords": ["タオル", "バスタオル", "フェイスタオル"],
+        "tag": "日本製タオル",
+        "description": "Amazonで購入できる日本製タオルを掲載しています。バスタオル、フェイスタオルなど日本製タオルを探せます。",
+        "body": "日本製タオルは、吸水性や肌触り、耐久性などで高く評価されています。バスタオル、フェイスタオルなど、Amazonで販売されている日本製タオルを掲載しています。",
+        "faq": [
+            ("日本製タオルの特徴は？", "吸水性や肌触り、耐久性などが評価され、日本製タオルは日常使いとして人気があります。"),
+            ("どんな種類がありますか？", "バスタオル、フェイスタオル、ハンドタオルなどさまざまな種類があります。"),
+        ],
+    },
+    {
+        "slug": "japanese-water-bottle",
+        "title": "日本製水筒一覧",
+        "h1": "日本製水筒一覧",
+        "keywords": ["水筒", "ボトル", "マグボトル", "タンブラー"],
+        "tag": "日本製水筒",
+        "description": "Amazonで購入できる日本製水筒を掲載しています。ステンレスボトル、マグボトル、タンブラーなど日本製水筒を探せます。",
+        "body": "日本製水筒は、保温性や耐久性などで高く評価されています。ステンレスボトル、マグボトル、タンブラーなど、Amazonで販売されている日本製水筒を掲載しています。",
+        "faq": [
+            ("日本製水筒の特徴は？", "保温性や耐久性、加工品質などが評価され、日本製水筒は日常使いとして人気があります。"),
+            ("どんな種類がありますか？", "ステンレスボトル、マグボトル、タンブラーなどさまざまな種類があります。"),
+        ],
+    },
+    {
+        "slug": "japanese-bento-box",
+        "title": "日本製弁当箱一覧",
+        "h1": "日本製弁当箱一覧",
+        "keywords": ["弁当箱", "ランチボックス", "お弁当箱"],
+        "tag": "日本製弁当箱",
+        "description": "Amazonで購入できる日本製弁当箱を掲載しています。ランチボックス、木製弁当箱など日本製弁当箱を探せます。",
+        "body": "日本製弁当箱は、密閉性や耐久性などで高く評価されています。ランチボックス、木製弁当箱など、Amazonで販売されている日本製弁当箱を掲載しています。",
+        "faq": [
+            ("日本製弁当箱の特徴は？", "耐久性や密閉性、加工品質などが評価され、日本製弁当箱は日常使いとして人気があります。"),
+            ("どんな種類がありますか？", "木製弁当箱、ステンレス弁当箱、ランチボックスなどさまざまな種類があります。"),
+        ],
+    },
+    {
+        "slug": "japanese-storage-container",
+        "title": "日本製保存容器一覧",
+        "h1": "日本製保存容器一覧",
+        "keywords": ["保存容器", "密閉容器", "容器", "タッパー", "キャニスター"],
+        "tag": "日本製保存容器",
+        "description": "Amazonで購入できる日本製保存容器を掲載しています。密閉容器、食品保存容器、キャニスターなどを探せます。",
+        "body": "日本製保存容器は、密閉性や耐久性、使いやすさで選ばれています。Amazonで販売されている日本製の保存容器・密閉容器を掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-cutting-board",
+        "title": "日本製まな板一覧",
+        "h1": "日本製まな板一覧",
+        "keywords": ["まな板", "俎板", "カッティングボード"],
+        "tag": "日本製まな板",
+        "description": "Amazonで購入できる日本製まな板を掲載しています。木製まな板、抗菌まな板、カッティングボードなどを探せます。",
+        "body": "日本製まな板は、素材の品質や加工精度、使いやすさで選ばれています。Amazonで販売されている日本製まな板・カッティングボードを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-pot",
+        "title": "日本製鍋一覧",
+        "h1": "日本製鍋一覧",
+        "keywords": ["鍋", "片手鍋", "両手鍋", "雪平鍋", "土鍋", "天ぷら鍋"],
+        "tag": "日本製鍋",
+        "description": "Amazonで購入できる日本製鍋を掲載しています。片手鍋、両手鍋、雪平鍋、土鍋などを探せます。",
+        "body": "日本製鍋は、熱伝導や耐久性、加工品質で選ばれています。Amazonで販売されている日本製の片手鍋・両手鍋・雪平鍋・土鍋などを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-chopsticks",
+        "title": "日本製箸一覧",
+        "h1": "日本製箸一覧",
+        "keywords": ["箸", "お箸", "はし", "菜箸"],
+        "tag": "日本製箸",
+        "description": "Amazonで購入できる日本製箸を掲載しています。お箸、菜箸、箸セットなどを探せます。",
+        "body": "日本製箸は、素材や塗装、持ちやすさなどで選ばれています。Amazonで販売されている日本製のお箸・菜箸・箸セットを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-kettle",
+        "title": "日本製ケトル・やかん一覧",
+        "h1": "日本製ケトル・やかん一覧",
+        "keywords": ["ケトル", "やかん", "笛吹ケトル"],
+        "tag": "日本製ケトル",
+        "description": "Amazonで購入できる日本製ケトル・やかんを掲載しています。ステンレスケトル、笛吹ケトルなどを探せます。",
+        "body": "日本製ケトル・やかんは、耐久性や扱いやすさ、金属加工品質で選ばれています。Amazonで販売されている日本製ケトル・やかんを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-teapot",
+        "title": "日本製急須一覧",
+        "h1": "日本製急須一覧",
+        "keywords": ["急須", "茶こし", "土瓶"],
+        "tag": "日本製急須",
+        "description": "Amazonで購入できる日本製急須を掲載しています。陶器急須、茶こし付き急須、土瓶などを探せます。",
+        "body": "日本製急須は、お茶を淹れる使いやすさや素材の質感で選ばれています。Amazonで販売されている日本製急須を掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-spoons",
+        "title": "日本製スプーン一覧",
+        "h1": "日本製スプーン一覧",
+        "keywords": ["スプーン", "匙"],
+        "tag": "日本製スプーン",
+        "description": "Amazonで購入できる日本製スプーンを掲載しています。ステンレススプーン、カトラリーなどを探せます。",
+        "body": "日本製スプーンは、口当たりや加工精度、耐久性で選ばれています。Amazonで販売されている日本製スプーンを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-forks",
+        "title": "日本製フォーク一覧",
+        "h1": "日本製フォーク一覧",
+        "keywords": ["フォーク"],
+        "tag": "日本製フォーク",
+        "description": "Amazonで購入できる日本製フォークを掲載しています。ディナーフォーク、ケーキフォークなどを探せます。",
+        "body": "日本製フォークは、金属加工品質や使いやすさで選ばれています。Amazonで販売されている日本製フォークを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-tableware",
+        "title": "日本製食器一覧",
+        "h1": "日本製食器一覧",
+        "keywords": ["食器", "皿", "器", "茶碗", "湯呑"],
+        "tag": "日本製食器",
+        "description": "Amazonで購入できる日本製食器を掲載しています。皿、茶碗、器、湯呑などを探せます。",
+        "body": "日本製食器は、使いやすさや質感、産地ごとのものづくりで選ばれています。Amazonで販売されている日本製食器を掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-tumbler",
+        "title": "日本製タンブラー一覧",
+        "h1": "日本製タンブラー一覧",
+        "keywords": ["タンブラー"],
+        "tag": "日本製タンブラー",
+        "description": "Amazonで購入できる日本製タンブラーを掲載しています。ステンレスタンブラーなどを探せます。",
+        "body": "日本製タンブラーは、保温・保冷性能や加工品質で選ばれています。Amazonで販売されている日本製タンブラーを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-mug-cup",
+        "title": "日本製マグカップ一覧",
+        "h1": "日本製マグカップ一覧",
+        "keywords": ["マグカップ", "マグ"],
+        "tag": "日本製マグカップ",
+        "description": "Amazonで購入できる日本製マグカップを掲載しています。陶器マグ、磁器マグなどを探せます。",
+        "body": "日本製マグカップは、質感や使いやすさ、デザインで選ばれています。Amazonで販売されている日本製マグカップを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-nail-clipper",
+        "title": "日本製爪切り一覧",
+        "h1": "日本製爪切り一覧",
+        "keywords": ["爪切り", "爪きり", "つめきり"],
+        "tag": "日本製爪切り",
+        "description": "Amazonで購入できる日本製爪切りを掲載しています。切れ味や使いやすさで選ばれる日本製爪切りを探せます。",
+        "body": "日本製爪切りは、刃の精度や切れ味、使いやすさで選ばれています。Amazonで販売されている日本製爪切りを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-laundry-hanger",
+        "title": "日本製洗濯ハンガー一覧",
+        "h1": "日本製洗濯ハンガー一覧",
+        "keywords": ["洗濯ハンガー", "ハンガー", "ピンチハンガー"],
+        "tag": "日本製洗濯ハンガー",
+        "description": "Amazonで購入できる日本製洗濯ハンガーを掲載しています。ピンチハンガー、物干しハンガーなどを探せます。",
+        "body": "日本製洗濯ハンガーは、耐久性や使いやすさで選ばれています。Amazonで販売されている日本製洗濯ハンガーを掲載しています。",
+        "faq": [],
+    },
+    {
+        "slug": "japanese-scissors",
+        "title": "日本製ハサミ一覧",
+        "h1": "日本製ハサミ一覧",
+        "keywords": ["ハサミ", "はさみ", "鋏", "キッチンハサミ"],
+        "tag": "日本製ハサミ",
+        "description": "Amazonで購入できる日本製ハサミを掲載しています。キッチンハサミ、作業用ハサミなどを探せます。",
+        "body": "日本製ハサミは、刃物加工技術や切れ味、耐久性で選ばれています。Amazonで販売されている日本製ハサミを掲載しています。",
+        "faq": [],
+    },
 ]
 
 def slugify_maker(name):
@@ -570,81 +811,123 @@ def write_maker_pages(products):
 
     return count
 
+
+def build_feature_page(products, feature):
+    matched = []
+
+    for item in products:
+        title = get_title(item)
+        if not any(keyword in title for keyword in feature["keywords"]):
+            continue
+        matched.append(item)
+
+    cards = []
+    for item in matched[:200]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item))
+        manufacturer = esc(item.get("manufacturer", ""))
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">{title}</a>
+            </h2>
+            {"<p class='product-brand'>" + manufacturer + "</p>" if manufacturer else ""}
+            <div class="product-tags">
+              <span class="tag tag-japan">{esc(feature["tag"])}</span>
+              <span class="tag tag-japan">日本製・国産</span>
+            </div>
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+    common_links = build_feature_common_links()
+    maker_links = build_feature_maker_links(products, feature["keywords"])
+
+    faq_items = []
+    for question, answer in feature.get("faq", []):
+        faq_items.append(f"""
+    {{
+      "@type": "Question",
+      "name": "{esc(question)}",
+      "acceptedAnswer": {{
+        "@type": "Answer",
+        "text": "{esc(answer)}"
+      }}
+    }}""")
+
+    faq_schema = ""
+    if faq_items:
+        faq_schema = f"""
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {",".join(faq_items)}
+  ]
+}}
+</script>
+"""
+
+    page_url = f"{SITE_URL}/feature/{feature['slug']}.html"
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{esc(feature["title"])} | 日本製がいい！</title>
+  <meta name="description" content="{esc(feature["description"])}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{page_url}">
+  <link rel="stylesheet" href="../css/style.css">
+  {faq_schema}
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png" alt="日本製がいい！" class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+    <div class="container">
+      <h1>{esc(feature["h1"])}</h1>
+      <p>{esc(feature["body"])}</p>
+      <p>掲載件数：{len(matched)}件</p>
+      <div class="products-grid">
+        {cards_html}
+      </div>
+      {common_links}
+      {maker_links}
+    </div>
+  </section>
+</main>
+</body>
+</html>
+"""
+
 def write_feature_pages(products):
     feature_dir = ROOT / "feature"
     feature_dir.mkdir(exist_ok=True)
 
-    out = feature_dir / "tsubame-sanjo.html"
+    count = 0
+    for feature in FEATURE_DEFINITIONS:
+        out = feature_dir / f"{feature['slug']}.html"
+        out.write_text(
+            build_feature_page(products, feature),
+            encoding="utf-8"
+        )
+        count += 1
 
-    out.write_text(
-        build_feature_tsubame_sanjo(products),
-        encoding="utf-8"
-    )
-
-    knife_out = feature_dir / "japanese-knives.html"
-
-    knife_out.write_text(
-        build_feature_japanese_knives(products),
-        encoding="utf-8"
-    )
-
-    frying_out = feature_dir / "japanese-frying-pan.html"
-
-    frying_out.write_text(
-        build_feature_japanese_frying_pan(products),
-        encoding="utf-8"
-    )
-
-    towel_out = feature_dir / "japanese-towels.html"
-
-    towel_out.write_text(
-        build_feature_japanese_towels(products),
-        encoding="utf-8"
-    )
-
-    water_out = feature_dir / "japanese-water-bottle.html"
-
-    water_out.write_text(
-        build_feature_japanese_water_bottle(products),
-        encoding="utf-8"
-    )
-
-    bento_out = feature_dir / "japanese-bento-box.html"
-
-    bento_out.write_text(
-        build_feature_japanese_bento_box(products),
-        encoding="utf-8"
-    )
-
-    storage_out = feature_dir / "japanese-storage-container.html"
-
-    storage_out.write_text(
-        build_feature_japanese_storage_container(products),
-        encoding="utf-8"
-    )
-
-    cutting_board_out = feature_dir / "japanese-cutting-board.html"
-
-    cutting_board_out.write_text(
-        build_feature_japanese_cutting_board(products),
-        encoding="utf-8"
-    )
-
-    pot_out = feature_dir / "japanese-pot.html"
-
-    pot_out.write_text(
-        build_feature_japanese_pot(products),
-        encoding="utf-8"
-    )
-
-    chopsticks_out = feature_dir / "japanese-chopsticks.html"
-
-    chopsticks_out.write_text(
-        build_feature_japanese_chopsticks(products),
-        encoding="utf-8"
-    )
-
-    return 10
+    return count
 
 def build_feature_tsubame_sanjo(products):
     cards = []
@@ -1811,76 +2094,15 @@ def write_sitemap(products):
   </url>""",
     ]
     
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/tsubame-sanjo.html</loc>
+    
+    for feature in FEATURE_DEFINITIONS:
+        urls.append(f"""  <url>
+    <loc>{SITE_URL}/feature/{esc(feature['slug'])}.html</loc>
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>""")
 
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-knives.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-frying-pan.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-towels.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-water-bottle.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-bento-box.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-storage-container.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-cutting-board.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-pot.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
-    urls.append(f"""  <url>
-    <loc>{SITE_URL}/feature/japanese-chopsticks.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>""")
-    
     used_categories = set()
 
     for item in products:
