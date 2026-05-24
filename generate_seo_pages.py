@@ -521,7 +521,14 @@ def write_feature_pages(products):
         encoding="utf-8"
     )
 
-    return 6
+    storage_out = feature_dir / "japanese-storage-container.html"
+
+    storage_out.write_text(
+        build_feature_japanese_storage_container(products),
+        encoding="utf-8"
+    )
+
+    return 7
 
 def build_feature_tsubame_sanjo(products):
     cards = []
@@ -1331,6 +1338,79 @@ def build_feature_japanese_bento_box(products):
 </html>
 """
 
+def build_feature_japanese_storage_container(products):
+    cards = []
+    matched = []
+
+    for item in products:
+        title = get_title(item)
+        if not re.search(r"保存容器|密閉容器|容器|タッパー|キャニスター", title):
+            continue
+        matched.append(item)
+
+    for item in matched[:200]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item))
+        manufacturer = esc(item.get("manufacturer", ""))
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">{title}</a>
+            </h2>
+            {"<p class='product-brand'>" + manufacturer + "</p>" if manufacturer else ""}
+            <div class="product-tags">
+              <span class="tag tag-japan">日本製保存容器</span>
+              <span class="tag tag-japan">日本製・国産</span>
+            </div>
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日本製保存容器一覧 | 日本製がいい！</title>
+  <meta name="description" content="Amazonで購入できる日本製保存容器を掲載しています。密閉容器、食品保存容器、キャニスターなどを探せます。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{SITE_URL}/feature/japanese-storage-container.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png" alt="日本製がいい！" class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+    <div class="container">
+      <h1>日本製保存容器一覧</h1>
+      <p>
+        日本製保存容器は、密閉性や耐久性、使いやすさで選ばれています。
+        Amazonで販売されている日本製の保存容器・密閉容器を掲載しています。
+      </p>
+      <p>掲載件数：{len(matched)}件</p>
+      <div class="products-grid">
+        {cards_html}
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
+"""
+
+
 def write_sitemap(products):
     today = date.today().isoformat()
 
@@ -1392,6 +1472,13 @@ def write_sitemap(products):
     
     urls.append(f"""  <url>
     <loc>{SITE_URL}/feature/japanese-bento-box.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>""")
+    
+    urls.append(f"""  <url>
+    <loc>{SITE_URL}/feature/japanese-storage-container.html</loc>
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
