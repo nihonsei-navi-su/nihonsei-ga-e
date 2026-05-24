@@ -528,7 +528,28 @@ def write_feature_pages(products):
         encoding="utf-8"
     )
 
-    return 7
+    cutting_board_out = feature_dir / "japanese-cutting-board.html"
+
+    cutting_board_out.write_text(
+        build_feature_japanese_cutting_board(products),
+        encoding="utf-8"
+    )
+
+    pot_out = feature_dir / "japanese-pot.html"
+
+    pot_out.write_text(
+        build_feature_japanese_pot(products),
+        encoding="utf-8"
+    )
+
+    chopsticks_out = feature_dir / "japanese-chopsticks.html"
+
+    chopsticks_out.write_text(
+        build_feature_japanese_chopsticks(products),
+        encoding="utf-8"
+    )
+
+    return 10
 
 def build_feature_tsubame_sanjo(products):
     cards = []
@@ -1410,6 +1431,221 @@ def build_feature_japanese_storage_container(products):
 </html>
 """
 
+def build_feature_japanese_cutting_board(products):
+    cards = []
+    matched = []
+
+    for item in products:
+        title = get_title(item)
+        if not re.search(r"まな板|俎板|カッティングボード", title):
+            continue
+        matched.append(item)
+
+    for item in matched[:200]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item))
+        manufacturer = esc(item.get("manufacturer", ""))
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">{title}</a>
+            </h2>
+            {"<p class='product-brand'>" + manufacturer + "</p>" if manufacturer else ""}
+            <div class="product-tags">
+              <span class="tag tag-japan">日本製まな板</span>
+              <span class="tag tag-japan">日本製・国産</span>
+            </div>
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日本製まな板一覧 | 日本製がいい！</title>
+  <meta name="description" content="Amazonで購入できる日本製まな板を掲載しています。木製まな板、抗菌まな板、カッティングボードなどを探せます。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{SITE_URL}/feature/japanese-cutting-board.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png" alt="日本製がいい！" class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+    <div class="container">
+      <h1>日本製まな板一覧</h1>
+      <p>
+        日本製まな板は、素材の品質や加工精度、使いやすさで選ばれています。
+        Amazonで販売されている日本製まな板・カッティングボードを掲載しています。
+      </p>
+      <p>掲載件数：{len(matched)}件</p>
+      <div class="products-grid">
+        {cards_html}
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
+"""
+
+def build_feature_japanese_pot(products):
+    cards = []
+    matched = []
+
+    for item in products:
+        title = get_title(item)
+        if not re.search(r"鍋|片手鍋|両手鍋|雪平鍋|土鍋|天ぷら鍋", title):
+            continue
+        matched.append(item)
+
+    for item in matched[:200]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item))
+        manufacturer = esc(item.get("manufacturer", ""))
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">{title}</a>
+            </h2>
+            {"<p class='product-brand'>" + manufacturer + "</p>" if manufacturer else ""}
+            <div class="product-tags">
+              <span class="tag tag-japan">日本製鍋</span>
+              <span class="tag tag-japan">日本製・国産</span>
+            </div>
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日本製鍋一覧 | 日本製がいい！</title>
+  <meta name="description" content="Amazonで購入できる日本製鍋を掲載しています。片手鍋、両手鍋、雪平鍋、土鍋などを探せます。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{SITE_URL}/feature/japanese-pot.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png" alt="日本製がいい！" class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+    <div class="container">
+      <h1>日本製鍋一覧</h1>
+      <p>
+        日本製鍋は、熱伝導や耐久性、加工品質で選ばれています。
+        Amazonで販売されている日本製の片手鍋・両手鍋・雪平鍋・土鍋などを掲載しています。
+      </p>
+      <p>掲載件数：{len(matched)}件</p>
+      <div class="products-grid">
+        {cards_html}
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
+"""
+
+def build_feature_japanese_chopsticks(products):
+    cards = []
+    matched = []
+
+    for item in products:
+        title = get_title(item)
+        if not re.search(r"箸|お箸|はし|菜箸", title):
+            continue
+        matched.append(item)
+
+    for item in matched[:200]:
+        asin = esc(item.get("asin", ""))
+        title = esc(get_title(item))
+        manufacturer = esc(item.get("manufacturer", ""))
+
+        cards.append(f"""
+        <article class="product-card">
+          <div class="product-meta">
+            <h2 class="product-title">
+              <a href="../products/{asin}.html">{title}</a>
+            </h2>
+            {"<p class='product-brand'>" + manufacturer + "</p>" if manufacturer else ""}
+            <div class="product-tags">
+              <span class="tag tag-japan">日本製箸</span>
+              <span class="tag tag-japan">日本製・国産</span>
+            </div>
+          </div>
+        </article>
+        """)
+
+    cards_html = "\n".join(cards)
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日本製箸一覧 | 日本製がいい！</title>
+  <meta name="description" content="Amazonで購入できる日本製箸を掲載しています。お箸、菜箸、箸セットなどを探せます。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{SITE_URL}/feature/japanese-chopsticks.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png" alt="日本製がいい！" class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+    <div class="container">
+      <h1>日本製箸一覧</h1>
+      <p>
+        日本製箸は、素材や塗装、持ちやすさなどで選ばれています。
+        Amazonで販売されている日本製のお箸・菜箸・箸セットを掲載しています。
+      </p>
+      <p>掲載件数：{len(matched)}件</p>
+      <div class="products-grid">
+        {cards_html}
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
+"""
 
 def write_sitemap(products):
     today = date.today().isoformat()
@@ -1479,6 +1715,27 @@ def write_sitemap(products):
     
     urls.append(f"""  <url>
     <loc>{SITE_URL}/feature/japanese-storage-container.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>""")
+    
+    urls.append(f"""  <url>
+    <loc>{SITE_URL}/feature/japanese-cutting-board.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>""")
+    
+    urls.append(f"""  <url>
+    <loc>{SITE_URL}/feature/japanese-pot.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>""")
+    
+    urls.append(f"""  <url>
+    <loc>{SITE_URL}/feature/japanese-chopsticks.html</loc>
     <lastmod>{today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
