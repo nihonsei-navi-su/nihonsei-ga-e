@@ -132,6 +132,19 @@ def build_feature_maker_links(products, keywords):
   </ul>
 </section>
 """
+FEATURE_LINK_RULES = [
+    ("包丁", "../feature/japanese-knives.html", "日本製包丁特集"),
+    ("ナイフ", "../feature/japanese-knives.html", "日本製包丁特集"),
+    ("フライパン", "../feature/japanese-frying-pan.html", "日本製フライパン特集"),
+    ("水筒", "../feature/japanese-water-bottle.html", "日本製水筒特集"),
+    ("ボトル", "../feature/japanese-water-bottle.html", "日本製水筒特集"),
+    ("タンブラー", "../feature/japanese-water-bottle.html", "日本製水筒特集"),
+    ("弁当箱", "../feature/japanese-bento-box.html", "日本製弁当箱特集"),
+    ("保存容器", "../feature/japanese-storage-container.html", "日本製保存容器特集"),
+    ("まな板", "../feature/japanese-cutting-board.html", "日本製まな板特集"),
+    ("鍋", "../feature/japanese-pot.html", "日本製鍋特集"),
+    ("箸", "../feature/japanese-chopsticks.html", "日本製箸特集"),
+]
 
 def slugify_maker(name):
     text = str(name or "").strip().lower()
@@ -422,6 +435,28 @@ def build_maker_html(maker_name, slug, items):
 
     common_links = build_feature_common_links()
 
+    feature_links = []
+
+    for item in items:
+        title = get_title(item)
+
+        for keyword, url, label in FEATURE_LINK_RULES:
+            if keyword in title:
+                link_html = f'<li><a href="{url}">{label}</a></li>'
+                if link_html not in feature_links:
+                    feature_links.append(link_html)
+
+    feature_links_html = ""
+
+    if feature_links:
+        feature_links_html = f"""
+    <section style="margin-top:40px;">
+    <h2>関連特集</h2>
+    <ul>
+        {"".join(feature_links)}
+    </ul>
+    </section>
+    """
     page_url = f"{SITE_URL}/maker/{slug}.html"
 
     return f"""<!DOCTYPE html>
@@ -465,6 +500,7 @@ def build_maker_html(maker_name, slug, items):
         <div class="products-grid">
           {cards_html}
         </div>
+        {feature_links_html}
         {common_links}
         <p style="margin-top:24px;">
           <a href="../index.html">トップへ戻る</a>
