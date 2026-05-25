@@ -1012,6 +1012,18 @@ def build_maker_html(maker_name, slug, items):
     <section class="products-section">
       <div class="container">
         <h1>{esc(maker_name)} の日本製・国産商品</h1>
+        <section class="maker-description">
+        <p>
+            {esc(maker_name)} の日本製・国産商品一覧ページです。
+            「日本製がいい！」では、Amazonで販売されている日本製・国産商品の中から、
+            {esc(maker_name)} 関連の商品を掲載しています。
+        </p>
+
+        <p>
+            キッチン用品、日用品、工具、文具、生活雑貨など、
+            日本国内で企画・製造されている商品を探しやすくまとめています。
+        </p>
+        </section>
         <p>
           {esc(maker_name)} の日本製・国産商品を掲載しています。
           Amazonで販売されている日本製商品をカテゴリ横断で探せます。

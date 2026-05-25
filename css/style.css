@@ -820,3 +820,13 @@ body {
   color:#666;
   line-height:1.6;
 }
+
+.maker-description{
+  margin:24px 0 40px;
+  line-height:1.9;
+  color:#444;
+}
+
+.maker-description p{
+  margin-bottom:16px;
+}
