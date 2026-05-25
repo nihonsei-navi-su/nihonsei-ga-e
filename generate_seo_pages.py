@@ -2387,6 +2387,13 @@ def write_sitemap(products):
     <priority>0.95</priority>
   </url>""")
 
+    urls.append(f"""    <url>
+    <loc>{SITE_URL}/feature/index.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    </url>""")
+
     used_categories = set()
 
     for item in products:
