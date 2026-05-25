@@ -830,3 +830,13 @@ body {
 .maker-description p{
   margin-bottom:16px;
 }
+
+.category-description{
+  margin:24px 0 40px;
+  line-height:1.9;
+  color:#444;
+}
+
+.category-description p{
+  margin-bottom:16px;
+}

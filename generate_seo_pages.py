@@ -911,6 +911,18 @@ def build_category_html(category_name, slug, items):
         <p>
         {esc(description_text)}
         </p>
+
+        <section class="category-description">
+        <p>
+            {esc(category_name)} の日本製・国産商品を探している方向けに、
+            Amazonで購入できる商品をカテゴリ別に整理しています。
+        </p>
+        <p>
+            日本製の商品は、品質管理、素材、加工精度、使いやすさなどを重視して選ばれることが多く、
+            毎日使う道具や生活用品を安心して選びたい方に向いています。
+        </p>
+        </section>
+
         <p>
         商品名や掲載情報を確認し、詳細はAmazonの商品ページでご確認ください。
         </p>
