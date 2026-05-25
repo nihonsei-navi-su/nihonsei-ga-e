@@ -1198,6 +1198,84 @@ def build_feature_page(products, feature):
 </html>
 """
 
+
+def build_feature_index_html():
+    cards = []
+
+    for feature in FEATURE_DEFINITIONS:
+        slug = feature.get("slug", "").strip()
+
+        title = (
+            feature.get("h1")
+            or feature.get("heading")
+            or feature.get("title")
+            or ""
+        ).strip()
+
+        description = (
+            feature.get("description")
+            or feature.get("body")
+            or ""
+        ).strip()
+
+        if not slug or not title:
+            continue
+
+        cards.append(f"""
+        <a class="feature-card" href="{esc(slug)}.html">
+          <h2>{esc(title)}</h2>
+          <p>{esc(description[:80])}</p>
+        </a>
+        """)
+
+    cards_html = "\n".join(cards)
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日本製特集一覧 | 日本製がいい！</title>
+  <meta name="description" content="日本製・国産の商品特集一覧ページです。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{SITE_URL}/feature/index.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="site-logo">
+      <a href="../index.html">
+        <img src="../img/pic-header220-48pix.png"
+             alt="日本製がいい！"
+             class="header-logo">
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="products-section">
+    <div class="container">
+
+      <h1>日本製特集一覧</h1>
+
+      <div class="feature-grid">
+        {cards_html}
+      </div>
+
+      <p style="margin-top:40px;">
+        <a href="../index.html">← トップページへ戻る</a>
+      </p>
+
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
+"""
+
 def write_feature_pages(products):
     feature_dir = ROOT / "feature"
     feature_dir.mkdir(exist_ok=True)
@@ -1210,6 +1288,12 @@ def write_feature_pages(products):
             encoding="utf-8"
         )
         count += 1
+
+    feature_index = feature_dir / "index.html"
+    feature_index.write_text(
+        build_feature_index_html(),
+        encoding="utf-8"
+    )
 
     return count
 
