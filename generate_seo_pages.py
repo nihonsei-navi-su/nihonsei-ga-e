@@ -475,7 +475,197 @@ FEATURE_DEFINITIONS = [
         "keywords": ["キッチンバサミ", "調理バサミ", "料理ハサミ", "キッチンはさみ"],
         "tag": "日本製キッチンバサミ",
     },
+          {
+        "slug": "japanese-colander",
+        "title": "日本製ざる一覧",
+        "description": "Amazonで購入できる日本製ざるを掲載しています。",
+        "heading": "日本製ざる一覧",
+        "body": "日本製ざるは、水切れや耐久性、加工品質で選ばれています。",
+        "keywords": ["ざる", "ザル", "水切り"],
+        "tag": "日本製ざる",
+    },
+    {
+        "slug": "japanese-bowl",
+        "title": "日本製ボウル一覧",
+        "description": "Amazonで購入できる日本製ボウルを掲載しています。",
+        "heading": "日本製ボウル一覧",
+        "body": "日本製ボウルは、調理のしやすさや耐久性で選ばれています。",
+        "keywords": ["ボウル", "ステンレスボウル"],
+        "tag": "日本製ボウル",
+    },
+    {
+        "slug": "japanese-cooking-chopsticks",
+        "title": "日本製菜箸一覧",
+        "description": "Amazonで購入できる日本製菜箸を掲載しています。",
+        "heading": "日本製菜箸一覧",
+        "body": "日本製菜箸は、持ちやすさや耐熱性で選ばれています。",
+        "keywords": ["菜箸", "さいばし"],
+        "tag": "日本製菜箸",
+    },
+    {
+        "slug": "japanese-ladle",
+        "title": "日本製お玉一覧",
+        "description": "Amazonで購入できる日本製お玉を掲載しています。",
+        "heading": "日本製お玉一覧",
+        "body": "日本製お玉は、使いやすさや耐久性で選ばれています。",
+        "keywords": ["お玉", "レードル"],
+        "tag": "日本製お玉",
+    },
+    {
+        "slug": "japanese-kettle-pot",
+        "title": "日本製やかん一覧",
+        "description": "Amazonで購入できる日本製やかんを掲載しています。",
+        "heading": "日本製やかん一覧",
+        "body": "日本製やかんは、耐久性や注ぎやすさで選ばれています。",
+        "keywords": ["やかん", "ケトル"],
+        "tag": "日本製やかん",
+    },
+    {
+        "slug": "japanese-cake-mold",
+        "title": "日本製ケーキ型一覧",
+        "description": "Amazonで購入できる日本製ケーキ型を掲載しています。",
+        "heading": "日本製ケーキ型一覧",
+        "body": "日本製ケーキ型は、加工精度や焼きやすさで選ばれています。",
+        "keywords": ["ケーキ型", "焼型"],
+        "tag": "日本製ケーキ型",
+    },
+    {
+        "slug": "japanese-whisk",
+        "title": "日本製泡立て器一覧",
+        "description": "Amazonで購入できる日本製泡立て器を掲載しています。",
+        "heading": "日本製泡立て器一覧",
+        "body": "日本製泡立て器は、混ぜやすさや耐久性で選ばれています。",
+        "keywords": ["泡立て器", "ホイッパー"],
+        "tag": "日本製泡立て器",
+    },
+    {
+        "slug": "japanese-storage-case",
+        "title": "日本製保存ケース一覧",
+        "description": "Amazonで購入できる日本製保存ケースを掲載しています。",
+        "heading": "日本製保存ケース一覧",
+        "body": "日本製保存ケースは、密閉性や収納性で選ばれています。",
+        "keywords": ["保存ケース", "収納ケース"],
+        "tag": "日本製保存ケース",
+    },
+    {
+        "slug": "japanese-lunch-bag",
+        "title": "日本製ランチバッグ一覧",
+        "description": "Amazonで購入できる日本製ランチバッグを掲載しています。",
+        "heading": "日本製ランチバッグ一覧",
+        "body": "日本製ランチバッグは、保冷性や耐久性で選ばれています。",
+        "keywords": ["ランチバッグ", "弁当バッグ"],
+        "tag": "日本製ランチバッグ",
+    },
+    {
+        "slug": "japanese-chopstick-rest",
+        "title": "日本製箸置き一覧",
+        "description": "Amazonで購入できる日本製箸置きを掲載しています。",
+        "heading": "日本製箸置き一覧",
+        "body": "日本製箸置きは、陶器や木製など多様な素材で人気です。",
+        "keywords": ["箸置き"],
+        "tag": "日本製箸置き",
+    },
+    {
+        "slug": "japanese-rice-bowl",
+        "title": "日本製茶碗一覧",
+        "description": "Amazonで購入できる日本製茶碗を掲載しています。",
+        "heading": "日本製茶碗一覧",
+        "body": "日本製茶碗は、美濃焼や有田焼など日本各地で作られています。",
+        "keywords": ["茶碗", "飯碗"],
+        "tag": "日本製茶碗",
+    },
+    {
+        "slug": "japanese-donburi",
+        "title": "日本製どんぶり一覧",
+        "description": "Amazonで購入できる日本製どんぶりを掲載しています。",
+        "heading": "日本製どんぶり一覧",
+        "body": "日本製どんぶりは、陶器や磁器など多彩な素材があります。",
+        "keywords": ["どんぶり", "丼"],
+        "tag": "日本製どんぶり",
+    },
+    {
+        "slug": "japanese-yunomi",
+        "title": "日本製湯のみ一覧",
+        "description": "Amazonで購入できる日本製湯のみを掲載しています。",
+        "heading": "日本製湯のみ一覧",
+        "body": "日本製湯のみは、美濃焼や有田焼などが人気です。",
+        "keywords": ["湯のみ", "湯呑"],
+        "tag": "日本製湯のみ",
+    },
+    {
+        "slug": "japanese-cooling-tumbler",
+        "title": "日本製急冷タンブラー一覧",
+        "description": "Amazonで購入できる日本製急冷タンブラーを掲載しています。",
+        "heading": "日本製急冷タンブラー一覧",
+        "body": "日本製急冷タンブラーは、冷却性能や保冷性能で人気です。",
+        "keywords": ["急冷タンブラー", "タンブラー"],
+        "tag": "日本製急冷タンブラー",
+    },
+    {
+        "slug": "japanese-knife-sharpener",
+        "title": "日本製包丁研ぎ一覧",
+        "description": "Amazonで購入できる日本製包丁研ぎを掲載しています。",
+        "heading": "日本製包丁研ぎ一覧",
+        "body": "日本製包丁研ぎは、砥石や簡易シャープナーなどがあります。",
+        "keywords": ["包丁研ぎ", "砥石", "シャープナー"],
+        "tag": "日本製包丁研ぎ",
+    },
+    {
+        "slug": "japanese-measuring-cup",
+        "title": "日本製計量カップ一覧",
+        "description": "Amazonで購入できる日本製計量カップを掲載しています。",
+        "heading": "日本製計量カップ一覧",
+        "body": "日本製計量カップは、見やすさや耐久性で選ばれています。",
+        "keywords": ["計量カップ"],
+        "tag": "日本製計量カップ",
+    },
+    {
+        "slug": "japanese-measuring-spoon",
+        "title": "日本製計量スプーン一覧",
+        "description": "Amazonで購入できる日本製計量スプーンを掲載しています。",
+        "heading": "日本製計量スプーン一覧",
+        "body": "日本製計量スプーンは、精度や耐久性で選ばれています。",
+        "keywords": ["計量スプーン"],
+        "tag": "日本製計量スプーン",
+    },
+    {
+        "slug": "japanese-rice-container",
+        "title": "日本製米びつ一覧",
+        "description": "Amazonで購入できる日本製米びつを掲載しています。",
+        "heading": "日本製米びつ一覧",
+        "body": "日本製米びつは、保存性や防虫性で選ばれています。",
+        "keywords": ["米びつ"],
+        "tag": "日本製米びつ",
+    },
+    {
+        "slug": "japanese-kitchen-rack",
+        "title": "日本製キッチンラック一覧",
+        "description": "Amazonで購入できる日本製キッチンラックを掲載しています。",
+        "heading": "日本製キッチンラック一覧",
+        "body": "日本製キッチンラックは、収納性や耐久性で選ばれています。",
+        "keywords": ["キッチンラック", "ラック"],
+        "tag": "日本製キッチンラック",
+    },
 ]
+
+def normalize_maker_name(name):
+    text = str(name or "").strip()
+
+    replacements = {
+        "貝印kai-corporation": "貝印",
+        "kai corporation": "貝印",
+        "kai-corporation": "貝印",
+        "ハリオhario": "HARIO",
+        "harioハリオ": "HARIO",
+    }
+
+    lower = text.lower()
+
+    for k, v in replacements.items():
+        if k.lower() in lower:
+            return v
+
+    return text
 
 def slugify_maker(name):
     text = str(name or "").strip().lower()
@@ -894,7 +1084,11 @@ def write_maker_pages(products):
         if len(items) < 5:
             continue
 
+        maker_name = normalize_maker_name(maker_name)
         slug = slugify_maker(maker_name)
+
+        if slug in {"unknown", "generic"}:
+            continue
         out = maker_dir / f"{slug}.html"
         out.write_text(build_maker_html(maker_name, slug, items), encoding="utf-8")
         count += 1
@@ -2215,6 +2409,12 @@ def write_sitemap(products):
         if not maker:
             continue
 
+        maker = normalize_maker_name(maker)
+        slug = slugify_maker(maker)
+
+        if slug in {"unknown", "generic"}:
+            continue
+
         used_makers.setdefault(maker, 0)
         used_makers[maker] += 1
 
@@ -2222,7 +2422,11 @@ def write_sitemap(products):
         if count < 5:
             continue
 
+        maker_name = normalize_maker_name(maker_name)
         slug = slugify_maker(maker_name)
+
+        if slug in {"unknown", "generic"}:
+            continue
 
         urls.append(f"""  <url>
     <loc>{SITE_URL}/maker/{esc(slug)}.html</loc>
@@ -2243,9 +2447,22 @@ def write_sitemap(products):
     <priority>0.7</priority>
   </url>""")
 
+    deduped_urls = []
+    seen_locs = set()
+
+    for block in urls:
+        m = re.search(r"<loc>(.*?)</loc>", block)
+        loc = m.group(1) if m else block
+
+        if loc in seen_locs:
+            continue
+
+        seen_locs.add(loc)
+        deduped_urls.append(block)
+
     xml = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-""" + "\n".join(urls) + """
+""" + "\n".join(deduped_urls) + """
 </urlset>
 """
 
