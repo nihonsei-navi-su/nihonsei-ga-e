@@ -77,6 +77,36 @@
         </div>
       </div>
     </section>
+    
+    <!-- 検索・絞り込み -->
+    <section id="search-section" class="search-section">
+      <div class="container">
+        <h2 class="section-title">条件を指定して探す</h2>
+        <div class="search-panel">
+          <div class="search-row">
+            <label for="search-input" class="search-label">キーワード検索</label>
+            <input
+              type="text"
+              id="search-input"
+              class="search-input"
+              placeholder="例）包丁、フライパン、文房具 など">
+          </div>
+
+          <div class="search-row">
+            <div class="search-label">カテゴリで絞り込み</div>
+            <div id="category-buttons" class="category-buttons">
+              <!-- main.js で12カテゴリを自動生成 -->
+            </div>
+          </div>
+        
+            <!-- 件数表示だけの行 -->
+            <div class="search-row">
+              <span id="product-total" class="product-total">表示件数: 0件</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="products-section">
   <div class="container">
@@ -148,36 +178,6 @@
     </p>
   </div>
 </section>
-
-    <!-- 検索・絞り込み -->
-    <section id="search-section" class="search-section">
-      <div class="container">
-        <h2 class="section-title">条件を指定して探す</h2>
-        <div class="search-panel">
-          <div class="search-row">
-            <label for="search-input" class="search-label">キーワード検索</label>
-            <input
-              type="text"
-              id="search-input"
-              class="search-input"
-              placeholder="例）包丁、フライパン、文房具 など">
-          </div>
-
-          <div class="search-row">
-            <div class="search-label">カテゴリで絞り込み</div>
-            <div id="category-buttons" class="category-buttons">
-              <!-- main.js で12カテゴリを自動生成 -->
-            </div>
-          </div>
-        
-            <!-- 件数表示だけの行 -->
-            <div class="search-row">
-              <span id="product-total" class="product-total">表示件数: 0件</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- 商品一覧 -->
     <section id="products" class="products-section">
