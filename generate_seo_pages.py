@@ -135,6 +135,59 @@ def build_feature_common_links():
 </section>
 """
 
+def build_category_feature_links(slug):
+    links_by_slug = {
+        "kitchen": [
+            ("日本製包丁特集", "../feature/japanese-knives.html"),
+            ("日本製フライパン特集", "../feature/japanese-frying-pan.html"),
+            ("日本製鍋特集", "../feature/japanese-pot.html"),
+            ("日本製まな板特集", "../feature/japanese-cutting-board.html"),
+            ("日本製保存容器特集", "../feature/japanese-storage-container.html"),
+            ("日本製水切りラック特集", "../feature/japanese-dish-drainer-rack.html"),
+            ("日本製計量カップ特集", "../feature/japanese-measuring-cup.html"),
+            ("日本製計量スプーン特集", "../feature/japanese-measuring-spoon.html"),
+        ],
+        "daily": [
+            ("日本製タオル特集", "../feature/japanese-towels.html"),
+            ("日本製スポンジ特集", "../feature/japanese-sponge.html"),
+            ("日本製掃除ブラシ特集", "../feature/japanese-cleaning-brush.html"),
+            ("日本製たわし特集", "../feature/japanese-scrubbing-brush.html"),
+            ("日本製コロコロ特集", "../feature/japanese-adhesive-roller.html"),
+            ("日本製収納ボックス特集", "../feature/japanese-storage-box.html"),
+            ("日本製収納ラック特集", "../feature/japanese-storage-rack.html"),
+            ("日本製洗濯ばさみ特集", "../feature/japanese-clothespins.html"),
+            ("日本製バケツ特集", "../feature/japanese-bucket.html"),
+        ],
+        "beauty": [
+            ("日本製歯ブラシ特集", "../feature/japanese-toothbrush.html"),
+            ("日本製歯間ブラシ特集", "../feature/japanese-interdental-brush.html"),
+            ("日本製爪切り特集", "../feature/japanese-nail-clipper.html"),
+        ],
+        "hobby": [
+            ("日本製ハサミ特集", "../feature/japanese-scissors.html"),
+            ("日本製包丁研ぎ特集", "../feature/japanese-knife-sharpener.html"),
+        ],
+    }
+
+    links = links_by_slug.get(slug, [])
+
+    if not links:
+        return ""
+
+    items_html = "\n".join(
+        f'    <li><a href="{esc(url)}">{esc(label)}</a></li>'
+        for label, url in links
+    )
+
+    return f"""
+<section style="margin-top:40px;">
+  <h2>関連する日本製特集</h2>
+  <ul>
+{items_html}
+  </ul>
+</section>
+"""
+
 def build_feature_maker_links(products, keywords):
     makers = {}
 
@@ -2030,6 +2083,7 @@ def build_category_html(category_name, slug, items):
     cards_html = "\n".join(cards)
 
     common_links = build_feature_common_links()
+    category_feature_links = build_category_feature_links(slug)
 
     page_url = f"{SITE_URL}/category/{slug}.html"
 
@@ -2103,11 +2157,12 @@ def build_category_html(category_name, slug, items):
         商品名や掲載情報を確認し、詳細はAmazonの商品ページでご確認ください。
         </p>
         <p>掲載件数：{len(items)}件</p>
-
+        {common_links}
+        {category_feature_links}
         <div class="products-grid">
           {cards_html}
         </div>
-        {common_links}
+
         <p style="margin-top:24px;">
           <a href="../index.html">トップへ戻る</a>
         </p>
