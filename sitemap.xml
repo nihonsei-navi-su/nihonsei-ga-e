@@ -289,18 +289,6 @@
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://nihonsei-ga-e.com/feature/japanese-measuring-cup.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://nihonsei-ga-e.com/feature/japanese-measuring-spoon.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
     <loc>https://nihonsei-ga-e.com/feature/japanese-rice-container.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -380,6 +368,18 @@
   </url>
   <url>
     <loc>https://nihonsei-ga-e.com/feature/japanese-bucket.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://nihonsei-ga-e.com/feature/japanese-measuring-spoon.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://nihonsei-ga-e.com/feature/japanese-measuring-cup.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
