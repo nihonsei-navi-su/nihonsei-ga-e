@@ -2544,6 +2544,61 @@ def build_feature_index_html():
         今後も日本製・国産商品の掲載数を増やしながら更新していきます。
         </p>
 
+    <section style="margin-top:40px;">
+        <h2>用途別に日本製特集を探す</h2>
+
+        <h3>日本製キッチン用品</h3>
+        <ul>
+          <li><a href="japanese-knives.html">日本製包丁</a></li>
+          <li><a href="japanese-frying-pan.html">日本製フライパン</a></li>
+          <li><a href="japanese-pot.html">日本製鍋</a></li>
+          <li><a href="japanese-bowl.html">日本製ボウル</a></li>
+          <li><a href="japanese-colander.html">日本製ざる</a></li>
+          <li><a href="japanese-measuring-cup.html">日本製計量カップ</a></li>
+          <li><a href="japanese-measuring-spoon.html">日本製計量スプーン</a></li>
+          <li><a href="japanese-dish-drainer-rack.html">日本製水切りラック</a></li>
+        </ul>
+
+        <h3>日本製収納用品</h3>
+        <ul>
+          <li><a href="japanese-storage-container.html">日本製保存容器</a></li>
+          <li><a href="japanese-storage-case.html">日本製保存ケース</a></li>
+          <li><a href="japanese-storage-box.html">日本製収納ボックス</a></li>
+          <li><a href="japanese-storage-rack.html">日本製収納ラック</a></li>
+          <li><a href="japanese-rice-container.html">日本製米びつ</a></li>
+        </ul>
+
+        <h3>日本製掃除・洗濯用品</h3>
+        <ul>
+          <li><a href="japanese-sponge.html">日本製スポンジ</a></li>
+          <li><a href="japanese-cleaning-brush.html">日本製掃除ブラシ</a></li>
+          <li><a href="japanese-scrubbing-brush.html">日本製たわし</a></li>
+          <li><a href="japanese-adhesive-roller.html">日本製コロコロ</a></li>
+          <li><a href="japanese-bucket.html">日本製バケツ</a></li>
+          <li><a href="japanese-laundry-hanger.html">日本製洗濯ハンガー</a></li>
+          <li><a href="japanese-clothespins.html">日本製洗濯ばさみ</a></li>
+        </ul>
+
+        <h3>日本製食器・テーブル用品</h3>
+        <ul>
+          <li><a href="japanese-chopsticks.html">日本製箸</a></li>
+          <li><a href="japanese-spoons.html">日本製スプーン</a></li>
+          <li><a href="japanese-forks.html">日本製フォーク</a></li>
+          <li><a href="japanese-tableware.html">日本製食器</a></li>
+          <li><a href="japanese-rice-bowl.html">日本製茶碗</a></li>
+          <li><a href="japanese-soup-bowl.html">日本製お椀</a></li>
+          <li><a href="japanese-mug-cup.html">日本製マグカップ</a></li>
+          <li><a href="japanese-tumbler.html">日本製タンブラー</a></li>
+        </ul>
+
+        <h3>日本製デンタルケア・身だしなみ用品</h3>
+        <ul>
+          <li><a href="japanese-toothbrush.html">日本製歯ブラシ</a></li>
+          <li><a href="japanese-interdental-brush.html">日本製歯間ブラシ</a></li>
+          <li><a href="japanese-nail-clipper.html">日本製爪切り</a></li>
+        </ul>
+    </section>
+
       <div class="feature-grid">
         {cards_html}
       </div>
