@@ -319,10 +319,10 @@ def build_feature_maker_links(products, keywords):
         makers[maker] = makers.get(maker, 0) + 1
 
     sorted_makers = sorted(
-        ((maker, count) for maker, count in makers.items() if count >= 5),
+        ((maker, count) for maker, count in makers.items() if count >= 2),
         key=lambda x: x[1],
         reverse=True,
-    )[:15]
+    )[:10]
 
     if not sorted_makers:
         return ""
@@ -453,7 +453,7 @@ FEATURE_RELATED_CLUSTERS = [
 ]
 
 
-def build_feature_related_links(current_slug, limit=8):
+def build_feature_related_links(current_slug, limit=15):
     feature_by_slug = {
         feature.get("slug", ""): feature
         for feature in FEATURE_DEFINITIONS
